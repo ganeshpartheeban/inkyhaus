@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Inkyhaus | Premium Textile & Custom Production Studio</title>
+<meta name="description" content="Brand experience – to – Explore our finest works in engraving, printing, and sublimation – each piece a reflection of creativity, quality, and craftsmanship">
+<meta name="keywords" content="T-Shirt Druck, Lasergravur, Aufkleber / Vinyl, 3D-Druck, Personalisierte Geschenke, Firmenauftrag (B2B), Werbeartikel">
+<link rel="icon" sizes="192x192" href="img/icon192.png">
+
+<!-- Bootstrap 5 CDN -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<!-- animation -->
+<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+<link href="img/style.css?v=1.2" rel="stylesheet">
+
+</head>
+
+<body>
+<!-- PREMIUM NAVBAR -->
+<nav id="mainNavbar" class="navbar navbar-expand-lg fixed-top navbar-dark">
+  <div class="marquee">
+    <div class="marquee-content">🚚 Kostenlose Lieferung in Berlin ab 49 € &nbsp;&nbsp;&nbsp;  ⚡ Schnelle Produktion  &nbsp;&nbsp;&nbsp; ⭐ Premium Qualität  &nbsp;&nbsp;&nbsp; 🏆 Erstklassige Verarbeitung  &nbsp;&nbsp;&nbsp; ⚡ Schnelle Lieferung in Berlin  &nbsp;&nbsp;&nbsp;
+      🚚 Kostenlose Lieferung in Berlin ab 49 € &nbsp;&nbsp;&nbsp;  ⚡ Schnelle Produktion  &nbsp;&nbsp;&nbsp; ⭐ Premium Qualität  &nbsp;&nbsp;&nbsp; 🏆 Erstklassige Verarbeitung  &nbsp;&nbsp;&nbsp; ⚡ Schnelle Lieferung in Berlin  &nbsp;&nbsp;&nbsp;
+      🚚 Kostenlose Lieferung in Berlin ab 49 € &nbsp;&nbsp;&nbsp;  ⚡ Schnelle Produktion  &nbsp;&nbsp;&nbsp; ⭐ Premium Qualität  &nbsp;&nbsp;&nbsp; 🏆 Erstklassige Verarbeitung  &nbsp;&nbsp;&nbsp; ⚡ Schnelle Lieferung in Berlin  &nbsp;&nbsp;&nbsp;
+    </div>
+    </div>
+  <div class="container">
+
+    <a class="navbar-brand fw-bold" href="https://inkyhaus.de/"><img src="img/logo.png"/></a>
+
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto align-items-lg-center">
+        <li class="nav-item">
+          <a class="nav-link nav-animate" href="https://inkyhaus.de">Startseite</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link nav-animate" href="gallery.html">Galerie</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link nav-animate" href="advertising-printing-solutions.html">Werbe- & Drucklösungen</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link nav-animate" href="contact.html">Kontakt</a>
+        </li>
+        <li class="nav-item ms-lg-3 mt-3 mt-lg-0">
+          <a href="#quote" class="btn btn-accent px-4">Angebot anfragen</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO CAROUSEL -->
+<section>
+  <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+
+    <!-- Indicators -->
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
+      <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
+      <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
+      <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="3"></button>
+      <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="4"></button>
+    </div>
+
+    <div class="carousel-inner">
+
+      <!-- Slide 1a -->
+      <div class="carousel-item active">
+        <div class="hero-slide d-flex align-items-center text-center text-white">
+          <div class="container">
+            <img class="whatsappheader" src="img/10percent.png">
+            
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 1 -->
+      <div class="carousel-item">
+        <div class="hero-slide d-flex align-items-center text-center text-white">
+          <div class="container">
+            <h1 class="hero-title" data-aos="fade-up">
+              Firmen-Textildruck & Individuelle Produktionen in Berlin (Friedrichshain)
+            </h1>
+            <p class="hero-sub" data-aos="fade-up" data-aos-delay="200">
+              Arbeitskleidung · Firmenbekleidung · Express Optionen · Kleine Mengen besonders schnell
+            </p>
+            <div data-aos="fade-up" data-aos-delay="400">
+              <a href="#quote" class="btn btn-accent me-3">Angebot anfragen</a>
+              <a href="#" class="btn btn-outline-light">WhatsApp</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="carousel-item">
+        <div class="hero-slide d-flex align-items-center text-center text-white">
+          <div class="container">
+            <h1 class="hero-title">Aufkleber & Vinyl-Grafiken</h1>
+            <p class="hero-sub">Individuelle Aufkleber, Fensterbeschriftung, Wand-Vinyl und Logo-Grafiken für Geschäfte 
+und Innenräume.</p>
+<p class="hero-sub">Aufkleber · Fensterfolie · Wandtattoos · Logo-Vinyl</p>
+            <a href="#quote" class="btn btn-accent mt-3">Start Your Project</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 3 -->
+      <div class="carousel-item">
+        <div class="hero-slide d-flex align-items-center text-center text-white">
+          <div class="container">
+            <h1 class="hero-title">Corporate Branding & Werbeartikel</h1>
+            <p class="hero-sub">Individuelle Werbeartikel, Firmen-Merchandise und gebrandete Produkte für Unternehmen 
+und Events. </p>
+            <p class="hero-sub">Firmen-Geschenke · Event-Merch · Branding-Produkte</p>
+            <a href="#quote" class="btn btn-accent mt-3">Get a Fast Quote</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 4 -->
+      <div class="carousel-item">
+        <div class="hero-slide d-flex align-items-center text-center text-white">
+          <div class="container">
+            <h1 class="hero-title">Werbetechnik & Großformatdruck </h1>
+            <p class="hero-sub">Banner, Roll-Ups, Poster, Displays sowie hochwertige Druckprodukte wie Flyer, 
+Visitenkarten und Marketingmaterialien für Unternehmen und Veranstaltungen.</p>
+            <p class="hero-sub">Banner · Roll-Ups · Poster · Messedisplays · Flyer · Visitenkarten</p>
+            <a href="#quote" class="btn btn-accent mt-3">Get a Fast Quote</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+
+<section style="background-color: #f0f4fb;">
+<div class="container-fluid">
+  <div class="row g-4">
+    <div class="col-md-6">
+          <img src="img/header.png" class="img-fluid">
+    </div>
+
+    <div class="col-md-6">
+          <img src="img/promise.png" class="img-fluid">
+    </div>
+  </div>
+</div>
+</section>
+
+
+<!-- SERVICES -->
+<section class="section-padding" >
+  <div class="container text-center">
+    <!-- <h2 class="fw-bold mb-5">Our Services</h2> -->
+    <h2 class="fw-bold mb-5">Produktionsmöglichkeiten</h2>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <a href="contact.html" class="styleno">
+          <div class="card">
+          <img src="img/icon.png">
+          <h5>Firmen-Textildruck & Individueller Druck</h5>
+          <p>Arbeitskleidung, Uniformen, Firmenbekleidung, Promotion-Textilien.</p>
+        </div>
+       </a>
+      </div>
+      <div class="col-md-4">
+        <a href="contact.html" class="styleno">
+          <div class="card">
+          <img src="img/icon2.png">
+          <h5>Spezialdruck & Veredelungen</h5>
+          <p>Puff (3D), Glitter, Metallic-Finish, Glow-in-the-Dark, UV-Druck.</p>
+        </div>
+      </a>
+      </div>
+      <div class="col-md-4">
+        <a href="contact.html" class="styleno">
+          <div class="card">
+          <img src="img/icon3.png">
+          <h5>Trikot-Restauration</h5>
+          <p>Namen- & Nummern-Restauration, Nachbesserung und Rework bestehender Trikots.</p>
+        </div>
+      </a>
+      </div>
+    </div>
+
+    <div class="row g-4 mt-3">
+      <div class="col-md-4">
+        <a href="contact.html" class="styleno">
+          <div class="card">
+          <img src="img/icon4.png">
+          <h5>Lasergravur & Personalisierung</h5>
+          <p>Holz · Glas · Metall · Schilder · Typenschilder · Geschenke.</p>
+        </div>
+      </a>
+      </div>
+      <div class="col-md-4">
+        <a href="contact.html" class="styleno">
+          <div class="card">
+          <img src="img/icon5.png">
+          <h5>3D-Drucklösungen</h5>
+          <p>Prototypen · Sonderanfertigungen · Funktionsteile</p>
+        </div>
+      </a>
+      </div>
+      <div class="col-md-4">
+        <a href="contact.html" class="styleno">
+          <div class="card">
+          <img src="img/icon6.png">
+          <h5>Personalisierte Geschenke & Fotoprodukte</h5>
+          <p>Sublimations-Tassen · Metal Photo Prints · personalisierte Anhänger.</p>
+        </div>
+      </a>
+      </div>
+    </div>
+
+    <div class="row g-4 mt-3">
+      <div class="col-md-4">
+        <a href="contact.html" class="styleno">
+          <div class="card">
+          <img src="img/icon4.png">
+          <h5>Aufkleber & Vinyl-Grafiken</h5>
+          <p>Aufkleber · Fensterfolie · Wandtattoos · Logo-Vinyl</p>
+        </div>
+      </a>
+      </div>
+      <div class="col-md-4">
+        <a href="contact.html" class="styleno">
+          <div class="card">
+          <img src="img/icon4.png">
+          <h5>Corporate Branding & Werbeartikel</h5>
+          <p>Firmen-Geschenke · Event-Merch · Branding-Produkte</p>
+        </div>
+      </a>
+      </div>
+      <div class="col-md-4">
+        <a href="contact.html" class="styleno">
+          <div class="card">
+          <img src="img/icon4.png">
+          <h5>Werbetechnik & Großformatdruck</h5>
+          <p>Banner · Roll-Ups · Poster · Messedisplays · Flyer · Visitenkarten</p>
+        </div>
+      </a>
+      </div>
+    </div>
+
+    <div class="row g-4 mt-3">
+      <div class="col-md-4">
+        <a href="contact.html" class="styleno">
+          <div class="card">
+          <img src="img/icon10.png">
+          <h5>Caps & Sneaker Personalisierung</h5>
+          <p>Caps / Hüte · Sneaker Personalisierung · Individuelle Sonderanfertigungen</p>
+        </div>
+      </a>
+      </div>
+      <div class="col-md-4">
+        <a href="contact.html" class="styleno">
+          <div class="card">
+          <img src="img/icon11.png">
+          <h5>Pokale & Medaillen Gravur</h5>
+          <p>Pokale mit Gravur · Medaillen mit Text oder Logo · Individuelle Designs</p>
+        </div>
+      </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Express -->
+<section class="section-padding bg-white background-service">
+  <div class="container text-center">
+    <div class="row text-center">
+   
+        <img src="img/express.png" style="width:200px;margin:0 auto;">
+      
+    </div>
+    <h2 class="fw-bold mb-5">Express & Zeitkritische Produktionen</h2>
+    <h5 class="fw-bold mb-5">Zeitkritisches Projekt?</h5>
+    <div class="row">
+      <div class="col-md-12">
+        <ul>
+          <li>Kleine Mengen oft am selben Tag möglich</li>
+          <li>24h Produktion für ausgewählte Aufträge</li>
+          <li>Schnelle Abstimmung & Umsetzung</li>
+        </ul>
+      </div>
+ <h5 class="fw-bold mb-5">Abhängig von Produkt, Menge & Freigabezeit</h5>
+      
+    </div>
+  </div>
+</section>
+
+
+<!-- SPECIAL PRINT EFFECTS -->
+<section class="section-padding bg-white moving-background " style="padding:80px 50px;">
+  <div class="container text-center" style="background-color: #ffffffd4; padding:80px 50px; border-radius:20px;">
+    <h2 class="fw-bold mb-5">Moderne Druckeffekte</h2>
+    <div class="row">
+      <div class="col-md-12" >
+        <ul class="largefont">
+          <li>Puff Print (3D Effekt)</li>
+          <li>Glow-in-the-Dark Druck</li>
+          <li>Glitter Druck</li>
+          <li>Gold Metallic Print</li>
+          <li>UV Druck</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- PERSONALISED GIFTS -->
+<section class="section-padding" >
+  <div class="container text-center">
+    <!-- <h2 class="fw-bold mb-5">Our Services</h2> -->
+    <h2 class="fw-bold">Personalisierte Geschenke & Fotoprodukte</h2>
+    <h5 class="mb-5">Ideal für Mitarbeitergeschenke, Kundengeschenke, Events und persönliche Anlässe.</h5>
+    <div class="row g-4 mt-3">
+      <div class="col-md-4">
+        <div class="fcard">
+          <img src="img/products/Sublimations-Tassen.webp">
+          <h5> Sublimations-Tassen (Foto- & Logodruck)</h5>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="fcard">
+          <img src="img/products/metalphoto.webp">
+          <h5>Metal Photo Prints (hochwertige Fotoprodukte)</h5>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="fcard">
+          <img src="img/products/engrave.webp">
+          <h5>Anhänger / Tags (personalisierte Einzelstücke)</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Why choose us -->
+<section class="section-padding bg-white background-why " style="padding:80px 50px;">
+  <div class="container text-center" style="background-color: #ffffffd4; padding:80px 30px; border-radius:20px;">
+    <h2 class="fw-bold mb-5">Warum Unternehmen mit Inkyhaus arbeiten</h2>
+    <div class="row">
+      <div class="col-md-12" >
+        <ul class="largefont2">
+          <li>Zuverlässige Produktionszeiten</li>
+          <li>Konstante Qualität & sauberes Finish</li>
+          <li>Klare Kommunikation & Preise</li>
+          <li>Kleine & skalierbare Mengen</li>
+          <li>Express Optionen für dringende Projekte</li>
+          <li>Lokale Fertigung in Berlin</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<!-- HOW IT WORKS --> 
+<section class="section-padding bg-white background-service">
+  <div class="container text-center">
+    <h2 class="fw-bold mb-5">So funktionieren Business-Aufträge</h2>
+    <div class="row orderwork">
+      <div class="col-md-3 ">
+        <img src="img/request1.png" class="mb-3">
+        <div class="process-step"><h3 class="mb-5">1. Anfrage senden</h3></div>
+      </div>
+      <div class="col-md-3">
+        <img src="img/time.png" class="mb-3">
+        <div class="process-step"><h3 class="mb-5">2. Preis & Zeit bestätigen wir</h3></div>
+      </div>
+      <div class="col-md-3">
+        <img src="img/approval.png" class="mb-3">
+        <div class="process-step"><h3 class="mb-5">3. Freigabe / Mockup falls nötig</h3></div>
+      </div>
+      <div class="col-md-3">
+        <img src="img/production.png" class="mb-3">
+        <div class="process-step"><h3 class="mb-5">4. Produktion & Abholung / Lieferung</h3></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Metal card -->
+<section style="padding-top:150px; ">
+<div class="container-fluid text-center">
+    <h2 class="fw-bold mb-5">Metal Visitinkarten</h2>
+  <div class="row g-4">
+    <div class="col-md-12 p-0">
+          <img src="img/metal-card.png" class="img-fluid">
+    </div>
+
+  </div>
+</div>
+</section>
+
+
+<!-- FAQ -->
+<section class="section-padding">
+  <div class="container">
+    <h2 class="fw-bold text-center mb-5"> Häufig gestellte Fragen</h2>
+    <div class="accordion" id="faq">
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#faq1">
+            Was ist die Mindestbestellmenge?
+          </button>
+        </h2>
+        <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faq">
+          <div class="accordion-body">
+            Es gibt keine Mindestbestellmenge. Wir fertigen sowohl Einzelstücke als auch größere Bestellungen.
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#faq2">
+            Wie lange dauert die Produktion?
+          </button>
+        </h2>
+        <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faq">
+          <div class="accordion-body">
+            Die meisten Bestellungen werden innerhalb von 24–72 Stunden fertiggestellt, abhängig von Produkt und
+Menge.
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#faq3">
+            Kann ich meinen eigenen Artikel zum Gravieren oder Bedrucken mitbringen?
+          </button>
+        </h2>
+        <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faq">
+          <div class="accordion-body">
+            Ja. Sie können Artikel wie Flaschen, Gläser, Metallobjekte oder Textilien mitbringen. Wir prüfen, ob eine
+Personalisierung möglich ist.
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#faq4">
+            Bieten Sie Corporate-Branding-Services an?
+          </button>
+        </h2>
+        <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faq">
+          <div class="accordion-body">
+            Ja. Wir produzieren gebrandete Textilien, Werbeartikel und individuelle Produkte für Unternehmen und
+Events.
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#faq5">
+            Bieten Sie Unterstützung beim Design an?
+          </button>
+        </h2>
+        <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faq">
+          <div class="accordion-body">
+            Ja. Wenn Sie noch kein fertiges Design haben, helfen wir Ihnen bei der Vorbereitung Ihres Logos oder
+Motivs.
+          </div>
+        </div>
+      </div>
+      
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#faq6">
+            Welche Dateiformate akzeptieren Sie?
+          </button>
+        </h2>
+        <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#faq">
+          <div class="accordion-body">
+            Wir akzeptieren gängige Formate wie SVG, PDF, AI, PNG und JPG. Vektordateien liefern die beste Qualität.
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#faq7">
+            Welche Materialien können graviert werden?
+          </button>
+        </h2>
+        <div id="faq7" class="accordion-collapse collapse" data-bs-parent="#faq">
+          <div class="accordion-body">
+            Wir gravieren Materialien wie Holz, Glas, Acryl, beschichtetes Metall, Leder und einige Kunststoffe.
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#faq8">
+            Produzieren Sie individuelle Aufkleber und Vinyl-Grafiken?
+          </button>
+        </h2>
+        <div id="faq8" class="accordion-collapse collapse" data-bs-parent="#faq">
+          <div class="accordion-body">
+            Ja. Wir produzieren individuelle Aufkleber, Wand-Vinyl, Fensterbeschriftungen und Branding-Grafiken.
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#faq9">
+            Kann ich vor einer größeren Bestellung ein Muster erhalten?
+          </button>
+        </h2>
+        <div id="faq9" class="accordion-collapse collapse" data-bs-parent="#faq">
+          <div class="accordion-body">
+            Ja. Bei größeren Bestellungen können wir zunächst ein Muster anfertigen.
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#faq10">
+            Wo befindet sich Ihr Studio?
+          </button>
+        </h2>
+        <div id="faq10" class="accordion-collapse collapse" data-bs-parent="#faq">
+          <div class="accordion-body">
+            Unser Studio befindet sich in Berlin, und Kunden können uns kontaktieren oder nach Terminvereinbarung besuchen.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE FORM -->
+<section id="quote" class="section-padding bg-white">
+  <div class="container">
+    <h2 class="fw-bold text-center mb-4">Angebot anfragen</h2>
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <form action="send_request.php" method="POST" enctype="multipart/form-data">
+          <div class="row g-3">
+            <div class="col-md-6">
+              <input type="text" class="form-control" name="name" placeholder="Name" required>
+            </div>
+            <div class="col-md-6">
+              <input type="text" class="form-control" name="company" placeholder="Firma (optional)">
+            </div>
+            <div class="col-md-6">
+              <input type="email" class="form-control" name="email" placeholder="E-Mail" required>
+            </div>
+            <div class="col-md-6">
+              <input type="text" class="form-control" name="phone" placeholder="Telefon (optional)">
+            </div>
+            <div class="col-12">
+              <select name="project_type" class="form-select" required>
+                <option value="" selected disabled>Projektart</option>
+                <option>T-Shirt Druck</option>
+                <option>Lasergravur</option>
+                <option>Aufkleber / Vinyl</option>
+                <option>3D-Druck</option>
+                <option>Personalisierte Geschenke</option>
+                <option>Firmenauftrag (B2B)</option>
+                <option>Werbeartikel</option>
+                <option>Sonstiges</option>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <input type="text" class="form-control" name="quantity" placeholder="Menge">
+            </div>
+            <div class="col-md-6">
+              <input type="text" class="form-control" name="sizes" placeholder="Größen">
+            </div>
+            <div class="col-12">
+              <textarea class="form-control" rows="4" name="details" placeholder="Projektdetails" required></textarea>
+            </div>
+            <div class="col-12 text-center">
+              <button class="btn btn-accent px-5">Anfrage senden</button>
+            </div>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+
+<div class="container">
+  <div class="row">
+
+  <div class="col-md-2 mb-5">
+    <h2 class="logo"></h2>
+    <img src="img/logo.png" style="width: 100px;" />
+  </div>
+
+  <div class="col-md-6 mb-5">
+    <h3>About</h3>
+     <p>
+      Inkyhaus ist ein modernes Personalisierungs- und Druckstudio in Berlin, spezialisiert auf 
+individuelle Produkte, hochwertige Drucklösungen und kreative Sonderanfertigungen. Wir 
+unterstützen Privatkunden, Start-ups, Unternehmen und Eventveranstalter bei der 
+Umsetzung personalisierter Produkte – von Einzelstücken bis zu größeren Aufträgen. 
+Unser Leistungsspektrum umfasst unter anderem T-Shirt-Druck, Lasergravur, 3D-Druck, 
+Aufkleber und Vinyl-Grafiken, Werbeartikel sowie personalisierte Geschenke. Wir 
+arbeiten mit verschiedenen Materialien wie Holz, Glas, Metall, Acryl und Textilien und setzen 
+moderne Produktionsmethoden ein, um präzise und hochwertige Ergebnisse zu liefern. 
+    </p>
+  </div>
+
+
+  <div class="col-md-2 mb-5 offset-md-1">
+    <h3>Quick Links</h3>
+    <ul>
+      <li><a href="index.html">Startseite</a></li>
+      <li><a href="gallery.html">Galerie</a></li>
+      <li><a href="advertising-printing-solutions.html">Werbe- & Drucklösungen</a></li>
+      <li><a href="contact.html">Kontakt</a></li>
+      <li><a href="impressum.html">Impressum</a></li>
+    </ul>
+  </div>
+
+ 
+  </div>
+
+</div>
+
+<div class="footer-bottom">
+© 2026 Inkyhaus - All Rights Reserved<br>
+<h3 class="smlink"><a href="https://websitez.in/" target="_blank">websitez.in</a></h3>
+</div>
+
+</footer>
+
+
+<!-- whatsapp -->
+<div class="whatsapp">
+        <a href="https://api.whatsapp.com/send?phone=4917663648012&text=I%20am%20interested%20to%20know%20more%20about%20your%20Service#" target="_blank">
+          <img src="img/whatsapp.gif" class="img-responsive" alt="whatsapp"/>
+        </a>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init({
+    duration: 900,
+    easing: 'ease-out-cubic',
+    once: true
+  });
+</script>
+
+<script>
+const navbar = document.getElementById("mainNavbar");
+
+function updateNavbar(){
+  if(window.scrollY > 50){
+    navbar.classList.remove("nav-transparent");
+    navbar.classList.add("nav-solid");
+  } else {
+    navbar.classList.add("nav-transparent");
+    navbar.classList.remove("nav-solid");
+  }
+}
+
+window.addEventListener("scroll", updateNavbar);
+window.addEventListener("load", updateNavbar);
+</script>
+
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/69b0e97fd378af1c365d2d57/1jjdh07dt';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
+
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a0663bdb9ff47f63',t:'MTc4MDU2ODcyOA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
