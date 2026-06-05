@@ -1,0 +1,42 @@
+# Placeholder imagery — Openverse (openly licensed). Replace with real Inkyhaus photos before launch.
+#
+# REAL INKYHAUS PHOTOGRAPHY now in use (© Inkyhaus, own work) — these slots no longer
+# use the Openverse placeholders credited below:
+#   hero.webp (storefront) · t-shirts.webp · sportswear.webp · accessories.webp
+#   lasergravur.webp · geschenke.webp · aufkleber.webp · werbeartikel.webp
+#   tech-full-color.webp · tech-metallic.webp · tech-glow.webp · tech-glitter.webp
+#   fussballverein-trikotsatz.webp
+# Additional unwired Inkyhaus assets available in /img: shop-front-2, shop-showcase,
+#   shop-showcase-2, shop-wall-tshirts, tshirt-wall, lumina-bag, dog-tags, metal-emboss,
+#   champagne-glass-design, wood-emboss, wood-emboss-2, wall-poster-2 (.webp)
+# Still on placeholders (no real photo yet): hoodies, workwear, 3d-druck, werbetechnik,
+#   pokale-medaillen, trikot-restauration, tech-puff, tech-uv, cafe-friedrichshain-crew,
+#   startup-onboarding-kit.
+
+t-shirts.webp  "B&C Collection organic styles" by screen printing - workshop (pdm 1.0) — https://www.flickr.com/photos/142296191@N06/39516481994
+hoodies.webp  "Untitled" by kenwalton (by 2.0) — https://www.flickr.com/photos/55684318@N00/36296847846
+sportswear.webp  "Roatan - Honduras Soccer Shirts" by roger4336 (by-sa 2.0) — https://www.flickr.com/photos/24736216@N07/5662745305
+accessories.webp  "Emma Burton - Digitally printed, leather and canvas tote bag" by Liverpool Design Festival (by-sa 2.0) — https://www.flickr.com/photos/40967604@N05/4860486736
+3d-druck.webp  "Pinning 2" by oskay (by 2.0) — https://www.flickr.com/photos/17425845@N00/490969159
+aufkleber.webp  "Snow white Macbook" by Denis Dervisevic (by 2.0) — https://www.flickr.com/photos/23979265@N07/4080531063
+trikot-restauration.webp  "Roatan - Honduras Soccer Shirts" by roger4336 (by-sa 2.0) — https://www.flickr.com/photos/24736216@N07/5662745305
+pokale-medaillen.webp  "2009 IMCOM-E & USAREUR/7A Culinary Arts Competition" by US Army Africa (by 2.0) — https://www.flickr.com/photos/36281822@N08/4147500074
+werbeartikel.webp  "Coffee Cup Sleeves" by CompleteMerchandise (by 2.0) — https://www.flickr.com/photos/95247477@N06/10291043183
+tech-full-color.webp  "African Textile Pattern" by shaire productions (by 2.0) — https://www.flickr.com/photos/9822107@N08/4080593545
+tech-puff.webp  "Jean cloth, texture, 2" by RichTatum (by 2.0) — https://www.flickr.com/photos/80853842@N00/660169919
+tech-glitter.webp  "christmas texture" by Phantasy Photo (by 2.0) — https://www.flickr.com/photos/8591099@N07/4210911437
+tech-metallic.webp  "Gold Foil Metallic Texture Free Creative Commons (6962328289" by Pink Sherbet Photography from Utah, USA (by 2.0) — https://commons.wikimedia.org/w/index.php?curid=40532838
+tech-glow.webp  "Light Painting - Green Glowing Shoes" by tim-johnson (by 2.0) — https://www.flickr.com/photos/83451854@N00/451725633
+tech-uv.webp  "Crab Nebula" by aeroman3 (pdm 1.0) — https://www.flickr.com/photos/47430793@N08/35579007665
+fussballverein-trikotsatz.webp  "Drew Mitchell" by Eva Rinaldi Celebrity Photographer (by-sa 2.0) — https://www.flickr.com/photos/58820009@N05/8396600905
+
+# Re-fetched:
+t-shirts.webp  "Trendy T Shirt Designs" by FahimDesign (by) — https://www.flickr.com/photos/154269743@N06/40222768582
+hoodies.webp  "Person wearing hoodie" by ? (cc0) — https://www.rawpixel.com/image/3285177/free-photo-image-dark-scratched-glass-stalker
+workwear.webp  "12-03-1951_10069A PTT medewerkers" by IISG (by-sa) — https://www.flickr.com/photos/29780762@N07/8419814534
+3d-druck.webp  "Sintermask - fabbster - 3D-printer v08" by Creative Tools (by) — https://www.flickr.com/photos/33907867@N02/8121271512
+tech-uv.webp  "Black Light Art Area" by Damian Cugley (by-sa) — https://www.flickr.com/photos/14145351@N00/1092085936
+trikot-restauration.webp  "Vintage Football Shirts" by footycomimages (by) — https://www.flickr.com/photos/188197504@N02/49833861451
+cafe-friedrichshain-crew.webp  "Art Cafe Waitresses & Bar - Puerto Vallarta, the old section" by Wonderlane (by) — https://www.flickr.com/photos/71401718@N00/293128123
+startup-onboarding-kit.webp  "startup-594091" by ChristopherA (cc0) — https://www.flickr.com/photos/32641495@N00/33286674502
+workwear.webp  "Stack of white polo shirts" (CC BY-SA) — https://www.flickr.com/photos/30013969@N03/4261971101
