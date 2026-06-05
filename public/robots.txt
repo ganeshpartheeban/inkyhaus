@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /imprint
+Disallow: /privacy
+Disallow: /terms
+
+Sitemap: https://inkyhaus.de/sitemap.xml
