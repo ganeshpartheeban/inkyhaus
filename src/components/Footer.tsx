@@ -3,6 +3,7 @@ import { Link, useRouterState } from '@tanstack/react-router'
 import { useI18n } from '../lib/i18n'
 import { PRODUCT_NAV, SPECIALTY_NAV, COMPANY_NAV } from '../lib/nav'
 import { SITE, whatsappLink } from '../lib/site-config'
+import { withBase } from '../lib/asset'
 
 // Route -> two-digit index for the editorial footer marker.
 const INDEX_MAP: Record<string, string> = {
@@ -32,7 +33,7 @@ export function Footer() {
       <div className="container-edge py-14">
         <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr_1fr_1fr]">
           <div>
-            <img src="/logo-light.png" alt="Inkyhaus" width={80} height={80} className="h-20 w-auto object-contain object-left" />
+            <img src={withBase('/logo-light.png')} alt="Inkyhaus" width={80} height={80} className="h-20 w-auto object-contain object-left" />
             <p className="mt-3 max-w-xs text-sm text-muted">{t('footer.tagline')}</p>
             <a
               href={SITE.mapsUrl}

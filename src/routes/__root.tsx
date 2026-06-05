@@ -14,6 +14,7 @@ import { Footer } from '../components/Footer'
 import { BottomTabBar } from '../components/BottomTabBar'
 import { JsonLd } from '../components/JsonLd'
 import { buildOrganizationLD, buildPersonLD, buildServiceLD } from '../lib/seo'
+import { withBase } from '../lib/asset'
 
 // Code-split overlays (Build Brief §06): floating contact, cookie notice, modal.
 const FloatingContact = lazy(() =>
@@ -36,10 +37,10 @@ export const Route = createRootRoute({
     ],
     links: [
       { rel: 'stylesheet', href: appCss },
-      { rel: 'icon', href: '/favicon.svg', type: 'image/svg+xml' },
-      { rel: 'icon', href: '/favicon.ico', sizes: 'any' },
-      { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' },
-      { rel: 'manifest', href: '/manifest.json' },
+      { rel: 'icon', href: withBase('/favicon.svg'), type: 'image/svg+xml' },
+      { rel: 'icon', href: withBase('/favicon.ico'), sizes: 'any' },
+      { rel: 'apple-touch-icon', href: withBase('/apple-touch-icon.png') },
+      { rel: 'manifest', href: withBase('/manifest.json') },
     ],
   }),
   shellComponent: RootDocument,

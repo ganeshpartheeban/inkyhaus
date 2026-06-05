@@ -12,6 +12,7 @@
     "dev": "vite dev --port 3000",
     "prebuild": "node scripts/generate-og.mjs",
     "build": "vite build",
+    "build:pages": "vite build --config vite.config.pages.ts",
     "preview": "vite preview",
     "images": "node scripts/generate-images.mjs",
     "test": "vitest run",

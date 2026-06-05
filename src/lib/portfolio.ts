@@ -3,6 +3,7 @@
 //
 // ⚠️ PLACEHOLDER PROJECTS — replace with real client work, outcomes and imagery.
 import type { Localized } from './products'
+import { withBase } from './asset'
 
 export type Project = {
   slug: string
@@ -85,7 +86,7 @@ export const PROJECTS: Project[] = [
 
 // Relevant license-free photo per project at /img/<slug>.webp (replace to override).
 for (const p of PROJECTS) {
-  if (!p.cover) p.cover = `/img/${p.slug}.webp`
+  if (!p.cover) p.cover = withBase(`/img/${p.slug}.webp`)
 }
 
 export function getProject(slug: string): Project | undefined {

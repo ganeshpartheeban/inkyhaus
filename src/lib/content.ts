@@ -2,6 +2,7 @@
 //
 // Real customer reviews from the Inkyhaus Google Business Profile.
 import type { Localized } from './products'
+import { withBase } from './asset'
 
 export const TESTIMONIALS_ARE_PLACEHOLDER = false
 
@@ -17,22 +18,22 @@ export const WHY_US: Localized[] = [
 export type ProcessStep = { title: Localized; body: Localized; icon: string }
 export const PROCESS: ProcessStep[] = [
   {
-    icon: '/img/process-request.webp',
+    icon: withBase('/img/process-request.webp'),
     title: { de: 'Anfrage senden', en: 'Send request' },
     body: { de: 'Produkt, Menge und Termin — kurz schildern, gern mit Datei.', en: 'Product, quantity and deadline — a quick note, optionally with a file.' },
   },
   {
-    icon: '/img/process-time.webp',
+    icon: withBase('/img/process-time.webp'),
     title: { de: 'Preis & Zeit bestätigen wir', en: 'We confirm price & time' },
     body: { de: 'Sie erhalten ein klares Angebot mit Produktionszeit.', en: 'You get a clear quote with a production timeline.' },
   },
   {
-    icon: '/img/process-approval.webp',
+    icon: withBase('/img/process-approval.webp'),
     title: { de: 'Freigabe / Mockup', en: 'Approval / mockup' },
     body: { de: 'Bei Bedarf erstellen wir ein Mockup zur Freigabe.', en: 'If needed, we create a mockup for your approval.' },
   },
   {
-    icon: '/img/process-production.webp',
+    icon: withBase('/img/process-production.webp'),
     title: { de: 'Produktion & Lieferung', en: 'Production & delivery' },
     body: { de: 'Wir produzieren — Abholung in Berlin oder Lieferung.', en: 'We produce — pickup in Berlin or delivery.' },
   },

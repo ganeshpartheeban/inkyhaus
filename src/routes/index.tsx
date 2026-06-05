@@ -7,6 +7,7 @@ import { CATEGORIES, SPECIALTY, TECHNIQUES } from '../lib/products'
 import { PROJECTS } from '../lib/portfolio'
 import { FAQS, TESTIMONIALS, PROCESS, OCCASIONS, RATING, RATING_IS_REAL } from '../lib/content'
 import { ProductCard } from '../components/ProductCard'
+import { withBase } from '../lib/asset'
 import { PlaceholderArt } from '../components/PlaceholderArt'
 import { Cover } from '../components/Cover'
 import { Reveal } from '../components/Reveal'
@@ -114,7 +115,7 @@ function Home() {
 
           <div className="relative hidden lg:block">
             <img
-              src="/img/hero.webp"
+              src={withBase('/img/hero.webp')}
               alt="Inkyhaus Ladengeschäft in Berlin — Textildruck, Gravur und Werbeartikel vor Ort"
               fetchPriority="high"
               decoding="async"

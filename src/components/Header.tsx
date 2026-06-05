@@ -4,6 +4,7 @@ import { Link } from '@tanstack/react-router'
 import { useI18n } from '../lib/i18n'
 import { HEADER_NAV } from '../lib/nav'
 import { LanguageToggle } from './LanguageToggle'
+import { withBase } from '../lib/asset'
 
 export function Header() {
   const { t } = useI18n()
@@ -12,7 +13,7 @@ export function Header() {
     <header className="sticky top-0 z-40 border-b border-line/80 bg-paper/85 backdrop-blur-md">
       <div className="container-edge flex h-16 items-center justify-between gap-4">
         <Link to="/" className="flex items-center gap-2 shrink-0" aria-label="Inkyhaus — Start">
-          <img src="/logo-mark-light.png" alt="" aria-hidden width={32} height={32} className="h-8 w-8 object-contain" />
+          <img src={withBase('/logo-mark-light.png')} alt="" aria-hidden width={32} height={32} className="h-8 w-8 object-contain" />
           <span className="font-serif text-xl font-medium tracking-tight">Inkyhaus</span>
         </Link>
 

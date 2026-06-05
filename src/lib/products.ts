@@ -4,6 +4,7 @@
 // `cover` is optional: real photography is a launch TODO. Until images land,
 // components render a branded CSS placeholder keyed by `accent`.
 import type { Key } from './i18n'
+import { withBase } from './asset'
 
 export type Localized = { de: string; en: string }
 
@@ -374,8 +375,8 @@ const REAL_COVERS: Record<string, string> = {
 // Matched lines use real Inkyhaus photos; the rest use a relevant, license-free
 // photo (Openverse) at /img/<slug>.webp. Replace any file to override.
 for (const line of ALL_LINES) {
-  if (!line.cover) line.cover = REAL_COVERS[line.slug] ?? `/img/${line.slug}.webp`
+  if (!line.cover) line.cover = withBase(REAL_COVERS[line.slug] ?? `/img/${line.slug}.webp`)
 }
 for (const tech of TECHNIQUES) {
-  if (!tech.image) tech.image = `/img/tech-${tech.slug}.webp`
+  if (!tech.image) tech.image = withBase(`/img/tech-${tech.slug}.webp`)
 }
