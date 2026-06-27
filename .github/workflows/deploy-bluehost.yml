@@ -1,0 +1,50 @@
+# Auto-deploy the static site to Bluehost (inkyhaus.de) on every push to main.
+# Builds the prerendered static build and uploads dist/client/ over FTPS.
+#
+# One-time setup — add these repo secrets (Settings → Secrets and variables →
+# Actions → New repository secret):
+#   BLUEHOST_FTP_HOST      e.g. ftp.inkyhaus.de  (or the server host from cPanel)
+#   BLUEHOST_FTP_USER      an FTP account username from cPanel → FTP Accounts
+#   BLUEHOST_FTP_PASSWORD  that FTP account's password
+#   BLUEHOST_FTP_DIR       document root WITH trailing slash, e.g. /public_html/
+#                          (addon domain: /public_html/inkyhaus.de/)
+#   VITE_FORM_ENDPOINT     (optional) so the enquiry form submits
+#   VITE_FORM_TOKEN        (optional)
+name: Deploy to Bluehost
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: bluehost
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - name: Build static site
+        env:
+          VITE_FORM_ENDPOINT: ${{ secrets.VITE_FORM_ENDPOINT }}
+          VITE_FORM_TOKEN: ${{ secrets.VITE_FORM_TOKEN }}
+        run: npm run build:bluehost
+      - name: Upload to Bluehost via FTPS
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.BLUEHOST_FTP_HOST }}
+          username: ${{ secrets.BLUEHOST_FTP_USER }}
+          password: ${{ secrets.BLUEHOST_FTP_PASSWORD }}
+          protocol: ftps
+          port: 21
+          local-dir: ./dist/client/
+          server-dir: ${{ secrets.BLUEHOST_FTP_DIR }}
+          # Incremental: only changed files are transferred. A state file on the
+          # server tracks what's deployed (and removes files you delete in repo).
