@@ -51,10 +51,16 @@ export function Footer() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              WhatsApp · +49 176 63648012
+              WhatsApp · {SITE.phone}
+            </a>
+            <a href={`tel:${SITE.phone.replace(/\s/g, '')}`} className="mt-2 block text-sm text-muted transition-colors hover:text-ink">
+              {t('footer.call')}: {SITE.phone}
             </a>
             <a href={`mailto:${SITE.email}`} className="mt-2 block text-sm text-muted transition-colors hover:text-ink">
               {SITE.email}
+            </a>
+            <a href={`mailto:${SITE.emailAlt}`} className="mt-1 block text-sm text-muted transition-colors hover:text-ink">
+              {SITE.emailAlt}
             </a>
           </div>
 

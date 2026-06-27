@@ -144,6 +144,7 @@ const de = {
   'form.required': 'Pflichtfeld',
 
   'footer.tagline': 'Premium Textildruck & Veredelung in Berlin.',
+  'footer.call': 'Anrufen',
   'footer.products': 'Produkte',
   'footer.company': 'Unternehmen',
   'footer.legal': 'Rechtliches',
@@ -274,6 +275,7 @@ const en: Record<Key, string> = {
   'form.required': 'Required',
 
   'footer.tagline': 'Premium textile printing & finishing in Berlin.',
+  'footer.call': 'Call',
   'footer.products': 'Products',
   'footer.company': 'Company',
   'footer.legal': 'Legal',

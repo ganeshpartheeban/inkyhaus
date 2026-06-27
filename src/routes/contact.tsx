@@ -71,12 +71,22 @@ function Contact() {
               </span>
             </a>
             <a
+              href={`mailto:${SITE.emailAlt}`}
+              className="flex items-center gap-3 rounded-2xl border border-line bg-surface p-5 transition-colors hover:border-accent"
+            >
+              <Mail className="text-accent" aria-hidden />
+              <span>
+                <span className="block font-medium">{l === 'en' ? 'Email (Gmail)' : 'E-Mail (Gmail)'}</span>
+                <span className="block text-sm text-muted">{SITE.emailAlt}</span>
+              </span>
+            </a>
+            <a
               href={`tel:${SITE.phone.replace(/\s/g, '')}`}
               className="flex items-center gap-3 rounded-2xl border border-line bg-surface p-5 transition-colors hover:border-accent"
             >
               <Phone className="text-accent" aria-hidden />
               <span>
-                <span className="block font-medium">{l === 'en' ? 'Phone' : 'Telefon'}</span>
+                <span className="block font-medium">{l === 'en' ? 'Call us' : 'Anrufen'}</span>
                 <span className="block text-sm text-muted">{SITE.phone}</span>
               </span>
             </a>

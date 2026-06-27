@@ -14,10 +14,12 @@ export const SITE = {
   country: 'DE',
   /** From the live site WhatsApp link: +49 176 63648012 */
   whatsappNumber: '4917663648012',
-  /** Public business email (from the studio's engraved tag). */
+  /** Public business email (Titan mailbox). */
   email: 'contact@inkyhaus.de',
-  /** Public phone (from the studio's engraved tag). */
-  phone: '+49 176 30502944',
+  /** Secondary public email (Gmail). */
+  emailAlt: 'inkyhaus.de@gmail.com',
+  /** Public phone — same line as WhatsApp, so customers can call or chat it. */
+  phone: '+49 176 63648012',
   /** Confirmed studio address. */
   street: 'Palisadenstraße 42',
   postalCode: '10243',
