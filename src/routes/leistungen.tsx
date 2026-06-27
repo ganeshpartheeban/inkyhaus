@@ -31,7 +31,7 @@ function Leistungen() {
         <h2 className="mt-12 text-sm font-semibold uppercase tracking-wider text-ink-soft">{t('leistungen.apparel')}</h2>
         <Grid items={CATEGORIES} />
         <h2 className="mt-14 text-sm font-semibold uppercase tracking-wider text-ink-soft">{t('leistungen.specialty')}</h2>
-        <Grid items={SPECIALTY} />
+        <Grid items={SPECIALTY.filter((c) => c.slug !== 'werbetechnik')} /> {/* signage hidden for now */}
       </Section>
     </>
   )

@@ -15,6 +15,7 @@ export const Route = createFileRoute('/werbetechnik')({
       locale: DEFAULT_LOCALE,
       ogImage: `/og/${cat.slug}.jpg`,
       ogImageAlt: cat.title.de,
+      noindex: true, // hidden for now
     }),
   component: () => <CategoryPage category={cat} variant="specialty" />,
 })

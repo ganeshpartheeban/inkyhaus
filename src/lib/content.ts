@@ -45,7 +45,7 @@ export const OCCASIONS: Occasion[] = [
   { label: { de: 'JGA & Partys', en: 'Stag & hen parties' }, to: '/t-shirts', accent: 320 },
   { label: { de: 'Geburtstag', en: 'Birthday' }, to: '/t-shirts', accent: 45 },
   { label: { de: 'Vereine & Teams', en: 'Clubs & teams' }, to: '/sportswear', accent: 150 },
-  { label: { de: 'Events & Messen', en: 'Events & trade shows' }, to: '/werbetechnik', accent: 15 },
+  // { label: { de: 'Events & Messen', en: 'Events & trade shows' }, to: '/werbetechnik', accent: 15 }, // signage hidden for now
   { label: { de: 'Firmenfeier', en: 'Company party' }, to: '/business', accent: 230 },
   { label: { de: 'Geschenke', en: 'Gifts' }, to: '/geschenke', accent: 300 },
 ]

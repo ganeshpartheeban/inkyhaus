@@ -15,6 +15,7 @@ export const Route = createFileRoute('/portfolio')({
       description: 'Ausgewählte Projekte aus Gastronomie, Sport, Events und Startups — echte Aufträge aus Berlin.',
       path: '/portfolio',
       locale: DEFAULT_LOCALE,
+      noindex: true, // hidden for now
     }),
   component: Portfolio,
 })

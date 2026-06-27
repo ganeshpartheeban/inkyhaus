@@ -11,7 +11,6 @@
   <url><loc>https://inkyhaus.de/accessories</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://inkyhaus.de/leistungen</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://inkyhaus.de/lasergravur</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://inkyhaus.de/werbetechnik</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://inkyhaus.de/aufkleber</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://inkyhaus.de/3d-druck</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://inkyhaus.de/geschenke</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
@@ -20,10 +19,6 @@
   <url><loc>https://inkyhaus.de/werbeartikel</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://inkyhaus.de/print-techniques</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://inkyhaus.de/express</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://inkyhaus.de/portfolio</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://inkyhaus.de/portfolio/cafe-friedrichshain-crew</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://inkyhaus.de/portfolio/startup-onboarding-kit</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://inkyhaus.de/portfolio/fussballverein-trikotsatz</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://inkyhaus.de/about</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
   <url><loc>https://inkyhaus.de/faq</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://inkyhaus.de/contact</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>

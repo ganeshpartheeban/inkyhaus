@@ -15,7 +15,7 @@ export const PRODUCT_NAV: NavItem[] = [
 /** Specialty production lines. */
 export const SPECIALTY_NAV: NavItem[] = [
   { to: '/lasergravur', key: 'nav.engraving' },
-  { to: '/werbetechnik', key: 'nav.signage' },
+  // { to: '/werbetechnik', key: 'nav.signage' }, // hidden for now
   { to: '/aufkleber', key: 'nav.stickers' },
   { to: '/3d-druck', key: 'nav.print3d' },
   { to: '/geschenke', key: 'nav.gifts' },
@@ -30,7 +30,7 @@ export const COMPANY_NAV: NavItem[] = [
   { to: '/leistungen', key: 'nav.services' },
   { to: '/print-techniques', key: 'nav.techniques' },
   { to: '/express', key: 'nav.express' },
-  { to: '/portfolio', key: 'nav.portfolio' },
+  // { to: '/portfolio', key: 'nav.portfolio' }, // hidden for now
   { to: '/about', key: 'nav.about' },
   { to: '/faq', key: 'nav.faq' },
   { to: '/contact', key: 'nav.contact' },
@@ -42,15 +42,15 @@ export const HEADER_NAV: NavItem[] = [
   { to: '/leistungen', key: 'nav.services' },
   { to: '/t-shirts', key: 'nav.tshirts' },
   { to: '/lasergravur', key: 'nav.engraving' },
-  { to: '/werbetechnik', key: 'nav.signage' },
+  // { to: '/werbetechnik', key: 'nav.signage' }, // hidden for now
   { to: '/express', key: 'nav.express' },
-  { to: '/portfolio', key: 'nav.portfolio' },
+  // { to: '/portfolio', key: 'nav.portfolio' }, // hidden for now
 ]
 
-/** Bottom tab bar (mobile) — 4 tabs. */
+/** Bottom tab bar (mobile). */
 export const TAB_NAV: NavItem[] = [
   { to: '/', key: 'nav.home' },
   { to: '/leistungen', key: 'nav.services' },
-  { to: '/portfolio', key: 'nav.portfolio' },
+  // { to: '/portfolio', key: 'nav.portfolio' }, // hidden for now
   { to: '/contact', key: 'nav.contact' },
 ]

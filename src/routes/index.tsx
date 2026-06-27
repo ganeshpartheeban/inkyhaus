@@ -15,7 +15,7 @@ import { Section, SectionHeading } from '../components/ui'
 import { JsonLd } from '../components/JsonLd'
 
 // Quick-pick chips (Spreadshirt-style fast entry).
-const QUICK = ['t-shirts', 'hoodies', 'lasergravur', 'werbetechnik', 'geschenke', 'aufkleber']
+const QUICK = ['t-shirts', 'hoodies', 'lasergravur', 'geschenke', 'aufkleber'] // werbetechnik (signage) hidden for now
 
 export const Route = createFileRoute('/')({
   head: () =>
@@ -72,7 +72,7 @@ function Home() {
       <Process />
       <Occasions />
       <Techniques />
-      <PortfolioTeaser />
+      {/* <PortfolioTeaser /> hidden for now */}
       <SocialProof />
       <FaqTeaser />
       <FinalCta />
@@ -180,7 +180,7 @@ function Home() {
           </Link>
         </div>
         <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {SPECIALTY.map((cat, i) => (
+          {SPECIALTY.filter((c) => c.slug !== 'werbetechnik').map((cat, i) => ( /* signage hidden for now */
             <Reveal key={cat.slug} delay={i * 40}>
               <Link
                 to={cat.path}

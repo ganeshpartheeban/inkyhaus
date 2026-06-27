@@ -22,6 +22,7 @@ export const Route = createFileRoute('/portfolio/$slug')({
       locale: DEFAULT_LOCALE,
       ogImage: `/og/${p.slug}.jpg`,
       ogImageAlt: p.title.de,
+      noindex: true, // hidden for now
     })
   },
   component: ProjectDetail,

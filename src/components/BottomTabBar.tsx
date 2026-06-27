@@ -2,11 +2,12 @@
 // Safe-area padding for notched devices. Replaces the hamburger menu (§07).
 import { useEffect, useRef, useState } from 'react'
 import { Link } from '@tanstack/react-router'
-import { Home, Building2, Images, MessageSquareText } from 'lucide-react'
+import { Home, Building2, MessageSquareText } from 'lucide-react'
 import { useI18n } from '../lib/i18n'
 import { TAB_NAV } from '../lib/nav'
 
-const ICONS = [Home, Building2, Images, MessageSquareText]
+// Positional — must align with TAB_NAV order.
+const ICONS = [Home, Building2, MessageSquareText]
 
 export function BottomTabBar() {
   const { t } = useI18n()
@@ -39,7 +40,7 @@ export function BottomTabBar() {
       }`}
       aria-label={t('a11y.menu')}
     >
-      <ul className="grid grid-cols-4">
+      <ul className="grid" style={{ gridTemplateColumns: `repeat(${TAB_NAV.length}, minmax(0, 1fr))` }}>
         {TAB_NAV.map((item, i) => {
           const Icon = ICONS[i]
           return (
