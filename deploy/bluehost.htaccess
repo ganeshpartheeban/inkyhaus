@@ -1,0 +1,29 @@
+# Inkyhaus — static prerendered site (Apache / Bluehost)
+Options -MultiViews -Indexes
+DirectoryIndex index.html
+
+RewriteEngine On
+
+# Force HTTPS (Bluehost provides a free AutoSSL/Let's Encrypt cert)
+RewriteCond %{HTTPS} !=on
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Prerendered routes live at /<route>/index.html and are served directly.
+# Anything that is NOT a real file or directory falls back to index.html so the
+# client-side router can render it (clean URLs + unknown paths).
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ /index.html [L]
+
+# Custom 404 (same SPA shell) if a request slips through as a hard 404
+ErrorDocument 404 /404.html
+
+# Long-cache fingerprinted assets; keep HTML uncached so deploys take effect
+<IfModule mod_headers.c>
+  <FilesMatch "\.(js|css|woff2?|webp|png|jpe?g|svg|ico|gif)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  <FilesMatch "\.html$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
+</IfModule>

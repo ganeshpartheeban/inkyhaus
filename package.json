@@ -13,6 +13,7 @@
     "prebuild": "node scripts/generate-og.mjs",
     "build": "vite build",
     "build:pages": "vite build --config vite.config.pages.ts",
+    "build:bluehost": "vite build --config vite.config.pages.ts && cp deploy/bluehost.htaccess dist/client/.htaccess && cp dist/client/index.html dist/client/404.html",
     "preview": "vite preview",
     "images": "node scripts/generate-images.mjs",
     "test": "vitest run",
