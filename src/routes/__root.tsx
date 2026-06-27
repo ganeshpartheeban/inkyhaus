@@ -12,6 +12,7 @@ import { I18nProvider } from '../lib/i18n'
 import { Header } from '../components/Header'
 import { Footer } from '../components/Footer'
 import { BottomTabBar } from '../components/BottomTabBar'
+import { TawkChat } from '../components/TawkChat'
 import { JsonLd } from '../components/JsonLd'
 import { buildOrganizationLD, buildPersonLD, buildServiceLD } from '../lib/seo'
 import { withBase } from '../lib/asset'
@@ -88,6 +89,7 @@ function RootLayout() {
       <Suspense fallback={null}>
         <EngagementModal />
       </Suspense>
+      <TawkChat />
       <JsonLd data={[buildOrganizationLD(), buildPersonLD(), buildServiceLD()]} />
     </I18nProvider>
   )
