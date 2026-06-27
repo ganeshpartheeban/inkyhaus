@@ -3,12 +3,8 @@
   "name": "inkyhaus-app",
   "compatibility_date": "2025-09-24",
   "compatibility_flags": ["nodejs_compat"],
-  "main": "src/server.ts",
-  // Custom domains — created on `wrangler deploy` once inkyhaus.de's zone is
-  // active on Cloudflare (Step B). Until then, deploy still publishes the
-  // worker; only the route attachment is skipped/errors.
-  "routes": [
-    { "pattern": "inkyhaus.de", "custom_domain": true },
-    { "pattern": "www.inkyhaus.de", "custom_domain": true }
-  ]
+  "main": "src/server.ts"
+  // Custom domain (inkyhaus.de) is attached via the Cloudflare dashboard
+  // (Workers & Pages → inkyhaus-app → Domains & Routes) once the zone is live —
+  // kept out of config so deploys never depend on DNS state.
 }
