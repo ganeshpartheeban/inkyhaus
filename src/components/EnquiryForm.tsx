@@ -128,7 +128,7 @@ export function EnquiryForm() {
       <button
         type="submit"
         disabled={status === 'sending'}
-        className="inline-flex w-full items-center justify-center rounded-full bg-accent px-6 py-3.5 font-medium text-white transition-transform active:scale-[0.985] disabled:opacity-60 motion-reduce:transition-none hover:bg-accent-strong sm:w-auto"
+        className="inline-flex w-full items-center justify-center rounded-lg bg-ink px-6 py-3.5 font-medium text-paper transition-transform active:scale-[0.985] disabled:opacity-60 motion-reduce:transition-none hover:opacity-90 sm:w-auto"
       >
         {status === 'sending' ? t('form.sending') : t('form.submit')}
       </button>

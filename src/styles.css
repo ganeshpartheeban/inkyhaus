@@ -1,31 +1,33 @@
 @import 'tailwindcss';
-/* Self-hosted variable fonts (font-display: swap is set by fontsource). */
-@import '@fontsource-variable/fraunces';
+/* Self-hosted variable font (font-display: swap is set by fontsource). */
 @import '@fontsource-variable/inter-tight';
 
 /* ── Design tokens (OKLCH) ─────────────────────────────────────────────────
-   Dark, chic, flashy: deep charcoal base, off-white type, a vivid coral→magenta
-   accent with neon glow. Built on semantic tokens so the whole UI follows. */
+   Light, minimal, contemporary: white base, near-black type, solid-black CTAs,
+   one restrained warm accent. Sans-serif throughout. Built on semantic tokens
+   so the whole UI follows. */
 @theme {
-  --color-ink: oklch(0.96 0.008 95); /* primary text (near-white) */
-  --color-ink-soft: oklch(0.83 0.012 260);
-  --color-paper: oklch(0.165 0.013 270); /* page background (charcoal) */
-  --color-surface: oklch(0.215 0.016 270); /* cards / panels */
-  --color-surface-2: oklch(0.255 0.018 270);
-  --color-muted: oklch(0.66 0.014 265);
-  --color-line: oklch(0.31 0.016 270); /* borders on dark */
+  --color-ink: oklch(0.22 0.006 265); /* primary text (near-black) */
+  --color-ink-soft: oklch(0.44 0.008 265);
+  --color-paper: oklch(0.992 0.001 95); /* page background (near-white) */
+  --color-surface: oklch(1 0 0); /* cards / panels (white) */
+  --color-surface-2: oklch(0.965 0.003 265);
+  --color-muted: oklch(0.52 0.008 265);
+  --color-line: oklch(0.9 0.004 265); /* light hairline borders */
 
-  --color-accent: oklch(0.68 0.21 28); /* vivid coral */
-  --color-accent-2: oklch(0.62 0.27 332); /* neon magenta (flashy) */
-  --color-accent-strong: oklch(0.62 0.22 28);
-  --color-accent-soft: oklch(0.28 0.08 22); /* dark warm tint for soft fills */
+  --color-accent: oklch(0.66 0.15 45); /* warm amber highlight */
+  --color-accent-2: oklch(0.62 0.16 40);
+  --color-accent-strong: oklch(0.56 0.16 42);
+  --color-accent-soft: oklch(0.95 0.03 65); /* light warm tint for soft fills */
 
-  --color-whatsapp: oklch(0.72 0.16 150);
+  --color-whatsapp: oklch(0.6 0.15 150);
 
-  --font-serif: 'Fraunces Variable', ui-serif, Georgia, 'Times New Roman', serif;
+  /* Headings use the same geometric sans; `font-serif` is repointed so existing
+     markup that used it now renders sans without per-component edits. */
   --font-sans: 'Inter Tight Variable', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-serif: 'Inter Tight Variable', ui-sans-serif, system-ui, -apple-system, sans-serif;
 
-  --radius-card: 1.25rem;
+  --radius-card: 0.75rem;
 
   --animate-drift: drift 9s ease-in-out infinite;
   --animate-page: page-fade 220ms ease both;
@@ -53,10 +55,6 @@
   body {
     margin: 0;
     background-color: var(--color-paper);
-    /* chic top-down glow so the dark base isn't flat */
-    background-image: radial-gradient(120% 60% at 50% -10%, oklch(0.24 0.05 320 / 0.5), transparent 60%),
-      radial-gradient(80% 50% at 100% 0%, oklch(0.26 0.06 30 / 0.35), transparent 55%);
-    background-attachment: fixed;
     color: var(--color-ink);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
@@ -67,15 +65,15 @@
   h2,
   h3,
   h4 {
-    font-family: var(--font-serif);
-    font-weight: 560;
-    letter-spacing: -0.015em;
+    font-family: var(--font-sans);
+    font-weight: 640;
+    letter-spacing: -0.02em;
     line-height: 1.05;
   }
 
   ::selection {
-    background: var(--color-accent);
-    color: white;
+    background: var(--color-ink);
+    color: var(--color-paper);
   }
 
   :focus-visible {
@@ -144,9 +142,11 @@
   padding-inline: 1.25rem;
 }
 
-/* ── Flashy accents ─────────────────────────────────────────────────────────*/
+/* ── Accents ────────────────────────────────────────────────────────────────
+   Primary CTAs are solid near-black (minimal). `flashy-gradient` is kept as the
+   class name used across components but now renders a solid ink fill. */
 @utility flashy-gradient {
-  background-image: linear-gradient(115deg, var(--color-accent), var(--color-accent-2));
+  background-color: var(--color-ink);
 }
 
 @utility text-gradient {
@@ -156,11 +156,9 @@
   color: transparent;
 }
 
-/* neon glow for primary CTAs / feature panels */
+/* soft neutral lift for cards / feature panels */
 @utility glow-accent {
-  box-shadow:
-    0 10px 40px -12px var(--color-accent),
-    0 2px 10px -4px var(--color-accent-2);
+  box-shadow: 0 12px 36px -18px oklch(0.22 0.006 265 / 0.35);
 }
 
 @media (prefers-reduced-motion: reduce) {

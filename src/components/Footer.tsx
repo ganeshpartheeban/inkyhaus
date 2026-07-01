@@ -33,7 +33,7 @@ export function Footer() {
       <div className="container-edge py-14">
         <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr_1fr_1fr]">
           <div>
-            <img src={withBase('/logo-light.png')} alt="Inkyhaus" width={80} height={80} className="h-20 w-auto object-contain object-left" />
+            <img src={withBase('/logo-dark.png')} alt="Inkyhaus" width={80} height={80} className="h-20 w-auto object-contain object-left" />
             <p className="mt-3 max-w-xs text-sm text-muted">{t('footer.tagline')}</p>
             <a
               href={SITE.mapsUrl}

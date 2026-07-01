@@ -13,7 +13,7 @@ export function Header() {
     <header className="sticky top-0 z-40 border-b border-line/80 bg-paper/85 backdrop-blur-md">
       <div className="container-edge flex h-16 items-center justify-between gap-4">
         <Link to="/" className="flex items-center gap-2 shrink-0" aria-label="Inkyhaus — Start">
-          <img src={withBase('/logo-mark-light.png')} alt="" aria-hidden width={32} height={32} className="h-8 w-8 object-contain" />
+          <img src={withBase('/logo-mark-dark.png')} alt="" aria-hidden width={32} height={32} className="h-8 w-8 object-contain" />
           <span className="font-serif text-xl font-medium tracking-tight">Inkyhaus</span>
         </Link>
 
@@ -34,7 +34,7 @@ export function Header() {
           <Link
             to="/contact"
             hash="booking-enquiry"
-            className="rounded-full flashy-gradient px-4 py-2 text-sm font-medium text-white transition active:scale-[0.985] motion-reduce:transition-none hover:brightness-110"
+            className="rounded-lg flashy-gradient px-4 py-2 text-sm font-medium text-white transition active:scale-[0.985] motion-reduce:transition-none hover:opacity-90"
           >
             {t('cta.enquire')}
           </Link>
