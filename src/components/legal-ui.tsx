@@ -1,5 +1,5 @@
 // Presentational helpers for the legal pages (Impressum / Datenschutz / AGB).
-// Content lives in the route files; these just style it consistently inside the
+// Content lives in the route files; these style it consistently inside the
 // LegalPage shell (which wraps children in a `text-muted space-y-4` container).
 import type { ReactNode } from 'react'
 
@@ -29,22 +29,4 @@ export function A({ href, children }: { href: string; children: ReactNode }) {
       {children}
     </a>
   )
-}
-
-/** Highlighted [placeholder] the operator must replace with real data. */
-export function Ph({ children }: { children: ReactNode }) {
-  return <span className="rounded bg-accent-soft/70 px-1 font-medium text-ink-soft">[{children}]</span>
-}
-
-/** Prominent "this is a template, get it reviewed" callout shown at the top. */
-export function Disclaimer({ children }: { children: ReactNode }) {
-  return (
-    <div className="rounded-xl border border-dashed border-accent/60 bg-accent-soft/40 p-4 text-sm text-ink-soft">
-      ⚠️ {children}
-    </div>
-  )
-}
-
-export function Updated({ children }: { children: ReactNode }) {
-  return <p className="mt-10 text-xs text-ink-soft">{children}</p>
 }
