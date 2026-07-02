@@ -1,20 +1,6 @@
-import { createFileRoute } from '@tanstack/react-router'
-import { getCategory } from '../lib/products'
-import { CategoryPage } from '../components/CategoryPage'
-import { pageHead } from '../lib/seo'
-import { DEFAULT_LOCALE } from '../lib/i18n'
-
-const cat = getCategory('geschenke')!
-
+import { createFileRoute, redirect } from '@tanstack/react-router'
 export const Route = createFileRoute('/geschenke')({
-  head: () =>
-    pageHead({
-      title: 'Personalisierte Geschenke & Fotoprodukte Berlin · Inkyhaus',
-      description: cat.intro.de,
-      path: cat.path,
-      locale: DEFAULT_LOCALE,
-      ogImage: `/og/${cat.slug}.jpg`,
-      ogImageAlt: cat.title.de,
-    }),
-  component: () => <CategoryPage category={cat} variant="specialty" />,
+  beforeLoad: () => {
+    throw redirect({ to: '/promotional-products' })
+  },
 })

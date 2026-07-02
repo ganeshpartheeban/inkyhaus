@@ -12,3 +12,4 @@ dist-ssr
 __unconfig*
 todos.json
 inkyhaus-bluehost.zip
+scripts/_regen-routes.mjs

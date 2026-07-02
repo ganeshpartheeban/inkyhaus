@@ -1,20 +1,6 @@
-import { createFileRoute } from '@tanstack/react-router'
-import { getCategory } from '../lib/products'
-import { CategoryPage } from '../components/CategoryPage'
-import { pageHead } from '../lib/seo'
-import { DEFAULT_LOCALE } from '../lib/i18n'
-
-const cat = getCategory('workwear')!
-
+import { createFileRoute, redirect } from '@tanstack/react-router'
 export const Route = createFileRoute('/workwear')({
-  head: () =>
-    pageHead({
-      title: 'Arbeitskleidung mit Logo · Firmenkleidung Berlin · Inkyhaus',
-      description: cat.intro.de,
-      path: cat.path,
-      locale: DEFAULT_LOCALE,
-      ogImage: `/og/${cat.slug}.jpg`,
-      ogImageAlt: cat.title.de,
-    }),
-  component: () => <CategoryPage category={cat} />,
+  beforeLoad: () => {
+    throw redirect({ to: '/textile-printing/$slug', params: { slug: 'workwear' } })
+  },
 })

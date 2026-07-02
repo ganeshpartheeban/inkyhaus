@@ -383,6 +383,11 @@ const PROMO: Product[] = [
 
 export const PRODUCTS: Product[] = [...TEXTILE, ...PROMO]
 
+/** Typed route id for a hub's dynamic product route (for <Link to=… params=…>). */
+export function productTo(hub: HubSlug): '/textile-printing/$slug' | '/promotional-products/$slug' {
+  return hub === 'textile-printing' ? '/textile-printing/$slug' : '/promotional-products/$slug'
+}
+
 export function productsForHub(hub: HubSlug): Product[] {
   return PRODUCTS.filter((p) => p.hub === hub)
 }
