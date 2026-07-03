@@ -7,6 +7,7 @@ import { SITE, whatsappLink } from '../lib/site-config'
 import { STORE_INFO } from '../lib/content'
 import { Breadcrumbs, Section, SectionHeading } from '../components/ui'
 import { JsonLd } from '../components/JsonLd'
+import { MapCard } from '../components/MapCard'
 
 const EnquiryForm = lazy(() => import('../components/EnquiryForm'))
 
@@ -115,6 +116,10 @@ function Contact() {
             </div>
           </aside>
         </div>
+      </Section>
+
+      <Section className="!pt-0">
+        <MapCard className="aspect-[12/5] w-full" />
       </Section>
 
       <Section className="!pt-0">

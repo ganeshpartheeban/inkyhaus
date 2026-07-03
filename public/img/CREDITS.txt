@@ -68,3 +68,5 @@ hoodies.webp, water-bottles.webp, sweatshirts.webp, awards.webp,
 conference-merchandise.webp  — clean catalog product shots
 method-dtf.webp, method-embroidery.webp, method-sublimation.webp,
 method-laser-engraving.webp  — printing-technique close-ups
+
+# Map widget: public/img/map.webp — © OpenStreetMap contributors (ODbL), self-hosted tile snapshot.

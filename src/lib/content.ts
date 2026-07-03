@@ -25,9 +25,7 @@ export const HOW_STEPS: Localized[] = [
   { de: 'Abholung oder Lieferung', en: 'Pickup or Delivery' },
 ]
 
-// ── Rating from the Google Business Profile.
-// Reviews supplied are uniformly 5★. ⚠️ Confirm the exact live average + total on
-// Google and adjust these two numbers if they differ.
+// ── Rating (confirmed on Google Maps: 5.0). Update `count` if the review total changes.
 export const RATING_IS_REAL = true
 export const RATING = { value: 5.0, count: 29 }
 
