@@ -32,7 +32,7 @@ export function CookieNotice() {
   if (!show) return null
 
   return (
-    <div className="fixed inset-x-3 z-30 bottom-[calc(env(safe-area-inset-bottom)+5rem)] lg:bottom-4 lg:right-4 lg:left-auto lg:max-w-sm">
+    <div className="fixed inset-x-3 z-30 bottom-[calc(env(safe-area-inset-bottom)+5rem)] lg:bottom-4 lg:left-4 lg:right-auto lg:max-w-sm">
       <div className="rounded-2xl border border-line bg-surface/95 p-4 text-sm shadow-lg backdrop-blur">
         <p className="text-muted">{t('cookie.text')}</p>
         <div className="mt-3 flex items-center gap-2">
