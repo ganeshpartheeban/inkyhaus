@@ -169,6 +169,7 @@ const TEXTILE: Product[] = [
     ],
     methods: ['embroidery', 'dtf'], colours: COLOURS, sizes: SIZES,
     minOrder: 1, deliveryTime: FAST, faq: APPAREL_FAQ,
+    cover: c('/img/polo-shirts.webp'),
   },
   {
     slug: 'hoodies', hub: 'textile-printing', accent: 280,
@@ -196,6 +197,7 @@ const TEXTILE: Product[] = [
     highlights: [{ de: 'Team- & Event-Bekleidung', en: 'Team & event apparel' }],
     methods: ['dtf', 'embroidery'], colours: COLOURS, sizes: SIZES,
     minOrder: 1, deliveryTime: FAST, faq: APPAREL_FAQ,
+    cover: c('/img/sweatshirts.webp'),
   },
   {
     slug: 'jackets', hub: 'textile-printing', accent: 230,
@@ -208,6 +210,7 @@ const TEXTILE: Product[] = [
     highlights: [{ de: 'Ideal für Stickerei', en: 'Ideal for embroidery' }],
     methods: ['embroidery', 'dtf'], colours: COLOURS, sizes: SIZES,
     minOrder: 1, deliveryTime: FAST, faq: APPAREL_FAQ,
+    cover: c('/img/jackets.webp'),
   },
   {
     slug: 'workwear', hub: 'textile-printing', accent: 210,
@@ -273,7 +276,7 @@ const PROMO: Product[] = [
     tagline: { de: 'Foto- & Logodruck', en: 'Photo & logo print' },
     description: { de: 'Sublimations-Tassen mit Foto- oder Logodruck — beliebtes Werbemittel und persönliches Geschenk.', en: 'Sublimation mugs with photo or logo print — a popular giveaway and a personal gift.' },
     highlights: [{ de: 'Foto, Logo oder Text', en: 'Photo, logo or text' }],
-    methods: ['sublimation'], minOrder: 1, deliveryTime: BULK, faq: PROMO_FAQ, cover: c('/img/geschenke.webp'),
+    methods: ['sublimation'], minOrder: 1, deliveryTime: BULK, faq: PROMO_FAQ, cover: c('/img/mugs.webp'),
   },
   {
     slug: 'water-bottles', hub: 'promotional-products', group: 'drinkware', accent: 195,
@@ -282,6 +285,7 @@ const PROMO: Product[] = [
     description: { de: 'Edelstahl- und Kunststoffflaschen mit Logo — per Lasergravur oder Druck veredelt.', en: 'Stainless-steel and plastic bottles with your logo — finished by laser engraving or print.' },
     highlights: [{ de: 'Edelstahl oder Kunststoff', en: 'Stainless steel or plastic' }],
     methods: ['laser-engraving', 'sublimation'], minOrder: 1, deliveryTime: BULK, faq: PROMO_FAQ,
+    cover: c('/img/water-bottles.webp'),
   },
   {
     slug: 'pens', hub: 'promotional-products', group: 'office', accent: 40,
@@ -298,6 +302,7 @@ const PROMO: Product[] = [
     description: { de: 'Notizbücher mit Logo — geprägt, graviert oder bedruckt. Ideal für Onboarding-Kits und Events.', en: 'Notebooks with your logo — debossed, engraved or printed. Ideal for onboarding kits and events.' },
     highlights: [{ de: 'Onboarding-Kits & Events', en: 'Onboarding kits & events' }],
     methods: ['laser-engraving', 'dtf'], minOrder: 1, deliveryTime: BULK, faq: PROMO_FAQ,
+    cover: c('/img/notebooks.webp'),
   },
   {
     slug: 'keychains', hub: 'promotional-products', group: 'promo-items', accent: 90,
@@ -306,6 +311,7 @@ const PROMO: Product[] = [
     description: { de: 'Personalisierte Schlüsselanhänger aus Metall, Holz oder Acryl — graviert mit Namen oder Logo.', en: 'Personalised keychains in metal, wood or acrylic — engraved with a name or logo.' },
     highlights: [{ de: 'Metall, Holz oder Acryl', en: 'Metal, wood or acrylic' }],
     methods: ['laser-engraving'], minOrder: 1, deliveryTime: BULK, faq: PROMO_FAQ,
+    cover: c('/img/keychains.webp'),
   },
   {
     slug: 'corporate-gift-sets', hub: 'promotional-products', group: 'corporate-gifts', accent: 255,
@@ -338,6 +344,7 @@ const PROMO: Product[] = [
     description: { de: 'Bedruckte Schlüsselbänder für Messen, Konferenzen und Firmenausweise — im Sublimationsdruck vollfarbig.', en: 'Printed lanyards for trade shows, conferences and staff passes — full-colour sublimation print.' },
     highlights: [{ de: 'Messen, Konferenzen, Ausweise', en: 'Trade shows, conferences, passes' }],
     methods: ['sublimation'], minOrder: 1, deliveryTime: BULK, faq: PROMO_FAQ,
+    cover: c('/img/lanyards.webp'),
   },
   {
     slug: 'conference-merchandise', hub: 'promotional-products', group: 'conference', accent: 260,
@@ -346,6 +353,7 @@ const PROMO: Product[] = [
     description: { de: 'Abgestimmtes Merchandise für Konferenzen und Events — von Taschen über Notizbücher bis zu Giveaways.', en: 'Coordinated merchandise for conferences and events — from bags and notebooks to giveaways.' },
     highlights: [{ de: 'Aufeinander abgestimmte Artikel', en: 'Coordinated item sets' }],
     methods: ['dtf', 'laser-engraving', 'sublimation'], minOrder: 1, deliveryTime: BULK, faq: PROMO_FAQ,
+    cover: c('/img/conference-merchandise.webp'),
   },
   {
     slug: 'wedding-gifts', hub: 'promotional-products', group: 'wedding', accent: 340,

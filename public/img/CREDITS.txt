@@ -40,3 +40,25 @@ trikot-restauration.webp  "Vintage Football Shirts" by footycomimages (by) — h
 cafe-friedrichshain-crew.webp  "Art Cafe Waitresses & Bar - Puerto Vallarta, the old section" by Wonderlane (by) — https://www.flickr.com/photos/71401718@N00/293128123
 startup-onboarding-kit.webp  "startup-594091" by ChristopherA (cc0) — https://www.flickr.com/photos/32641495@N00/33286674502
 workwear.webp  "Stack of white polo shirts" (CC BY-SA) — https://www.flickr.com/photos/30013969@N03/4261971101
+
+# Product covers — Openverse (commercial-use, modification):
+mugs.webp  "selective focus photo of a woman holding a white coffee mug " by John Beans (by 2.0) — https://www.flickr.com/photos/147592390@N06/33723018638
+water-bottles.webp  "Nathan Stainless Steel Water bottle." by aMichiganMom (by 2.0) — https://www.flickr.com/photos/11172002@N05/4715448785
+notebooks.webp  "Clairefontaine Basic" by cireremarc (by 2.0) — https://www.flickr.com/photos/23291498@N04/4096140514
+keychains.webp  "Bret Harte Keychain Keyring, key chain. Natural handmade uni" by john bonham2 (by-sa 2.0) — https://www.flickr.com/photos/95205391@N05/29878127131
+lanyards.webp  "Low-impact lanyard" by Conference Basics (by 2.0) — https://www.flickr.com/photos/39205974@N02/4406245419
+conference-merchandise.webp  "Packing bags" by A.M. Kuchling (by-sa 2.0) — https://www.flickr.com/photos/44165698@N00/432726663
+polo-shirts.webp  "Blue polo shirt" by jimjetson (by 2.0) — https://www.flickr.com/photos/28359281@N07/6165944942
+sweatshirts.webp  "Grapes Front" by Robert Lowell Mast (by 2.0) — https://www.flickr.com/photos/25739205@N06/5125053499
+jackets.webp  "Hincapie Gradient Softshell Jacket" by Glory Cycles (by 2.0) — https://www.flickr.com/photos/29558127@N06/6811446940
+
+# Refetched product covers:
+polo-shirts.webp  "Serving" by Ktoine (by 2.0) — https://www.flickr.com/photos/49170045@N07/5027327256
+mugs.webp  "Begin." by shawncampbell (by 2.0) — https://www.flickr.com/photos/59077136@N00/8326427216
+polo-shirts.webp  "Blue polo shirt" by jimjetson (by) — https://www.flickr.com/photos/28359281@N07/6165944942
+
+# AI-generated (Pollinations, public/no attribution required) — supersede any
+# Openverse line above for the same file:
+polo-shirts.webp   AI-generated product photo (navy pique polo shirt)
+keychains.webp     AI-generated product photo (engraved metal & wood keychains)
+lanyards.webp      AI-generated product photo (printed event lanyards)
