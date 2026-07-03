@@ -18,6 +18,8 @@ export const Route = createFileRoute('/promotional-products/$slug')({
       description: p.description.de,
       path: `/promotional-products/${p.slug}`,
       locale: DEFAULT_LOCALE,
+      ogImage: `/og/${p.slug}.jpg`,
+      ogImageAlt: p.title.de,
     })
   },
   component: ProductPage,

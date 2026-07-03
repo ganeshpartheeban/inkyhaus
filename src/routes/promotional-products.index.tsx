@@ -11,6 +11,8 @@ export const Route = createFileRoute('/promotional-products/')({
       description: HUBS['promotional-products'].intro.de,
       path: '/promotional-products',
       locale: DEFAULT_LOCALE,
+      ogImage: '/og/promotional-products.jpg',
+      ogImageAlt: HUBS['promotional-products'].title.de,
     }),
   component: () => <HubPage hub="promotional-products" />,
 })

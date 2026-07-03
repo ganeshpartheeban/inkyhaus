@@ -1,5 +1,6 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { createFileRoute } from '@tanstack/react-router'
+import { X } from 'lucide-react'
 import { pageHead } from '../lib/seo'
 import { useI18n, DEFAULT_LOCALE } from '../lib/i18n'
 import { GALLERY, GALLERY_FILTERS } from '../lib/catalog'
@@ -21,11 +22,24 @@ function Gallery() {
   const { t, locale } = useI18n()
   const l = locale === 'en' ? 'en' : 'de'
   const [filter, setFilter] = useState<string>('all')
+  const [zoom, setZoom] = useState<number | null>(null)
   const items = filter === 'all' ? GALLERY : GALLERY.filter((g) => g.tags.includes(filter))
+  const active = zoom != null ? items[zoom] : null
 
-  const chip = (active: boolean) =>
+  useEffect(() => {
+    if (zoom == null) return
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setZoom(null)
+      if (e.key === 'ArrowRight') setZoom((z) => (z == null ? z : (z + 1) % items.length))
+      if (e.key === 'ArrowLeft') setZoom((z) => (z == null ? z : (z - 1 + items.length) % items.length))
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [zoom, items.length])
+
+  const chip = (isActive: boolean) =>
     `rounded-full border px-4 py-1.5 text-sm transition-colors ${
-      active ? 'border-ink bg-ink text-paper' : 'border-line bg-surface hover:border-ink'
+      isActive ? 'border-ink bg-ink text-paper' : 'border-line bg-surface hover:border-ink'
     }`
 
   return (
@@ -52,19 +66,47 @@ function Gallery() {
         <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
           {items.map((g, i) => (
             <Reveal key={g.src} delay={i * 30}>
-              <figure className="overflow-hidden rounded-[var(--radius-card)] border border-line bg-surface">
+              <button
+                type="button"
+                onClick={() => setZoom(i)}
+                aria-label={g.alt[l]}
+                className="group block w-full overflow-hidden rounded-[var(--radius-card)] border border-line bg-surface"
+              >
                 <img
                   src={g.src}
                   alt={g.alt[l]}
                   loading="lazy"
                   decoding="async"
-                  className="aspect-square w-full object-cover transition-transform duration-500 hover:scale-105 motion-reduce:transition-none"
+                  className="aspect-square w-full object-cover transition-transform duration-500 group-hover:scale-105 motion-reduce:transition-none"
                 />
-              </figure>
+              </button>
             </Reveal>
           ))}
         </div>
       </Section>
+
+      {active && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-label={active.alt[l]}
+          onClick={() => setZoom(null)}
+          className="fixed inset-0 z-[80] flex items-center justify-center bg-ink/90 p-4 backdrop-blur-sm"
+        >
+          <button
+            type="button"
+            onClick={() => setZoom(null)}
+            aria-label={t('a11y.close')}
+            className="absolute right-4 top-4 grid h-10 w-10 place-items-center rounded-full bg-paper/15 text-paper transition-colors hover:bg-paper/25"
+          >
+            <X size={20} aria-hidden />
+          </button>
+          <figure onClick={(e) => e.stopPropagation()} className="max-h-full max-w-4xl">
+            <img src={active.src} alt={active.alt[l]} className="max-h-[80vh] w-auto rounded-[var(--radius-card)] object-contain" />
+            <figcaption className="mt-3 text-center text-sm text-paper/80">{active.alt[l]}</figcaption>
+          </figure>
+        </div>
+      )}
     </>
   )
 }

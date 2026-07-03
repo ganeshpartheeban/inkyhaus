@@ -11,6 +11,8 @@ export const Route = createFileRoute('/textile-printing/')({
       description: HUBS['textile-printing'].intro.de,
       path: '/textile-printing',
       locale: DEFAULT_LOCALE,
+      ogImage: '/og/textile-printing.jpg',
+      ogImageAlt: HUBS['textile-printing'].title.de,
     }),
   component: () => <HubPage hub="textile-printing" />,
 })

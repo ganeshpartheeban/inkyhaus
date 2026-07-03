@@ -18,6 +18,8 @@ export const Route = createFileRoute('/printing-methods/$slug')({
       description: m.description.de,
       path: `/printing-methods/${m.slug}`,
       locale: DEFAULT_LOCALE,
+      ogImage: `/og/${m.slug}.jpg`,
+      ogImageAlt: m.name.de,
     })
   },
   component: MethodPage,

@@ -49,9 +49,9 @@ function Business() {
           <Link
             to="/contact"
             hash="booking-enquiry"
-            className="rounded-full bg-accent px-6 py-3 font-medium text-white transition-transform active:scale-[0.985] motion-reduce:transition-none hover:bg-accent-strong"
+            className="inline-flex rounded-lg flashy-gradient px-6 py-3 font-medium text-white transition active:scale-[0.985] motion-reduce:transition-none hover:opacity-90"
           >
-            {t('cta.quote')}
+            {t('cta.requestQuote')}
           </Link>
         </div>
       </Section>
