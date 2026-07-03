@@ -6,6 +6,9 @@ import { useEffect, useState } from 'react'
 import { useI18n } from '../lib/i18n'
 import { CHAT_CONSENT_KEY, CONSENT_EVENT } from './TawkChat'
 
+/** Footer link dispatches this to re-open the banner after "Not now". */
+export const OPEN_CONSENT_EVENT = 'inkyhaus-open-consent'
+
 export function CookieNotice() {
   const { t } = useI18n()
   const [show, setShow] = useState(false)
@@ -17,6 +20,9 @@ export function CookieNotice() {
     } catch {
       /* ignore */
     }
+    const reopen = () => setShow(true)
+    window.addEventListener(OPEN_CONSENT_EVENT, reopen)
+    return () => window.removeEventListener(OPEN_CONSENT_EVENT, reopen)
   }, [])
 
   function choose(consent: boolean) {

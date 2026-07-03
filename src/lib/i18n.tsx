@@ -169,6 +169,7 @@ const de = {
   'footer.privacy': 'Datenschutz',
   'footer.terms': 'AGB',
   'footer.rights': 'Alle Rechte vorbehalten.',
+  'footer.consent': 'Cookie- & Chat-Einstellungen',
 
   'cookie.text': 'Möchten Sie direkt mit uns chatten? Dafür laden wir einen Live-Chat (tawk.to, ein US-Dienst). Kein Muss – Sie erreichen uns jederzeit auch per WhatsApp oder E-Mail. Unsere Statistik ist anonym und cookiefrei.',
   'cookie.accept': 'Chat aktivieren',
@@ -318,6 +319,7 @@ const en: Record<Key, string> = {
   'footer.privacy': 'Privacy',
   'footer.terms': 'Terms',
   'footer.rights': 'All rights reserved.',
+  'footer.consent': 'Cookie & chat settings',
 
   'cookie.text': 'Fancy a live chat with us? We’ll load our chat widget (tawk.to, a US service). No pressure — you can always reach us via WhatsApp or email too. Our analytics stay anonymous and cookie-free.',
   'cookie.accept': 'Enable chat',

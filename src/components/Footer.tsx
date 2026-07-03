@@ -5,6 +5,7 @@ import { COMPANY_NAV } from '../lib/nav'
 import { HUBS, PROMO_GROUPS, productsForHub } from '../lib/catalog'
 import { SITE, whatsappLink } from '../lib/site-config'
 import { withBase } from '../lib/asset'
+import { OPEN_CONSENT_EVENT } from './CookieNotice'
 
 // Route -> two-digit index for the editorial footer marker.
 const INDEX_MAP: Record<string, string> = {
@@ -82,6 +83,13 @@ export function Footer() {
           <span>
             © {new Date().getFullYear()} Inkyhaus. {t('footer.rights')}
           </span>
+          <button
+            type="button"
+            onClick={() => window.dispatchEvent(new Event(OPEN_CONSENT_EVENT))}
+            className="underline-offset-2 transition-colors hover:text-ink hover:underline"
+          >
+            {t('footer.consent')}
+          </button>
           <span className="tracking-widest text-ink-soft">
             {index} · {t('nav.home')}
           </span>
