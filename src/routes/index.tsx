@@ -318,7 +318,7 @@ function Home() {
   }
 
   function GalleryTeaser() {
-    const shots = ['tshirt-printing', 'gift-set', 'champagne-glass-design', 'wood-emboss'].map((n) => withBase(`/img/${n}.webp`))
+    const shots = ['sportswear', 'geschenke', 'champagne-glass-design', 'wood-emboss'].map((n) => withBase(`/img/${n}.webp`))
     return (
       <Section className="bg-surface/50">
         <div className="flex items-end justify-between gap-4">

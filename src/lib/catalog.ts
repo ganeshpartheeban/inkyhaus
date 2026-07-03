@@ -264,7 +264,7 @@ const TEXTILE: Product[] = [
     },
     highlights: [{ de: 'Stickerei oder Leder-Patch', en: 'Embroidery or leather patch' }],
     methods: ['embroidery'],
-    minOrder: 1, deliveryTime: FAST, faq: APPAREL_FAQ, cover: c('/img/cap-stiched.webp'),
+    minOrder: 1, deliveryTime: FAST, faq: APPAREL_FAQ, cover: c('/img/accessories.webp'),
   },
 ]
 
@@ -293,7 +293,7 @@ const PROMO: Product[] = [
     tagline: { de: 'Graviert mit Ihrem Logo', en: 'Engraved with your logo' },
     description: { de: 'Hochwertige Stifte mit Logo-Gravur — der Klassiker unter den Werbeartikeln, auch als edles Set.', en: 'Premium pens with logo engraving — the classic promotional item, also available as an elegant set.' },
     highlights: [{ de: 'Metall & Holz', en: 'Metal & wood' }],
-    methods: ['laser-engraving'], minOrder: 1, deliveryTime: BULK, faq: PROMO_FAQ, cover: c('/img/embossed-pen.webp'),
+    methods: ['laser-engraving'], minOrder: 1, deliveryTime: BULK, faq: PROMO_FAQ, cover: c('/img/werbeartikel.webp'),
   },
   {
     slug: 'notebooks', hub: 'promotional-products', group: 'office', accent: 20,
@@ -319,7 +319,7 @@ const PROMO: Product[] = [
     tagline: { de: 'Kuratierte Sets mit Branding', en: 'Curated, branded sets' },
     description: { de: 'Zusammengestellte Geschenksets mit Ihrem Branding — für Kunden, Partner und neue Mitarbeitende.', en: 'Curated gift sets with your branding — for clients, partners and new hires.' },
     highlights: [{ de: 'Kunden, Partner, Onboarding', en: 'Clients, partners, onboarding' }],
-    methods: ['laser-engraving', 'dtf'], minOrder: 1, deliveryTime: BULK, faq: PROMO_FAQ, cover: c('/img/gift-set.webp'),
+    methods: ['laser-engraving', 'dtf'], minOrder: 1, deliveryTime: BULK, faq: PROMO_FAQ, cover: c('/img/geschenke.webp'),
   },
   {
     slug: 'wooden-gifts', hub: 'promotional-products', group: 'corporate-gifts', accent: 30,
@@ -456,13 +456,13 @@ export const GALLERY_FILTERS: PromoGroup[] = [
   { slug: 'wedding', label: { de: 'Hochzeit', en: 'Wedding Gifts' } },
 ]
 export const GALLERY: GalleryItem[] = [
-  { src: c('/img/tshirt-printing.webp'), alt: { de: 'Trikot-Druck', en: 'Jersey printing' }, tags: ['textile', 'events'] },
+  { src: c('/img/sportswear.webp'), alt: { de: 'Trikot-Druck', en: 'Jersey printing' }, tags: ['textile', 'events'] },
   { src: c('/img/tshirt-wall.webp'), alt: { de: 'Bedruckte Shirts', en: 'Printed shirts' }, tags: ['textile'] },
   { src: c('/img/shop-wall-tshirts.webp'), alt: { de: 'Shirt-Wand im Studio', en: 'Shirt wall in the studio' }, tags: ['textile', 'events'] },
-  { src: c('/img/cap-stiched.webp'), alt: { de: 'Bestickte Cap', en: 'Embroidered cap' }, tags: ['textile', 'promotional'] },
+  { src: c('/img/accessories.webp'), alt: { de: 'Bestickte Cap', en: 'Embroidered cap' }, tags: ['textile', 'promotional'] },
   { src: c('/img/lumina-bag.webp'), alt: { de: 'Bedruckter Stoffbeutel', en: 'Printed tote bag' }, tags: ['textile', 'promotional'] },
-  { src: c('/img/gift-set.webp'), alt: { de: 'Firmengeschenk-Set', en: 'Corporate gift set' }, tags: ['corporate-gifts', 'promotional'] },
-  { src: c('/img/embossed-pen.webp'), alt: { de: 'Gravierter Stift', en: 'Engraved pen' }, tags: ['corporate-gifts', 'promotional'] },
+  { src: c('/img/geschenke.webp'), alt: { de: 'Firmengeschenk-Set', en: 'Corporate gift set' }, tags: ['corporate-gifts', 'promotional'] },
+  { src: c('/img/werbeartikel.webp'), alt: { de: 'Gravierter Stift', en: 'Engraved pen' }, tags: ['corporate-gifts', 'promotional'] },
   { src: c('/img/wood-emboss.webp'), alt: { de: 'Gravierte Holzbox', en: 'Engraved wooden box' }, tags: ['corporate-gifts', 'wedding'] },
   { src: c('/img/dog-tags.webp'), alt: { de: 'Gravierte Anhänger', en: 'Engraved tags' }, tags: ['promotional', 'corporate-gifts'] },
   { src: c('/img/champagne-glass-design.webp'), alt: { de: 'Gravierte Sektgläser', en: 'Engraved champagne glasses' }, tags: ['wedding'] },
