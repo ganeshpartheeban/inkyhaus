@@ -1,11 +1,10 @@
 // Consent banner. Analytics are cookie-free (Cloudflare Web Analytics), but the
 // live chat (tawk.to) sets storage + transfers data to the US, so it loads only
-// after an explicit "Accept". No silent/auto consent. Safe-area aware (§07).
+// after an explicit "Accept". The banner shows until a choice is made (keyed off
+// the chat-consent decision, not a generic dismiss). Safe-area aware (§07).
 import { useEffect, useState } from 'react'
 import { useI18n } from '../lib/i18n'
 import { CHAT_CONSENT_KEY, CONSENT_EVENT } from './TawkChat'
-
-const ACK_KEY = 'inkyhaus-cookie-ack'
 
 export function CookieNotice() {
   const { t } = useI18n()
@@ -13,7 +12,8 @@ export function CookieNotice() {
 
   useEffect(() => {
     try {
-      if (!localStorage.getItem(ACK_KEY)) setShow(true)
+      // Show until the visitor has explicitly accepted or declined the chat.
+      if (localStorage.getItem(CHAT_CONSENT_KEY) == null) setShow(true)
     } catch {
       /* ignore */
     }
@@ -22,7 +22,6 @@ export function CookieNotice() {
   function choose(consent: boolean) {
     setShow(false)
     try {
-      localStorage.setItem(ACK_KEY, '1')
       localStorage.setItem(CHAT_CONSENT_KEY, consent ? 'yes' : 'no')
     } catch {
       /* ignore */
