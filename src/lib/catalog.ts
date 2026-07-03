@@ -335,7 +335,7 @@ const PROMO: Product[] = [
     tagline: { de: 'Mit Gravur, Text oder Logo', en: 'With engraving, text or logo' },
     description: { de: 'Pokale, Medaillen und Auszeichnungen mit individueller Gravur — für Turniere, Vereine und Firmen-Awards.', en: 'Trophies, medals and awards with custom engraving — for tournaments, clubs and corporate awards.' },
     highlights: [{ de: 'Turniere, Vereine, Firmen-Awards', en: 'Tournaments, clubs, corporate awards' }],
-    methods: ['laser-engraving'], minOrder: 1, deliveryTime: BULK, faq: PROMO_FAQ, cover: c('/img/pokale-medaillen.webp'),
+    methods: ['laser-engraving'], minOrder: 1, deliveryTime: BULK, faq: PROMO_FAQ, cover: c('/img/awards.webp'),
   },
   {
     slug: 'lanyards', hub: 'promotional-products', group: 'conference', accent: 175,
@@ -414,7 +414,7 @@ export const METHODS: Method[] = [
     tagline: { de: 'Kräftige Farben, jedes Motiv', en: 'Vibrant colour, any design' },
     description: { de: 'Direct-to-Film überträgt farbintensive, detailreiche Motive auf nahezu jedes Textil — ideal für Fotos, Verläufe und mehrfarbige Logos.', en: 'Direct-to-film transfers vivid, detailed designs onto almost any fabric — ideal for photos, gradients and multi-colour logos.' },
     bestFor: { de: 'Fotorealistische und mehrfarbige Designs auf Baumwolle und Mischgewebe.', en: 'Photo-real and multi-colour designs on cotton and blends.' },
-    image: c('/img/tech-full-color.webp'),
+    image: c('/img/method-dtf.webp'),
   },
   {
     slug: 'embroidery', accent: 25,
@@ -422,7 +422,7 @@ export const METHODS: Method[] = [
     tagline: { de: 'Hochwertig und langlebig', en: 'Premium and long-lasting' },
     description: { de: 'Gestickte Logos wirken besonders edel und sind extrem strapazierfähig — die erste Wahl für Polos, Caps, Jacken und Workwear.', en: 'Stitched logos look especially premium and are extremely durable — the first choice for polos, caps, jackets and workwear.' },
     bestFor: { de: 'Logos auf Polos, Caps, Jacken und Arbeitskleidung.', en: 'Logos on polos, caps, jackets and workwear.' },
-    image: c('/img/cap-stiched.webp'),
+    image: c('/img/method-embroidery.webp'),
   },
   {
     slug: 'sublimation', accent: 150,
@@ -430,7 +430,7 @@ export const METHODS: Method[] = [
     tagline: { de: 'Vollflächig, waschfest', en: 'All-over, wash-proof' },
     description: { de: 'Sublimation färbt das Motiv direkt in das Material ein — vollflächig, ohne fühlbaren Druck und dauerhaft farbecht. Ideal für Trikots und Tassen.', en: 'Sublimation dyes the design directly into the material — full-coverage, with no feel on the surface and permanently colour-fast. Ideal for jerseys and mugs.' },
     bestFor: { de: 'Trikots, Sportbekleidung, Tassen und Lanyards.', en: 'Jerseys, sportswear, mugs and lanyards.' },
-    image: c('/img/sportswear.webp'),
+    image: c('/img/method-sublimation.webp'),
   },
   {
     slug: 'laser-engraving', accent: 60,
@@ -438,7 +438,7 @@ export const METHODS: Method[] = [
     tagline: { de: 'Präzise auf Holz, Glas & Metall', en: 'Precise on wood, glass & metal' },
     description: { de: 'Die Lasergravur trägt Motive dauerhaft und äußerst präzise in Holz, Glas und Metall ein — edel, langlebig und ohne Farbe.', en: 'Laser engraving marks designs permanently and with great precision into wood, glass and metal — elegant, durable and ink-free.' },
     bestFor: { de: 'Geschenke, Pokale, Stifte, Flaschen und Schilder.', en: 'Gifts, awards, pens, bottles and signs.' },
-    image: c('/img/lasergravur.webp'),
+    image: c('/img/method-laser-engraving.webp'),
   },
 ]
 export function getMethod(slug: string): Method | undefined {

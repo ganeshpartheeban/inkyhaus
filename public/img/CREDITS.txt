@@ -62,3 +62,9 @@ polo-shirts.webp  "Blue polo shirt" by jimjetson (by) — https://www.flickr.com
 polo-shirts.webp   AI-generated product photo (navy pique polo shirt)
 keychains.webp     AI-generated product photo (engraved metal & wood keychains)
 lanyards.webp      AI-generated product photo (printed event lanyards)
+
+# AI-generated upgrades (Pollinations, public/no attribution required):
+hoodies.webp, water-bottles.webp, sweatshirts.webp, awards.webp,
+conference-merchandise.webp  — clean catalog product shots
+method-dtf.webp, method-embroidery.webp, method-sublimation.webp,
+method-laser-engraving.webp  — printing-technique close-ups
