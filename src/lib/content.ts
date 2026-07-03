@@ -8,10 +8,22 @@ export const TESTIMONIALS_ARE_PLACEHOLDER = false
 
 // ── Real "why companies work with Inkyhaus" (from inkyhaus.de) ──────────────
 export const WHY_US: Localized[] = [
-  { de: 'Zuverlässige Produktionszeiten', en: 'Reliable production times' },
-  { de: 'Konstante Qualität & sauberes Finish', en: 'Consistent quality & clean finish' },
-  { de: 'Klare Kommunikation & Preise', en: 'Clear communication & pricing' },
-  { de: 'Kleine & skalierbare Mengen', en: 'Small & scalable quantities' },
+  { de: 'Premium-Qualität', en: 'Premium Quality' },
+  { de: 'Schnelle Produktion', en: 'Fast Turnaround' },
+  { de: 'Keine Mindestmenge bei vielen Produkten', en: 'No Minimum Order on Many Products' },
+  { de: 'Business- & Firmenlösungen', en: 'Business & Corporate Solutions' },
+  { de: 'Made in Berlin', en: 'Made in Berlin' },
+  { de: 'Design-Unterstützung', en: 'Design Support' },
+]
+
+// 6-step "How it works" flow (revamped IA).
+export const HOW_STEPS: Localized[] = [
+  { de: 'Produkt wählen', en: 'Choose a Product' },
+  { de: 'Menge angeben', en: 'Select Quantity' },
+  { de: 'Design hochladen', en: 'Upload Your Design' },
+  { de: 'Angebot erhalten', en: 'Receive Your Quote' },
+  { de: 'Produktion', en: 'Production' },
+  { de: 'Abholung oder Lieferung', en: 'Pickup or Delivery' },
 ]
 
 // ── Real 4-step business process (from inkyhaus.de, incl. its step icons) ────

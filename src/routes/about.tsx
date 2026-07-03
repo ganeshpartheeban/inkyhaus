@@ -35,8 +35,8 @@ function About() {
           <div className="mt-6 space-y-4 text-lg text-ink-soft">
             <p>
               {l === 'en'
-                ? 'Inkyhaus is a creative production partner, not a generic print shop. We help businesses and individuals turn ideas into premium custom clothing — produced locally in Berlin.'
-                : 'Inkyhaus ist ein kreativer Produktionspartner — keine anonyme Druckerei. Wir helfen Unternehmen und Privatkunden, Ideen in hochwertige Bekleidung zu verwandeln, lokal in Berlin gefertigt.'}
+                ? 'Inkyhaus is a creative production partner, not a generic print shop. We help businesses and individuals turn ideas into premium custom apparel and promotional products — produced locally in Berlin.'
+                : 'Inkyhaus ist ein kreativer Produktionspartner — keine anonyme Druckerei. Wir helfen Unternehmen und Privatkunden, Ideen in hochwertige Bekleidung und Werbeartikel zu verwandeln, lokal in Berlin gefertigt.'}
             </p>
             <p>
               {l === 'en'
@@ -59,9 +59,9 @@ function About() {
           <Link
             to="/contact"
             hash="booking-enquiry"
-            className="rounded-full bg-accent px-6 py-3 font-medium text-white transition-transform active:scale-[0.985] motion-reduce:transition-none hover:bg-accent-strong"
+            className="inline-flex rounded-lg flashy-gradient px-6 py-3 font-medium text-white transition active:scale-[0.985] motion-reduce:transition-none hover:opacity-90"
           >
-            {t('cta.enquire')}
+            {t('cta.requestQuote')}
           </Link>
         </div>
       </Section>

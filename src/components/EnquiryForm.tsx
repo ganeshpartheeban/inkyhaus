@@ -115,6 +115,16 @@ export function EnquiryForm() {
         <textarea name="message" required rows={4} className={inputCls} />
       </Field>
 
+      <Field label={t('form.file')}>
+        <input
+          name="file"
+          type="file"
+          accept="image/*,.pdf,.ai,.eps,.svg"
+          className="w-full rounded-xl border border-line bg-paper/60 px-4 py-2.5 text-sm outline-none transition-colors file:mr-3 file:rounded-md file:border-0 file:bg-ink file:px-3 file:py-1.5 file:text-paper hover:file:opacity-90 focus:border-accent"
+        />
+        <span className="mt-1 block text-xs text-muted">{t('form.fileHint')}</span>
+      </Field>
+
       {status === 'limit' && <p className="text-sm text-accent-strong">{t('form.limit')}</p>}
       {status === 'error' && (
         <p className="text-sm text-accent-strong">
