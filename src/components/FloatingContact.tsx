@@ -1,40 +1,19 @@
 // Floating WhatsApp button — source-aware: prefilled message includes the current
-// route context. Sits above the bottom tab bar (§07).
+// route context, derived from the catalog. Sits above the bottom tab bar (§07).
 import { MessageCircle } from 'lucide-react'
 import { useRouterState } from '@tanstack/react-router'
 import { useI18n } from '../lib/i18n'
 import { whatsappLink } from '../lib/site-config'
-
-const ROUTE_CONTEXT: Record<string, { de: string; en: string }> = {
-  '/': { de: 'der Startseite', en: 'the homepage' },
-  '/business': { de: 'Firmenlösungen', en: 'business solutions' },
-  '/workwear': { de: 'Arbeitskleidung', en: 'workwear' },
-  '/t-shirts': { de: 'T-Shirt-Druck', en: 'T-shirt printing' },
-  '/hoodies': { de: 'Hoodie-Druck', en: 'hoodie printing' },
-  '/sportswear': { de: 'Teamwear', en: 'teamwear' },
-  '/accessories': { de: 'Accessoires', en: 'accessories' },
-  '/print-techniques': { de: 'Drucktechniken', en: 'print techniques' },
-  '/express': { de: 'Express-Druck', en: 'express printing' },
-  '/portfolio': { de: 'Ihren Referenzen', en: 'your portfolio' },
-  '/leistungen': { de: 'Ihren Leistungen', en: 'your services' },
-  '/lasergravur': { de: 'Lasergravur', en: 'laser engraving' },
-  '/3d-druck': { de: '3D-Druck', en: '3D printing' },
-  '/werbetechnik': { de: 'Werbetechnik', en: 'signage / large format' },
-  '/aufkleber': { de: 'Aufklebern & Vinyl', en: 'stickers & vinyl' },
-  '/geschenke': { de: 'personalisierten Geschenken', en: 'personalized gifts' },
-  '/trikot-restauration': { de: 'Trikot-Restauration', en: 'jersey restoration' },
-  '/pokale-medaillen': { de: 'Pokalen & Medaillen', en: 'trophies & medals' },
-  '/werbeartikel': { de: 'Werbeartikeln', en: 'promotional items' },
-}
+import { HUBS, getProduct, getMethod } from '../lib/catalog'
 
 export function FloatingContact() {
   const { locale } = useI18n()
+  const l = locale === 'en' ? 'en' : 'de'
   const pathname = useRouterState({ select: (s) => s.location.pathname })
 
-  const ctx = ROUTE_CONTEXT[pathname]
-  const topic = ctx ? ctx[locale === 'en' ? 'en' : 'de'] : locale === 'en' ? 'your services' : 'Ihren Leistungen'
+  const topic = deriveTopic(pathname, l)
   const message =
-    locale === 'en'
+    l === 'en'
       ? `Hi Inkyhaus, I'm interested in ${topic} and would like a quote.`
       : `Hallo Inkyhaus, ich interessiere mich für ${topic} und hätte gern ein Angebot.`
 
@@ -49,4 +28,23 @@ export function FloatingContact() {
       <MessageCircle size={26} strokeWidth={2} aria-hidden />
     </a>
   )
+}
+
+function deriveTopic(pathname: string, l: 'de' | 'en'): string {
+  const seg = pathname.replace(/^\/(inkyhaus\/)?/, '').split('/').filter(Boolean)
+  const fallback = l === 'en' ? 'your services' : 'Ihren Leistungen'
+  if (seg.length === 0) return l === 'en' ? 'your custom products' : 'Ihren individuellen Produkten'
+
+  if (seg.length >= 2 && (seg[0] === 'textile-printing' || seg[0] === 'promotional-products')) {
+    return getProduct(seg[1])?.title[l] ?? fallback
+  }
+  if (seg[0] === 'printing-methods') {
+    if (seg[1]) return getMethod(seg[1])?.name[l] ?? fallback
+    return l === 'en' ? 'your printing method' : 'Ihrem Druckverfahren'
+  }
+  if (seg[0] === 'textile-printing') return HUBS['textile-printing'].title[l]
+  if (seg[0] === 'promotional-products') return HUBS['promotional-products'].title[l]
+  if (seg[0] === 'gallery') return l === 'en' ? 'your work' : 'Ihren Arbeiten'
+  if (seg[0] === 'business') return l === 'en' ? 'business solutions' : 'Firmenlösungen'
+  return fallback
 }

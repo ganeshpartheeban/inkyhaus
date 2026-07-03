@@ -9,6 +9,8 @@ import { HUBS, getMethod, relatedProducts, productTo, type Product } from '../li
 import { Breadcrumbs, Section, SectionHeading } from './ui'
 import { Cover } from './Cover'
 import { Reveal } from './Reveal'
+import { JsonLd } from './JsonLd'
+import { buildBreadcrumbLD, buildProductLD } from '../lib/seo'
 
 const EnquiryForm = lazy(() => import('./EnquiryForm'))
 
@@ -18,8 +20,19 @@ export function ProductDetail({ product }: { product: Product }) {
   const hub = HUBS[product.hub]
   const related = relatedProducts(product)
 
+  const path = `${hub.path}/${product.slug}`
   return (
     <>
+      <JsonLd
+        data={[
+          buildBreadcrumbLD([
+            { name: 'Home', path: '/' },
+            { name: hub.title[l], path: hub.path },
+            { name: product.title[l], path },
+          ]),
+          buildProductLD({ name: product.title[l], description: product.description[l], path, image: product.cover }),
+        ]}
+      />
       <Breadcrumbs
         items={[
           { name: t('nav.home'), to: '/' },

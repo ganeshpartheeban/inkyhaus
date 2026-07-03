@@ -170,8 +170,9 @@ const de = {
   'footer.terms': 'AGB',
   'footer.rights': 'Alle Rechte vorbehalten.',
 
-  'cookie.text': 'Wir nutzen anonyme, cookiefreie Statistiken (Cloudflare Web Analytics).',
-  'cookie.accept': 'Verstanden',
+  'cookie.text': 'Wir nutzen cookiefreie Statistiken (Cloudflare Web Analytics) und – nach Ihrer Zustimmung – einen Live-Chat (tawk.to), der Daten in die USA übermittelt.',
+  'cookie.accept': 'Zustimmen',
+  'cookie.decline': 'Ablehnen',
   'a11y.menu': 'Menü',
   'a11y.close': 'Schließen',
   'a11y.langToggle': 'Sprache wechseln',
@@ -318,8 +319,9 @@ const en: Record<Key, string> = {
   'footer.terms': 'Terms',
   'footer.rights': 'All rights reserved.',
 
-  'cookie.text': 'We use anonymous, cookie-free analytics (Cloudflare Web Analytics).',
-  'cookie.accept': 'Got it',
+  'cookie.text': 'We use cookie-free analytics (Cloudflare Web Analytics) and — with your consent — a live chat (tawk.to) that transfers data to the US.',
+  'cookie.accept': 'Accept',
+  'cookie.decline': 'Decline',
   'a11y.menu': 'Menu',
   'a11y.close': 'Close',
   'a11y.langToggle': 'Switch language',

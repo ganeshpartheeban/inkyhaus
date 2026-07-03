@@ -101,6 +101,24 @@ export function buildBreadcrumbLD(crumbs: Array<{ name: string; path: string }>)
   }
 }
 
+/** Product — for product detail pages (quote-based, no fixed price). */
+export function buildProductLD(input: { name: string; description: string; path: string; image?: string }): JsonLd {
+  const image = input.image
+    ? input.image.startsWith('http')
+      ? input.image
+      : `${SITE.url}${input.image.startsWith('/') ? '' : '/'}${input.image}`
+    : `${SITE.url}/og-hero.jpg`
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: input.name,
+    description: input.description,
+    image,
+    brand: { '@type': 'Brand', name: SITE.name },
+    url: `${SITE.url}${input.path}`,
+  }
+}
+
 /** FAQPage — built from the shared FAQ content for a given locale. */
 export function buildFaqLD(locale: Locale): JsonLd {
   return {
