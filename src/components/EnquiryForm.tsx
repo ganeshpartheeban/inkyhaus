@@ -60,6 +60,26 @@ export function EnquiryForm() {
     }
     data.set('location', locationRef.current)
 
+    // Encode an optional attachment as base64 so the Apps Script backend can
+    // read it (Apps Script can't reliably parse multipart file uploads).
+    const file = (form.elements.namedItem('file') as HTMLInputElement | null)?.files?.[0]
+    data.delete('file')
+    if (file && file.size <= 10 * 1024 * 1024) {
+      try {
+        const dataUrl: string = await new Promise((res, rej) => {
+          const fr = new FileReader()
+          fr.onload = () => res(String(fr.result))
+          fr.onerror = () => rej(fr.error)
+          fr.readAsDataURL(file)
+        })
+        data.set('fileData', dataUrl.split(',')[1] ?? '')
+        data.set('fileName', file.name)
+        data.set('fileType', file.type || 'application/octet-stream')
+      } catch {
+        /* send without the attachment */
+      }
+    }
+
     try {
       await fetch(FORM_ENDPOINT, { method: 'POST', body: data, mode: 'no-cors' })
       recordSubmission(email) // only on successful POST
