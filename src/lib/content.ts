@@ -1,8 +1,7 @@
 // Trust points, FAQs, and testimonials.
 //
 // Real customer reviews from the Inkyhaus Google Business Profile.
-import type { Localized } from './products'
-import { withBase } from './asset'
+import type { Localized } from './catalog'
 
 export const TESTIMONIALS_ARE_PLACEHOLDER = false
 
@@ -24,42 +23,6 @@ export const HOW_STEPS: Localized[] = [
   { de: 'Angebot erhalten', en: 'Receive Your Quote' },
   { de: 'Produktion', en: 'Production' },
   { de: 'Abholung oder Lieferung', en: 'Pickup or Delivery' },
-]
-
-// ── Real 4-step business process (from inkyhaus.de, incl. its step icons) ────
-export type ProcessStep = { title: Localized; body: Localized; icon: string }
-export const PROCESS: ProcessStep[] = [
-  {
-    icon: withBase('/img/process-request.webp'),
-    title: { de: 'Anfrage senden', en: 'Send request' },
-    body: { de: 'Produkt, Menge und Termin — kurz schildern, gern mit Datei.', en: 'Product, quantity and deadline — a quick note, optionally with a file.' },
-  },
-  {
-    icon: withBase('/img/process-time.webp'),
-    title: { de: 'Preis & Zeit bestätigen wir', en: 'We confirm price & time' },
-    body: { de: 'Sie erhalten ein klares Angebot mit Produktionszeit.', en: 'You get a clear quote with a production timeline.' },
-  },
-  {
-    icon: withBase('/img/process-approval.webp'),
-    title: { de: 'Freigabe / Mockup', en: 'Approval / mockup' },
-    body: { de: 'Bei Bedarf erstellen wir ein Mockup zur Freigabe.', en: 'If needed, we create a mockup for your approval.' },
-  },
-  {
-    icon: withBase('/img/process-production.webp'),
-    title: { de: 'Produktion & Lieferung', en: 'Production & delivery' },
-    body: { de: 'Wir produzieren — Abholung in Berlin oder Lieferung.', en: 'We produce — pickup in Berlin or delivery.' },
-  },
-]
-
-// ── Occasion-based entry points (B2C funnel) ────────────────────────────────
-export type Occasion = { label: Localized; to: string; accent: number }
-export const OCCASIONS: Occasion[] = [
-  { label: { de: 'JGA & Partys', en: 'Stag & hen parties' }, to: '/t-shirts', accent: 320 },
-  { label: { de: 'Geburtstag', en: 'Birthday' }, to: '/t-shirts', accent: 45 },
-  { label: { de: 'Vereine & Teams', en: 'Clubs & teams' }, to: '/sportswear', accent: 150 },
-  // { label: { de: 'Events & Messen', en: 'Events & trade shows' }, to: '/werbetechnik', accent: 15 }, // signage hidden for now
-  { label: { de: 'Firmenfeier', en: 'Company party' }, to: '/business', accent: 230 },
-  { label: { de: 'Geschenke', en: 'Gifts' }, to: '/geschenke', accent: 300 },
 ]
 
 // ── Rating from the Google Business Profile.
