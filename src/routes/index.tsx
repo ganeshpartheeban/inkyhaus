@@ -123,7 +123,9 @@ function Home() {
           <div className="anim-rise relative hidden lg:block" style={{ animationDelay: '240ms' }}>
             <img
               src={withBase('/img/hero.webp')}
-              alt="Inkyhaus Ladengeschäft in Berlin — Textildruck, Gravur und Werbeartikel vor Ort"
+              alt="Individuell bedruckte Werbeartikel von Inkyhaus — Stofftasche, Hoodie und Tassen im warmen Berliner Studio-Licht"
+              width={1200}
+              height={960}
               fetchPriority="high"
               decoding="async"
               className="aspect-[5/4] w-full rounded-[var(--radius-card)] border border-line object-cover object-center shadow-sm"
