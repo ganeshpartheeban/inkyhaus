@@ -19,6 +19,11 @@
   Cache-Control: public, max-age=604800
 /*.ico
   Cache-Control: public, max-age=604800
+# Product/content images (filenames aren't fingerprinted, so not immutable).
+/*.webp
+  Cache-Control: public, max-age=2592000
+/*.jpg
+  Cache-Control: public, max-age=604800
 
 # SEO files.
 /sitemap.xml
