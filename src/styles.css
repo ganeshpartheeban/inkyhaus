@@ -161,10 +161,112 @@
   box-shadow: 0 12px 36px -18px oklch(0.22 0.006 265 / 0.35);
 }
 
+/* ── Motion: entrance, decorative & logo loader ─────────────────────────────
+   All CSS-driven (no JS) so it survives SSR and no-JS; the reduced-motion block
+   at the bottom neutralises every rule here. */
+
+/* Staggered entrance for above-the-fold text/blocks (hero). */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.anim-rise {
+  animation: rise 0.85s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Gentle idle motion for decorative illustrations. */
+@keyframes float-soft {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+}
+.anim-float {
+  animation: float-soft 8s ease-in-out infinite;
+}
+@keyframes spin-slow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.anim-spin-slow {
+  animation: spin-slow 46s linear infinite;
+}
+
+/* First-paint logo loader. Pure CSS: fades itself out (`forwards`) so it can
+   never trap content, even with JS disabled. Plays on full page loads only —
+   client-side route changes don't remount the root, so SPA nav is untouched. */
+@keyframes intro-veil {
+  0%,
+  55% {
+    opacity: 1;
+    visibility: visible;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+@keyframes intro-mark {
+  0% {
+    opacity: 0;
+    transform: translateY(10px) scale(0.92);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes intro-bar {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+.intro-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  display: grid;
+  place-items: center;
+  background: var(--color-paper);
+  animation: intro-veil 1.7s ease 0.75s forwards;
+  will-change: opacity;
+}
+.intro-loader .intro-mark {
+  animation: intro-mark 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.intro-loader .intro-bar {
+  transform-origin: left center;
+  animation: intro-bar 1s ease-out 0.2s both;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .page-transition,
-  .animate-drift {
+  .animate-drift,
+  .anim-rise,
+  .anim-float,
+  .anim-spin-slow,
+  .intro-loader .intro-mark,
+  .intro-loader .intro-bar {
     animation: none !important;
+  }
+  /* No-JS reduced-motion: hide the veil instantly rather than trapping it. */
+  .intro-loader {
+    animation: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
   }
   * {
     scroll-behavior: auto !important;

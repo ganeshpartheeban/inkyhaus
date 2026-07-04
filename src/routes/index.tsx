@@ -19,6 +19,24 @@ const FEATURED = ['t-shirts', 'hoodies', 'caps', 'mugs', 'corporate-gift-sets', 
 const WHY_ICONS = [BadgeCheck, Zap, PackageCheck, Building2, MapPin, PenTool]
 const HOW_ICONS = [Shirt, ListOrdered, Upload, ReceiptText, Factory, Truck]
 
+// Decorative concentric-rings illustration for the hero — a warm accent graphic
+// in the spirit of the reference site's vector shapes. Purely ornamental.
+function HeroRings() {
+  return (
+    <div className="anim-float absolute -right-24 -top-24 hidden h-[34rem] w-[34rem] text-accent/25 sm:block lg:right-[-6rem]">
+      <svg viewBox="0 0 400 400" fill="none" className="anim-spin-slow h-full w-full" aria-hidden>
+        <circle cx="200" cy="200" r="70" stroke="currentColor" strokeWidth="1.5" />
+        <circle cx="200" cy="200" r="115" stroke="currentColor" strokeWidth="1.5" strokeDasharray="4 8" />
+        <circle cx="200" cy="200" r="160" stroke="currentColor" strokeWidth="1.5" />
+        <circle cx="200" cy="200" r="196" stroke="currentColor" strokeWidth="1" strokeDasharray="2 10" />
+        <circle cx="200" cy="40" r="4" fill="currentColor" />
+        <circle cx="360" cy="200" r="3" fill="currentColor" />
+        <circle cx="200" cy="360" r="2.5" fill="currentColor" />
+      </svg>
+    </div>
+  )
+}
+
 export const Route = createFileRoute('/')({
   head: () =>
     pageHead({
@@ -69,22 +87,23 @@ function Home() {
       <section className="relative overflow-hidden border-b border-line">
         <div className="pointer-events-none absolute inset-0 -z-10">
           <PlaceholderArt accent={35} className="absolute inset-0 opacity-[0.06]" />
+          <HeroRings />
         </div>
         <div className="container-edge grid items-center gap-10 py-20 sm:py-28 lg:grid-cols-[1.1fr_0.9fr]">
           <div>
-            <p className="inline-flex items-center gap-2 rounded-full border border-line bg-surface px-3 py-1 text-xs font-medium uppercase tracking-wide text-ink-soft">
+            <p className="anim-rise inline-flex items-center gap-2 rounded-full border border-line bg-surface px-3 py-1 text-xs font-medium uppercase tracking-wide text-ink-soft">
               <MapPin size={13} className="text-accent" aria-hidden /> {L('Berlin Friedrichshain', 'Berlin Friedrichshain')}
             </p>
-            <h1 className="mt-5 text-balance text-5xl leading-[1.02] sm:text-6xl">
+            <h1 className="anim-rise mt-5 text-balance text-5xl leading-[1.02] sm:text-6xl" style={{ animationDelay: '90ms' }}>
               {L('Premium Textildruck & Werbeartikel in Berlin', 'Premium Textile Printing & Promotional Products in Berlin')}
             </h1>
-            <p className="mt-5 max-w-xl text-pretty text-lg text-muted">
+            <p className="anim-rise mt-5 max-w-xl text-pretty text-lg text-muted" style={{ animationDelay: '180ms' }}>
               {L(
                 'Vom einzelnen Stück bis zum großen Firmenauftrag — wir helfen Unternehmen, Events und Privatpersonen, hochwertige individuelle Produkte zu gestalten.',
                 'From single items to bulk corporate orders, we help businesses, events and individuals create high-quality custom products.',
               )}
             </p>
-            <div className="mt-8 flex flex-wrap gap-3">
+            <div className="anim-rise mt-8 flex flex-wrap gap-3" style={{ animationDelay: '270ms' }}>
               <Link
                 to="/contact"
                 hash="booking-enquiry"
@@ -101,7 +120,7 @@ function Home() {
             </div>
           </div>
 
-          <div className="relative hidden lg:block">
+          <div className="anim-rise relative hidden lg:block" style={{ animationDelay: '240ms' }}>
             <img
               src={withBase('/img/hero.webp')}
               alt="Inkyhaus Ladengeschäft in Berlin — Textildruck, Gravur und Werbeartikel vor Ort"

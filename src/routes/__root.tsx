@@ -13,6 +13,7 @@ import { Header } from '../components/Header'
 import { Footer } from '../components/Footer'
 import { BottomTabBar } from '../components/BottomTabBar'
 import { TawkChat } from '../components/TawkChat'
+import { IntroLoader } from '../components/IntroLoader'
 import { JsonLd } from '../components/JsonLd'
 import { buildOrganizationLD, buildPersonLD, buildServiceLD } from '../lib/seo'
 import { withBase } from '../lib/asset'
@@ -67,6 +68,7 @@ function RootLayout() {
 
   return (
     <I18nProvider>
+      <IntroLoader />
       <a
         href="#main"
         className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[70] focus:rounded-full focus:bg-ink focus:px-4 focus:py-2 focus:text-paper"
