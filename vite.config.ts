@@ -7,15 +7,17 @@ import viteReact from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 import { cloudflare } from '@cloudflare/vite-plugin'
 
-const config = defineConfig({
+// `devtools()` is dev-only — excluding it from production builds keeps its
+// client/bridge out of the shipped bundle.
+const config = defineConfig(({ command }) => ({
   resolve: { tsconfigPaths: true },
   plugins: [
-    devtools(),
+    ...(command === 'serve' ? [devtools()] : []),
     cloudflare({ viteEnvironment: { name: 'ssr' } }),
     tailwindcss(),
     tanstackStart(),
     viteReact(),
   ],
-})
+}))
 
 export default config
