@@ -1,61 +1,30 @@
-// SEO helpers: JSON-LD builders + per-page head (meta/OG/twitter/canonical/hreflang).
+// SEO helpers: JSON-LD builders + per-page head (meta/OG/twitter/canonical).
 // Schemas per Build Brief §04, adapted for an apparel business (Service/FAQ over EXIF).
 import { SITE } from './site-config'
-import { ACTIVE_LOCALES, OG_LOCALE, type Locale } from './i18n'
-import { FAQS } from './content'
+import { OG_LOCALE, type Locale } from './i18n'
+import { FAQS, type Faq } from './content'
 
 const ORG_ID = `${SITE.url}/#organization`
-const PERSON_ID = `${SITE.url}/#founder`
 
 export type JsonLd = Record<string, unknown>
 
-/** Organization — single source, @id referenced elsewhere. */
-export function buildOrganizationLD(): JsonLd {
+/** Single business entity: ProfessionalService (a LocalBusiness subtype) carrying
+ *  the org identity + all local-business signals. One node, one @id — product and
+ *  method pages reference it via `provider`. Emitted site-wide from __root. */
+export function buildLocalBusinessLD(): JsonLd {
+  const sameAs = [SITE.social.instagram, SITE.social.facebook].filter(Boolean)
   return {
     '@context': 'https://schema.org',
-    '@type': 'Organization',
+    '@type': 'ProfessionalService',
     '@id': ORG_ID,
     name: SITE.name,
     url: SITE.url,
     logo: `${SITE.url}/logo.png`,
     image: `${SITE.url}/og-hero.jpg`,
-    description: 'Premium custom apparel & textile printing in Berlin Friedrichshain.',
-    address: {
-      '@type': 'PostalAddress',
-      addressLocality: SITE.city,
-      addressRegion: SITE.district,
-      addressCountry: SITE.country,
-      ...(SITE.street ? { streetAddress: SITE.street } : {}),
-      ...(SITE.postalCode ? { postalCode: SITE.postalCode } : {}),
-    },
+    description:
+      'All-in-One Personalisierungs- & Druckstudio in Berlin Friedrichshain: Textildruck (DTF, HTV), Lasergravur, Sublimation, Sticker & Vinyl und 3D-Druck.',
     ...(SITE.email ? { email: SITE.email } : {}),
     ...(SITE.phone ? { telephone: SITE.phone } : {}),
-    sameAs: [SITE.social.instagram, SITE.social.facebook].filter(Boolean),
-  }
-}
-
-/** Person (founder) referenced under the org. */
-export function buildPersonLD(): JsonLd {
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'Person',
-    '@id': PERSON_ID,
-    name: SITE.founder.name,
-    jobTitle: SITE.founder.jobTitle,
-    worksFor: { '@id': ORG_ID },
-  }
-}
-
-/** ProfessionalService (printing studio) — root-level offering. */
-export function buildServiceLD(): JsonLd {
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'ProfessionalService',
-    '@id': `${SITE.url}/#service`,
-    name: SITE.name,
-    parentOrganization: { '@id': ORG_ID },
-    url: SITE.url,
-    image: `${SITE.url}/og-hero.jpg`,
     priceRange: '€€',
     areaServed: { '@type': 'City', name: 'Berlin' },
     paymentAccepted: 'NFC mobile payments',
@@ -78,16 +47,25 @@ export function buildServiceLD(): JsonLd {
       ...(SITE.street ? { streetAddress: SITE.street } : {}),
       ...(SITE.postalCode ? { postalCode: SITE.postalCode } : {}),
       addressLocality: SITE.city,
-      addressRegion: SITE.district,
+      // City-state: the administrative region for a Berlin address is Berlin itself
+      // (the district belongs in streetAddress/locality context, not addressRegion).
+      addressRegion: 'Berlin',
       addressCountry: SITE.country,
     },
-    makesOffer: ['Custom T-Shirts', 'Custom Hoodies', 'Workwear', 'Team Jerseys', 'Accessories', 'Express Printing'].map(
-      (name) => ({ '@type': 'Offer', itemOffered: { '@type': 'Service', name } }),
-    ),
+    makesOffer: [
+      'Textildruck (DTF & HTV)',
+      'Lasergravur',
+      'Sublimationsdruck',
+      'Stickerei',
+      'Sticker & Vinyl',
+      '3D-Druck',
+      'Express-Druck',
+    ].map((name) => ({ '@type': 'Offer', itemOffered: { '@type': 'Service', name } })),
+    ...(sameAs.length ? { sameAs } : {}),
   }
 }
 
-/** BreadcrumbList — for secondary routes. */
+/** BreadcrumbList — for secondary routes. Pass names in the SSR locale (German). */
 export function buildBreadcrumbLD(crumbs: Array<{ name: string; path: string }>): JsonLd {
   return {
     '@context': 'https://schema.org',
@@ -101,8 +79,10 @@ export function buildBreadcrumbLD(crumbs: Array<{ name: string; path: string }>)
   }
 }
 
-/** Product — for product detail pages (quote-based, no fixed price). */
-export function buildProductLD(input: { name: string; description: string; path: string; image?: string }): JsonLd {
+/** Service — for product & printing-method detail pages. The business is
+ *  quote-based (no fixed prices), so Service markup is the honest fit; Product
+ *  markup without offers/reviews is ineligible for rich results anyway. */
+export function buildOfferedServiceLD(input: { name: string; description: string; path: string; image?: string }): JsonLd {
   const image = input.image
     ? input.image.startsWith('http')
       ? input.image
@@ -110,21 +90,23 @@ export function buildProductLD(input: { name: string; description: string; path:
     : `${SITE.url}/og-hero.jpg`
   return {
     '@context': 'https://schema.org',
-    '@type': 'Product',
+    '@type': 'Service',
     name: input.name,
+    serviceType: input.name,
     description: input.description,
     image,
-    brand: { '@type': 'Brand', name: SITE.name },
     url: `${SITE.url}${input.path}`,
+    provider: { '@id': ORG_ID },
+    areaServed: { '@type': 'City', name: 'Berlin' },
   }
 }
 
-/** FAQPage — built from the shared FAQ content for a given locale. */
-export function buildFaqLD(locale: Locale): JsonLd {
+/** FAQPage — emit on ONE page only (/faq) and only for content visible there. */
+export function buildFaqLD(locale: Locale, items: Faq[] = FAQS): JsonLd {
   return {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
-    mainEntity: FAQS.map((f) => ({
+    mainEntity: items.map((f) => ({
       '@type': 'Question',
       name: f.q[locale === 'en' ? 'en' : 'de'],
       acceptedAnswer: { '@type': 'Answer', text: f.a[locale === 'en' ? 'en' : 'de'] },
@@ -148,36 +130,6 @@ export function buildImageGalleryLD(
   }
 }
 
-/** AggregateRating + individual Reviews wrapped under the org @id. Emit ONLY with
- *  real, verifiable ratings — fabricated review markup violates Google's policies. */
-export function buildAggregateRatingLD(
-  value: number,
-  count: number,
-  reviews: Array<{ author: string; body: string }> = [],
-): JsonLd {
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'Organization',
-    '@id': ORG_ID,
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: value,
-      reviewCount: count,
-      bestRating: 5,
-    },
-    ...(reviews.length
-      ? {
-          review: reviews.map((rv) => ({
-            '@type': 'Review',
-            author: { '@type': 'Person', name: rv.author },
-            reviewRating: { '@type': 'Rating', ratingValue: 5, bestRating: 5 },
-            reviewBody: rv.body,
-          })),
-        }
-      : {}),
-  }
-}
-
 // ── Per-page <head> builder ─────────────────────────────────────────────────
 export type PageHeadInput = {
   title: string
@@ -193,7 +145,10 @@ export type PageHeadInput = {
 
 const abs = (p: string) => (p.startsWith('http') ? p : `${SITE.url}${p}`)
 
-/** Returns { meta, links } ready to spread into a TanStack Route `head()`. */
+/** Returns { meta, links } ready to spread into a TanStack Route `head()`.
+ *  No hreflang: DE and EN share URLs (client-side toggle) and SSR always renders
+ *  German, so advertising per-language alternates would be contradictory markup.
+ *  Reintroduce hreflang only once locales get distinct crawlable URLs (/en/*). */
 export function pageHead(input: PageHeadInput) {
   const { title, description, path, locale, ogImage = '/og-hero.jpg', ogImageAlt, noindex } = input
   const canonical = abs(path === '/' ? '' : path)
@@ -204,7 +159,8 @@ export function pageHead(input: PageHeadInput) {
     { name: 'description', content: description },
     {
       name: 'robots',
-      content: noindex ? 'noindex, nofollow' : 'index, follow, max-image-preview:large',
+      // noindex pages keep `follow` so internal link equity still flows through.
+      content: noindex ? 'noindex, follow' : 'index, follow, max-image-preview:large',
     },
     // Open Graph
     { property: 'og:type', content: 'website' },
@@ -218,24 +174,15 @@ export function pageHead(input: PageHeadInput) {
     { property: 'og:image:type', content: 'image/jpeg' },
     { property: 'og:image:alt', content: ogImageAlt ?? title },
     { property: 'og:locale', content: OG_LOCALE[locale] },
-    ...ACTIVE_LOCALES.filter((l) => l !== locale).map((l) => ({
-      property: 'og:locale:alternate',
-      content: OG_LOCALE[l],
-    })),
     // Twitter
     { name: 'twitter:card', content: 'summary_large_image' },
     { name: 'twitter:title', content: title },
     { name: 'twitter:description', content: description },
     { name: 'twitter:image', content: image },
+    { name: 'twitter:image:alt', content: ogImageAlt ?? title },
   ]
 
-  const links = [
-    { rel: 'canonical', href: canonical },
-    // hreflang alternates (query-less; locale handled client-side, so self-referential
-    // alternates + x-default keep crawlers happy without per-locale URLs yet).
-    ...ACTIVE_LOCALES.map((l) => ({ rel: 'alternate', hrefLang: l, href: canonical })),
-    { rel: 'alternate', hrefLang: 'x-default', href: canonical },
-  ]
+  const links = [{ rel: 'canonical', href: canonical }]
 
   return { meta, links }
 }

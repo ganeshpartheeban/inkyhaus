@@ -1,7 +1,7 @@
-// Dark flyer-style footer (brand flyer: black bar, light text, orange accents)
-// with an editorial "Index No." that changes per route.
-import { Link, useRouterState } from '@tanstack/react-router'
-import { Globe, Mail, MessageCircle } from 'lucide-react'
+// Dark flyer-style footer (brand flyer: black bar, light text, orange accents).
+import { Link } from '@tanstack/react-router'
+import { Globe, Mail } from 'lucide-react'
+import { WhatsAppIcon } from './WhatsAppIcon'
 import { useI18n } from '../lib/i18n'
 import { COMPANY_NAV } from '../lib/nav'
 import { HUBS, PROMO_GROUPS, productsForHub } from '../lib/catalog'
@@ -9,22 +9,9 @@ import { SITE, whatsappLink } from '../lib/site-config'
 import { withBase } from '../lib/asset'
 import { OPEN_CONSENT_EVENT } from './CookieNotice'
 
-// Route -> two-digit index for the editorial footer marker.
-const INDEX_MAP: Record<string, string> = {
-  '/': '01',
-  '/textile-printing': '02',
-  '/promotional-products': '03',
-  '/printing-methods': '04',
-  '/gallery': '05',
-  '/about': '06',
-  '/contact': '07',
-}
-
 export function Footer() {
   const { t, locale } = useI18n()
   const l = locale === 'en' ? 'en' : 'de'
-  const pathname = useRouterState({ select: (s) => s.location.pathname })
-  const index = INDEX_MAP[pathname] ?? '··'
 
   const textile = productsForHub('textile-printing').map((p) => ({
     to: `${HUBS['textile-printing'].path}/${p.slug}`,
@@ -61,7 +48,7 @@ export function Footer() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              WhatsApp · {SITE.phone}
+              <WhatsAppIcon size={15} /> WhatsApp · {SITE.phone}
             </a>
             <a href={`tel:${SITE.phone.replace(/\s/g, '')}`} className="mt-2 block text-sm text-paper/60 transition-colors hover:text-paper">
               {t('footer.call')}: {SITE.phone}
@@ -98,7 +85,7 @@ export function Footer() {
             rel="noopener noreferrer"
             className="flex items-center gap-2 text-paper/80 transition-colors hover:text-paper"
           >
-            <MessageCircle size={16} className="text-accent-bright" aria-hidden /> {SITE.phone}
+            <WhatsAppIcon size={16} className="text-whatsapp" /> {SITE.phone}
           </a>
           <a href={`mailto:${SITE.email}`} className="flex items-center gap-2 text-paper/80 transition-colors hover:text-paper">
             <Mail size={16} className="text-accent-bright" aria-hidden /> {SITE.email}
@@ -116,8 +103,19 @@ export function Footer() {
           >
             {t('footer.consent')}
           </button>
-          <span className="tracking-widest text-paper/60">
-            {index} · {t('nav.home')}
+          <span>
+            {l === 'en' ? 'Designed & developed with ' : 'Designed & entwickelt mit '}
+            <span aria-hidden className="text-accent-bright">♥</span>
+            {l === 'en' ? ' by ' : ' von '}
+            <a
+              href="https://ganeshpartheeban.in"
+              target="_blank"
+              rel="author noopener"
+              title={l === 'en' ? 'Ganesh Partheeban — Portfolio' : 'Ganesh Partheeban — Portfolio'}
+              className="font-medium text-paper/80 underline-offset-2 transition-colors hover:text-paper hover:underline"
+            >
+              Ganesh Partheeban
+            </a>
           </span>
         </div>
       </div>

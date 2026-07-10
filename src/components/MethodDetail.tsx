@@ -7,14 +7,27 @@ import { PRODUCTS, productTo, type Method } from '../lib/catalog'
 import { Breadcrumbs, Section, SectionHeading } from './ui'
 import { Cover } from './Cover'
 import { Reveal } from './Reveal'
+import { JsonLd } from './JsonLd'
+import { buildBreadcrumbLD, buildOfferedServiceLD } from '../lib/seo'
 
 export function MethodDetail({ method }: { method: Method }) {
   const { t, locale } = useI18n()
   const l = locale === 'en' ? 'en' : 'de'
   const uses = PRODUCTS.filter((p) => p.methods.includes(method.slug))
+  const path = `/printing-methods/${method.slug}`
 
   return (
     <>
+      <JsonLd
+        data={[
+          buildBreadcrumbLD([
+            { name: 'Start', path: '/' },
+            { name: 'Druckverfahren', path: '/printing-methods' },
+            { name: method.name.de, path },
+          ]),
+          buildOfferedServiceLD({ name: method.name.de, description: method.description.de, path, image: method.image }),
+        ]}
+      />
       <Breadcrumbs
         items={[
           { name: t('nav.home'), to: '/' },

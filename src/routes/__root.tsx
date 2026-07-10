@@ -15,8 +15,12 @@ import { BottomTabBar } from '../components/BottomTabBar'
 import { TawkChat } from '../components/TawkChat'
 import { IntroLoader } from '../components/IntroLoader'
 import { JsonLd } from '../components/JsonLd'
-import { buildOrganizationLD, buildPersonLD, buildServiceLD } from '../lib/seo'
+import { buildLocalBusinessLD } from '../lib/seo'
 import { withBase } from '../lib/asset'
+// Hashed font URLs for preloading — same modules the CSS @imports reference,
+// so Vite emits identical asset URLs and the preload matches the CSS request.
+import antonWoff2 from '@fontsource/anton/files/anton-latin-400-normal.woff2?url'
+import interTightWoff2 from '@fontsource-variable/inter-tight/files/inter-tight-latin-wght-normal.woff2?url'
 
 // Code-split overlays (Build Brief §06): floating contact, cookie notice, modal.
 const FloatingContact = lazy(() =>
@@ -38,6 +42,10 @@ export const Route = createRootRoute({
       { title: 'Inkyhaus · Textildruck & individuelle Bekleidung in Berlin' },
     ],
     links: [
+      // Fonts first: they gate every heading (Anton) and all body text (Inter
+      // Tight); preloading skips the CSS→font two-hop discovery chain.
+      { rel: 'preload', href: antonWoff2, as: 'font', type: 'font/woff2', crossOrigin: 'anonymous' },
+      { rel: 'preload', href: interTightWoff2, as: 'font', type: 'font/woff2', crossOrigin: 'anonymous' },
       { rel: 'stylesheet', href: appCss },
       { rel: 'icon', href: withBase('/favicon.svg'), type: 'image/svg+xml' },
       { rel: 'icon', href: withBase('/favicon.ico'), sizes: 'any' },
@@ -49,10 +57,16 @@ export const Route = createRootRoute({
   component: RootLayout,
 })
 
+// Runs before first paint: skip the intro veil on repeat loads in the same tab
+// session so the brand moment plays once and never taxes LCP again.
+const INTRO_ONCE_SCRIPT =
+  "try{if(sessionStorage.getItem('ih-intro'))document.documentElement.setAttribute('data-skip-intro','');else sessionStorage.setItem('ih-intro','1')}catch(e){}"
+
 function RootDocument({ children }: { children: React.ReactNode }) {
   return (
     <html lang="de">
       <head>
+        <script dangerouslySetInnerHTML={{ __html: INTRO_ONCE_SCRIPT }} />
         <HeadContent />
       </head>
       <body>
@@ -92,7 +106,7 @@ function RootLayout() {
         <EngagementModal />
       </Suspense>
       <TawkChat />
-      <JsonLd data={[buildOrganizationLD(), buildPersonLD(), buildServiceLD()]} />
+      <JsonLd data={buildLocalBusinessLD()} />
     </I18nProvider>
   )
 }

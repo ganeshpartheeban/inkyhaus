@@ -14,7 +14,7 @@ export const Route = createFileRoute('/promotional-products/$slug')({
     const p = loaderData?.product
     if (!p) return {}
     return pageHead({
-      title: `${p.title.de} · Inkyhaus`,
+      title: `${p.title.de} mit Logo & Gravur · Inkyhaus Berlin`,
       description: p.description.de,
       path: `/promotional-products/${p.slug}`,
       locale: DEFAULT_LOCALE,

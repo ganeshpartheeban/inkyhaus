@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react'
 import { createFileRoute } from '@tanstack/react-router'
 import { X } from 'lucide-react'
-import { pageHead } from '../lib/seo'
+import { pageHead, buildBreadcrumbLD, buildImageGalleryLD } from '../lib/seo'
 import { useI18n, DEFAULT_LOCALE } from '../lib/i18n'
 import { GALLERY, GALLERY_FILTERS } from '../lib/catalog'
 import { Breadcrumbs, Section, SectionHeading } from '../components/ui'
 import { Reveal } from '../components/Reveal'
+import { JsonLd } from '../components/JsonLd'
 
 export const Route = createFileRoute('/gallery')({
   head: () =>
@@ -44,9 +45,19 @@ function Gallery() {
 
   return (
     <>
+      <JsonLd
+        data={[
+          buildBreadcrumbLD([
+            { name: 'Start', path: '/' },
+            { name: 'Galerie', path: '/gallery' },
+          ]),
+          buildImageGalleryLD(GALLERY.map((g) => ({ url: g.src, caption: g.alt.de, location: 'Berlin' }))),
+        ]}
+      />
       <Breadcrumbs items={[{ name: t('nav.home'), to: '/' }, { name: t('nav.gallery') }]} />
       <Section className="!pt-8">
         <SectionHeading
+          as="h1"
           eyebrow={t('nav.gallery')}
           title={l === 'en' ? 'Selected work' : 'Ausgewählte Arbeiten'}
           subtitle={l === 'en' ? 'A cross-section of what leaves the Berlin studio.' : 'Ein Querschnitt dessen, was unser Berliner Studio verlässt.'}
@@ -75,7 +86,9 @@ function Gallery() {
                 <img
                   src={g.src}
                   alt={g.alt[l]}
-                  loading="lazy"
+                  // first row is above the fold — eager-load it so LCP isn't lazily deferred
+                  loading={i < 4 ? 'eager' : 'lazy'}
+                  fetchPriority={i < 2 ? 'high' : 'auto'}
                   decoding="async"
                   className="aspect-square w-full object-cover transition-transform duration-500 group-hover:scale-105 motion-reduce:transition-none"
                 />

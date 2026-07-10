@@ -229,10 +229,11 @@ const DICTS: Record<Locale, Partial<Record<Key, string>>> = { de, en, fr, es, it
 function detectLocale(): Locale {
   if (typeof window === 'undefined') return DEFAULT_LOCALE
   try {
+    // Only an explicit user choice switches the language. No navigator.language
+    // auto-detect: Googlebot renders with en-US, and auto-flipping the DOM to EN
+    // under the German canonical URL would make the indexed content mismatch.
     const stored = window.localStorage.getItem(STORAGE_KEY) as Locale | null
     if (stored && LOCALES.includes(stored)) return stored
-    const nav = (navigator.language || '').slice(0, 2).toLowerCase() as Locale
-    if (ACTIVE_LOCALES.includes(nav)) return nav
   } catch {
     /* storage unavailable */
   }

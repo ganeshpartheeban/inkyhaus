@@ -31,10 +31,10 @@ function Business() {
   const l = locale === 'en' ? 'en' : 'de'
   return (
     <>
-      <JsonLd data={buildBreadcrumbLD([{ name: 'Home', path: '/' }, { name: 'For Business', path: '/business' }])} />
+      <JsonLd data={buildBreadcrumbLD([{ name: 'Start', path: '/' }, { name: 'Firmenkunden', path: '/business' }])} />
       <Breadcrumbs items={[{ name: t('nav.home'), to: '/' }, { name: t('nav.business') }]} />
       <Section className="!pt-8">
-        <SectionHeading eyebrow={t('home.business.eyebrow')} title={t('home.business.title')} subtitle={t('home.business.body')} />
+        <SectionHeading as="h1" eyebrow={t('home.business.eyebrow')} title={t('home.business.title')} subtitle={t('home.business.body')} />
         <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {SOLUTIONS.map((s, i) => (
             <Reveal key={i} delay={i * 40}>

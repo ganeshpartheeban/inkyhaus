@@ -403,7 +403,11 @@ export function getProduct(slug: string): Product | undefined {
   return PRODUCTS.find((p) => p.slug === slug)
 }
 export function relatedProducts(p: Product, n = 3): Product[] {
-  return PRODUCTS.filter((x) => x.hub === p.hub && x.slug !== p.slug).slice(0, n)
+  // Same group first (most relevant), then the rest of the hub as filler.
+  const siblings = PRODUCTS.filter((x) => x.hub === p.hub && x.slug !== p.slug)
+  const sameGroup = siblings.filter((x) => x.group === p.group)
+  const rest = siblings.filter((x) => x.group !== p.group)
+  return [...sameGroup, ...rest].slice(0, n)
 }
 
 // ── Printing methods ──────────────────────────────────────────────────────────

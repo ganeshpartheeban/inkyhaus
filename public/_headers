@@ -30,8 +30,11 @@
   Cache-Control: public, max-age=3600
 /robots.txt
   Cache-Control: public, max-age=3600
+/manifest.json
+  Cache-Control: public, max-age=86400
 
-# Baseline security headers for all responses.
+# Baseline security headers for static-asset responses. (SSR HTML never passes
+# through _headers on Workers — src/server.ts sets the same headers for pages.)
 /*
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin

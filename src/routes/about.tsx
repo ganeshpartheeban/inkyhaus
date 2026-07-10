@@ -24,7 +24,7 @@ function About() {
   const l = locale === 'en' ? 'en' : 'de'
   return (
     <>
-      <JsonLd data={buildBreadcrumbLD([{ name: 'Home', path: '/' }, { name: 'About', path: '/about' }])} />
+      <JsonLd data={buildBreadcrumbLD([{ name: 'Start', path: '/' }, { name: 'Über uns', path: '/about' }])} />
       <Breadcrumbs items={[{ name: t('nav.home'), to: '/' }, { name: t('nav.about') }]} />
       <Section className="!pt-8">
         <div className="max-w-3xl">

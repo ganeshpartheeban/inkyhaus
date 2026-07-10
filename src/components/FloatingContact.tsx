@@ -1,7 +1,7 @@
 // Floating WhatsApp button — source-aware: prefilled message includes the current
 // route context, derived from the catalog. Sits above the bottom tab bar (§07).
-import { MessageCircle } from 'lucide-react'
 import { useRouterState } from '@tanstack/react-router'
+import { WhatsAppIcon } from './WhatsAppIcon'
 import { useI18n } from '../lib/i18n'
 import { whatsappLink } from '../lib/site-config'
 import { HUBS, getProduct, getMethod } from '../lib/catalog'
@@ -22,10 +22,11 @@ export function FloatingContact() {
       href={whatsappLink(message)}
       target="_blank"
       rel="noopener noreferrer"
-      aria-label="WhatsApp"
+      aria-label="Chat auf WhatsApp starten"
+      title="WhatsApp"
       className="fixed right-4 z-30 grid h-14 w-14 place-items-center rounded-full bg-whatsapp text-white shadow-lg shadow-black/15 transition-transform active:scale-95 hover:scale-105 motion-reduce:transition-none bottom-[calc(env(safe-area-inset-bottom)+5rem)] lg:bottom-6"
     >
-      <MessageCircle size={26} strokeWidth={2} aria-hidden />
+      <WhatsAppIcon size={28} />
     </a>
   )
 }

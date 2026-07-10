@@ -6,14 +6,14 @@ import {
 } from 'lucide-react'
 import { SITE } from '../lib/site-config'
 import { useI18n, DEFAULT_LOCALE } from '../lib/i18n'
-import { pageHead, buildFaqLD, buildAggregateRatingLD } from '../lib/seo'
-import { HUBS, METHODS, getProduct, productTo, type Product } from '../lib/catalog'
-import { FAQS, TESTIMONIALS, RATING, RATING_IS_REAL, WHY_US, HOW_STEPS } from '../lib/content'
+import { pageHead } from '../lib/seo'
+import { HUBS, METHODS, GALLERY, getProduct, productTo, type Product } from '../lib/catalog'
+import { FAQS, TESTIMONIALS, RATING, WHY_US, HOW_STEPS } from '../lib/content'
 import { withBase } from '../lib/asset'
 import { Cover } from '../components/Cover'
 import { Reveal } from '../components/Reveal'
+import { TiltCard } from '../components/TiltCard'
 import { Section, SectionHeading } from '../components/ui'
-import { JsonLd } from '../components/JsonLd'
 
 const FEATURED = ['t-shirts', 'hoodies', 'caps', 'mugs', 'corporate-gift-sets', 'wedding-gifts']
 const WHY_ICONS = [BadgeCheck, Zap, PackageCheck, Building2, MapPin, PenTool]
@@ -52,7 +52,7 @@ export const Route = createFileRoute('/')({
     pageHead({
       title: 'Inkyhaus · Textildruck & Werbeartikel in Berlin',
       description:
-        'Premium Textildruck & Werbeartikel in Berlin: T-Shirts, Hoodies, Workwear & Teamwear, dazu Tassen, Geschenke, Gravuren und Firmenausstattung. Keine Mindestmenge, 24–72h, Express möglich.',
+        'Premium Textildruck & Werbeartikel in Berlin: T-Shirts, Hoodies, Workwear, Tassen, Gravuren & mehr. Keine Mindestmenge, 24–72h, Express möglich.',
       path: '/',
       locale: DEFAULT_LOCALE,
       ogImageAlt: 'Inkyhaus — Textildruck & Werbeartikel Berlin',
@@ -68,13 +68,9 @@ function Home() {
 
   return (
     <>
-      <JsonLd
-        data={
-          RATING_IS_REAL
-            ? [buildFaqLD(DEFAULT_LOCALE), buildAggregateRatingLD(RATING.value, RATING.count, TESTIMONIALS.map((tm) => ({ author: tm.author, body: tm.quote.en })))]
-            : buildFaqLD(DEFAULT_LOCALE)
-        }
-      />
+      {/* No FAQPage LD here (lives on /faq only) and no self-serving review
+          markup (Google ignores/penalises org-controlled review LD) — the
+          rating stays visible in SocialProof and links to the Google listing. */}
       <Hero />
       <TrustStrip />
       <Hubs />
@@ -109,12 +105,14 @@ function Home() {
                 {L('Wir machen’s persönlich.', 'We make it personal.')}
               </span>
             </h1>
-            <p className="anim-rise mt-5 max-w-xl text-pretty text-lg text-muted" style={{ animationDelay: '180ms' }}>
+            {/* h2 (styled as body copy) so the page's topical keywords sit in a
+                heading — the h1 above is deliberately the brand slogan. */}
+            <h2 className="anim-rise mt-5 max-w-xl font-sans text-lg font-normal normal-case leading-relaxed tracking-normal text-pretty text-muted" style={{ animationDelay: '180ms' }}>
               {L(
                 'Premium Textildruck & Werbeartikel in Berlin — vom einzelnen Stück bis zum großen Firmenauftrag, für Unternehmen, Events und Privatpersonen.',
                 'Premium textile printing & promotional products in Berlin — from single pieces to bulk corporate orders, for businesses, events and individuals.',
               )}
-            </p>
+            </h2>
 
             {/* Flyer services row — the five core techniques */}
             <ul className="anim-rise mt-8 grid max-w-xl grid-cols-3 gap-x-4 gap-y-6 sm:grid-cols-5" style={{ animationDelay: '240ms' }}>
@@ -166,23 +164,25 @@ function Home() {
             </div>
           </div>
 
-          <div className="anim-rise relative" style={{ animationDelay: '240ms' }}>
-            <img
-              src={withBase('/img/hero.webp')}
-              alt="Inkyhaus Studio Berlin — bedrucktes T-Shirt, Trinkflasche, Cap, Tasse und Gravur vor der Transferpresse"
-              width={1000}
-              height={1250}
-              fetchPriority="high"
-              decoding="async"
-              className="max-h-[30rem] w-full rounded-[var(--radius-card)] border border-line object-cover object-top shadow-sm lg:max-h-none lg:aspect-[4/5]"
-            />
-            {/* All-in-One badge, mirroring the flyer's bottom-right box */}
-            <div className="absolute -bottom-3 right-4 rounded-xl bg-ink px-5 py-3 text-right shadow-lg sm:right-6">
-              <span className="font-script block text-2xl leading-none text-accent-soft">{L('All-in-One', 'All-in-One')}</span>
-              <span className="font-display mt-1 block text-xs tracking-wide text-white">
-                {L('Personalisierungs- & Druckstudio', 'Personalization & Print Studio')}
-              </span>
-            </div>
+          <div className="anim-rise" style={{ animationDelay: '240ms' }}>
+            <TiltCard max={5} className="relative">
+              <img
+                src={withBase('/img/hero.webp')}
+                alt="Inkyhaus Studio Berlin — bedrucktes T-Shirt, Trinkflasche, Cap, Tasse und Gravur vor der Transferpresse"
+                width={1000}
+                height={1250}
+                fetchPriority="high"
+                decoding="async"
+                className="max-h-[30rem] w-full rounded-[var(--radius-card)] border border-line object-cover object-top shadow-sm lg:max-h-none lg:aspect-[4/5]"
+              />
+              {/* All-in-One badge, mirroring the flyer's bottom-right box; floats in 3D on tilt */}
+              <div className="tilt-pop absolute -bottom-3 right-4 rounded-xl bg-ink px-5 py-3 text-right shadow-lg sm:right-6">
+                <span className="font-script block text-2xl leading-none text-accent-soft">{L('All-in-One', 'All-in-One')}</span>
+                <span className="font-display mt-1 block text-xs tracking-wide text-white">
+                  {L('Personalisierungs- & Druckstudio', 'Personalization & Print Studio')}
+                </span>
+              </div>
+            </TiltCard>
           </div>
         </div>
       </section>
@@ -248,17 +248,19 @@ function Home() {
         <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {featured.map((p, i) => (
             <Reveal key={p.slug} delay={i * 40}>
-              <Link
-                to={productTo(p.hub)}
-                params={{ slug: p.slug }}
-                className="group block overflow-hidden rounded-[var(--radius-card)] border border-line bg-surface transition-transform hover:-translate-y-0.5"
-              >
-                <Cover src={p.cover} accent={p.accent} alt={p.title[l]} sizes="(min-width: 1024px) 30vw, 45vw" className="aspect-[16/10] w-full" />
-                <div className="p-4">
-                  <h3 className="text-base font-semibold leading-tight">{p.title[l]}</h3>
-                  <p className="mt-1 text-xs text-muted">{p.tagline[l]}</p>
-                </div>
-              </Link>
+              <TiltCard max={6}>
+                <Link
+                  to={productTo(p.hub)}
+                  params={{ slug: p.slug }}
+                  className="group block overflow-hidden rounded-[var(--radius-card)] border border-line bg-surface"
+                >
+                  <Cover src={p.cover} accent={p.accent} alt={p.title[l]} sizes="(min-width: 1024px) 30vw, 45vw" className="aspect-[16/10] w-full" />
+                  <div className="p-4">
+                    <h3 className="text-base font-semibold leading-tight">{p.title[l]}</h3>
+                    <p className="mt-1 text-xs text-muted">{p.tagline[l]}</p>
+                  </div>
+                </Link>
+              </TiltCard>
             </Reveal>
           ))}
         </div>
@@ -323,10 +325,12 @@ function Home() {
         <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {METHODS.map((m, i) => (
             <Reveal key={m.slug} delay={i * 40}>
-              <Link to="/printing-methods/$slug" params={{ slug: m.slug }} className="group block">
-                <Cover src={m.image} accent={m.accent} alt={m.name[l]} sizes="(min-width: 1024px) 23vw, 45vw" className="aspect-square w-full rounded-2xl transition-transform group-hover:-translate-y-0.5" />
-                <p className="mt-2 text-center text-sm font-medium">{m.name[l]}</p>
-              </Link>
+              <TiltCard max={6}>
+                <Link to="/printing-methods/$slug" params={{ slug: m.slug }} className="group block">
+                  <Cover src={m.image} accent={m.accent} alt={m.name[l]} sizes="(min-width: 1024px) 23vw, 45vw" className="aspect-square w-full rounded-2xl" />
+                  <p className="mt-2 text-center text-sm font-medium">{m.name[l]}</p>
+                </Link>
+              </TiltCard>
             </Reveal>
           ))}
         </div>
@@ -392,7 +396,11 @@ function Home() {
   }
 
   function GalleryTeaser() {
-    const shots = ['sportswear', 'geschenke', 'champagne-glass-design', 'wood-emboss'].map((n) => withBase(`/img/${n}.webp`))
+    // Real portfolio shots with their curated gallery alt text (content images,
+    // not decoration — see catalog GALLERY).
+    const shots = ['sportswear', 'geschenke', 'champagne-glass-design', 'wood-emboss']
+      .map((n) => GALLERY.find((g) => g.src === withBase(`/img/${n}.webp`)))
+      .filter((g): g is NonNullable<typeof g> => g != null)
     return (
       <Section className="bg-surface/50">
         <div className="flex items-end justify-between gap-4">
@@ -402,9 +410,11 @@ function Home() {
           </Link>
         </div>
         <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-4">
-          {shots.map((src, i) => (
-            <Reveal key={i} delay={i * 40}>
-              <img src={src} alt="" aria-hidden loading="lazy" decoding="async" className="aspect-square w-full rounded-2xl border border-line object-cover" />
+          {shots.map((g, i) => (
+            <Reveal key={g.src} delay={i * 40}>
+              <Link to="/gallery" aria-label={g.alt[l]}>
+                <img src={g.src} alt={g.alt[l]} loading="lazy" decoding="async" className="aspect-square w-full rounded-2xl border border-line object-cover" />
+              </Link>
             </Reveal>
           ))}
         </div>
@@ -422,9 +432,14 @@ function Home() {
             ))}
           </div>
           <h2 className="text-3xl sm:text-4xl">{t('home.social.title')}</h2>
-          <p className="text-sm text-muted">
-            {RATING.value.toLocaleString(l === 'en' ? 'en' : 'de', { minimumFractionDigits: 1 })} / 5 · {RATING.count} {t('home.social.reviews')}
-          </p>
+          <a
+            href={SITE.mapsUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm text-muted underline-offset-2 hover:text-ink hover:underline"
+          >
+            {RATING.value.toLocaleString(l === 'en' ? 'en' : 'de', { minimumFractionDigits: 1 })} / 5 · {RATING.count} {t('home.social.reviews')} · Google
+          </a>
         </div>
         <div className="mt-10 grid gap-6 lg:grid-cols-3">
           {TESTIMONIALS.slice(0, 6).map((tm, i) => (

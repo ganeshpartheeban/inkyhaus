@@ -10,7 +10,7 @@ import { Breadcrumbs, Section, SectionHeading } from './ui'
 import { Cover } from './Cover'
 import { Reveal } from './Reveal'
 import { JsonLd } from './JsonLd'
-import { buildBreadcrumbLD, buildProductLD } from '../lib/seo'
+import { buildBreadcrumbLD, buildOfferedServiceLD } from '../lib/seo'
 
 const EnquiryForm = lazy(() => import('./EnquiryForm'))
 
@@ -25,12 +25,13 @@ export function ProductDetail({ product }: { product: Product }) {
     <>
       <JsonLd
         data={[
+          // LD names in German — matches the SSR-rendered (default) locale.
           buildBreadcrumbLD([
-            { name: 'Home', path: '/' },
-            { name: hub.title[l], path: hub.path },
-            { name: product.title[l], path },
+            { name: 'Start', path: '/' },
+            { name: hub.title.de, path: hub.path },
+            { name: product.title.de, path },
           ]),
-          buildProductLD({ name: product.title[l], description: product.description[l], path, image: product.cover }),
+          buildOfferedServiceLD({ name: product.title.de, description: product.description.de, path, image: product.cover }),
         ]}
       />
       <Breadcrumbs

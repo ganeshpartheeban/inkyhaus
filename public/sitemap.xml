@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Hand-authored sitemap. Keep in sync with the catalog (src/lib/catalog.ts).
+<!-- Hand-authored sitemap. Keep in sync with the catalog (src/lib/catalog.ts)
+     AND the non-catalog content pages (faq, business, gallery, about, contact).
      Legal pages (imprint/privacy/terms) are intentionally excluded (noindex). -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://inkyhaus.de/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
@@ -41,6 +42,8 @@
   <url><loc>https://inkyhaus.de/printing-methods/3d-printing</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
 
   <url><loc>https://inkyhaus.de/gallery</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://inkyhaus.de/business</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://inkyhaus.de/faq</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://inkyhaus.de/about</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
   <url><loc>https://inkyhaus.de/contact</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
 </urlset>

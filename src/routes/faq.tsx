@@ -24,13 +24,13 @@ function Faq() {
     <>
       <JsonLd
         data={[
-          buildBreadcrumbLD([{ name: 'Home', path: '/' }, { name: 'FAQ', path: '/faq' }]),
+          buildBreadcrumbLD([{ name: 'Start', path: '/' }, { name: 'FAQ', path: '/faq' }]),
           buildFaqLD(DEFAULT_LOCALE),
         ]}
       />
       <Breadcrumbs items={[{ name: t('nav.home'), to: '/' }, { name: t('nav.faq') }]} />
       <Section className="!pt-8">
-        <SectionHeading title={t('home.faq.title')} />
+        <SectionHeading as="h1" title={t('home.faq.title')} />
         <div className="mt-8 max-w-3xl divide-y divide-line border-y border-line">
           {FAQS.map((f, i) => (
             <details key={i} className="group py-4">

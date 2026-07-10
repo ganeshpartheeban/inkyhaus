@@ -9,8 +9,8 @@ import { Reveal } from '../components/Reveal'
 export const Route = createFileRoute('/printing-methods/')({
   head: () =>
     pageHead({
-      title: 'Druckverfahren · DTF, Stickerei, Sublimation, Lasergravur · Inkyhaus',
-      description: 'DTF-Druck, Stickerei, Sublimationsdruck und Lasergravur — wir wählen das passende Verfahren für Ihr Produkt und Design.',
+      title: 'Druckverfahren in Berlin: DTF, HTV, Stick, Sublimation & mehr · Inkyhaus',
+      description: 'DTF, HTV/Flexdruck, Stickerei, Sublimation, Lasergravur, Sticker & Vinyl und 3D-Druck — wir wählen das passende Verfahren für Ihr Produkt.',
       path: '/printing-methods',
       locale: DEFAULT_LOCALE,
     }),
@@ -25,6 +25,7 @@ function Methods() {
       <Breadcrumbs items={[{ name: t('nav.home'), to: '/' }, { name: t('nav.methods') }]} />
       <Section className="!pt-8">
         <SectionHeading
+          as="h1"
           eyebrow={t('nav.methods')}
           title={l === 'en' ? 'The right method for every product' : 'Das passende Verfahren für jedes Produkt'}
           subtitle={l === 'en' ? 'Each technique shines in a different context — here is when we use which.' : 'Jede Technik spielt in einem anderen Kontext ihre Stärken aus — hier lesen Sie, wann wir welche einsetzen.'}

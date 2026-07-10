@@ -14,7 +14,7 @@ export const Route = createFileRoute('/textile-printing/$slug')({
     const p = loaderData?.product
     if (!p) return {}
     return pageHead({
-      title: `${p.title.de} · Inkyhaus`,
+      title: `${p.title.de} in Berlin · Inkyhaus`,
       description: p.description.de,
       path: `/textile-printing/${p.slug}`,
       locale: DEFAULT_LOCALE,

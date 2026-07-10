@@ -29,16 +29,19 @@ export function SectionHeading({
   title,
   subtitle,
   className = '',
+  as: Tag = 'h2',
 }: {
   eyebrow?: string
   title: string
   subtitle?: string
   className?: string
+  /** Use `h1` when this is the page's main title (each page needs exactly one h1). */
+  as?: 'h1' | 'h2'
 }) {
   return (
     <div className={`max-w-2xl ${className}`}>
       {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
-      <h2 className="mt-3 text-balance text-3xl sm:text-4xl">{title}</h2>
+      <Tag className="mt-3 text-balance text-3xl sm:text-4xl">{title}</Tag>
       {subtitle && <p className="mt-3 text-pretty text-muted">{subtitle}</p>}
     </div>
   )

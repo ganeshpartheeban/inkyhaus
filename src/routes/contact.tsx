@@ -1,6 +1,6 @@
 import { lazy, Suspense } from 'react'
 import { createFileRoute } from '@tanstack/react-router'
-import { MessageCircle, MapPin, Clock, Truck, CreditCard, Wifi, Accessibility, Heart, Check, Mail, Phone } from 'lucide-react'
+import { MapPin, Clock, Truck, CreditCard, Wifi, Accessibility, Heart, Check, Mail, Phone } from 'lucide-react'
 import { useI18n, DEFAULT_LOCALE } from '../lib/i18n'
 import { pageHead, buildBreadcrumbLD } from '../lib/seo'
 import { SITE, whatsappLink } from '../lib/site-config'
@@ -8,6 +8,7 @@ import { STORE_INFO } from '../lib/content'
 import { Breadcrumbs, Section, SectionHeading } from '../components/ui'
 import { JsonLd } from '../components/JsonLd'
 import { MapCard } from '../components/MapCard'
+import { WhatsAppIcon } from '../components/WhatsAppIcon'
 
 const EnquiryForm = lazy(() => import('../components/EnquiryForm'))
 
@@ -15,7 +16,8 @@ export const Route = createFileRoute('/contact')({
   head: () =>
     pageHead({
       title: 'Kontakt & Angebot anfragen · Inkyhaus Berlin',
-      description: 'Fordern Sie Ihr unverbindliches Angebot an — die meisten Anfragen beantworten wir am selben Tag.',
+      description:
+        'Kontakt zu Inkyhaus in Berlin-Friedrichshain: Angebot per Formular, WhatsApp oder E-Mail anfragen — Antwort meist am selben Tag. Abholung & Lieferung möglich.',
       path: '/contact',
       locale: DEFAULT_LOCALE,
     }),
@@ -27,7 +29,7 @@ function Contact() {
   const l = locale === 'en' ? 'en' : 'de'
   return (
     <>
-      <JsonLd data={buildBreadcrumbLD([{ name: 'Home', path: '/' }, { name: 'Contact', path: '/contact' }])} />
+      <JsonLd data={buildBreadcrumbLD([{ name: 'Start', path: '/' }, { name: 'Kontakt', path: '/contact' }])} />
       <Breadcrumbs items={[{ name: t('nav.home'), to: '/' }, { name: t('nav.contact') }]} />
       <Section id="booking-enquiry" className="!pt-8 scroll-mt-20">
         <div className="grid gap-10 lg:grid-cols-[1.2fr_1fr]">
@@ -55,10 +57,10 @@ function Contact() {
               rel="noopener noreferrer"
               className="flex items-center gap-3 rounded-2xl border border-line bg-surface p-5 transition-colors hover:border-whatsapp"
             >
-              <MessageCircle className="text-whatsapp" aria-hidden />
+              <WhatsAppIcon className="text-whatsapp" />
               <span>
                 <span className="block font-medium">WhatsApp</span>
-                <span className="block text-sm text-muted">+49 176 63648012</span>
+                <span className="block text-sm text-muted">{SITE.phone}</span>
               </span>
             </a>
             <a

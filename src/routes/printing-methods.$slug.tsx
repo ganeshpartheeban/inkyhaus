@@ -14,7 +14,7 @@ export const Route = createFileRoute('/printing-methods/$slug')({
     const m = loaderData?.method
     if (!m) return {}
     return pageHead({
-      title: `${m.name.de} · Druckverfahren · Inkyhaus`,
+      title: `${m.name.de} in Berlin · Druckverfahren · Inkyhaus`,
       description: m.description.de,
       path: `/printing-methods/${m.slug}`,
       locale: DEFAULT_LOCALE,
