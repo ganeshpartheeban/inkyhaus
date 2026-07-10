@@ -36,6 +36,9 @@
   <url><loc>https://inkyhaus.de/printing-methods/embroidery</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://inkyhaus.de/printing-methods/sublimation</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://inkyhaus.de/printing-methods/laser-engraving</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://inkyhaus.de/printing-methods/htv</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://inkyhaus.de/printing-methods/sticker-vinyl</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://inkyhaus.de/printing-methods/3d-printing</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
 
   <url><loc>https://inkyhaus.de/gallery</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://inkyhaus.de/about</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>

@@ -18,8 +18,13 @@ export function IntroLoader() {
           fetchPriority="high"
           decoding="async"
         />
-        <span className="font-serif text-2xl tracking-tight text-ink">Inkyhaus</span>
-        <span className="intro-bar block h-[3px] w-24 rounded-full bg-accent" />
+        <span className="flex flex-col items-center gap-1">
+          <span className="font-serif text-2xl tracking-tight text-ink">Inkyhaus</span>
+          <span className="text-[8px] font-semibold uppercase tracking-[0.28em] text-ink-soft">
+            Custom Personalization
+          </span>
+        </span>
+        <span className="intro-bar block h-[3px] w-24 rounded-full bg-accent-bright" />
       </div>
     </div>
   )

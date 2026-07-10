@@ -14,7 +14,12 @@ export function Header() {
       <div className="container-edge flex h-16 items-center justify-between gap-4">
         <Link to="/" className="flex items-center gap-2 shrink-0" aria-label="Inkyhaus — Start">
           <img src={withBase('/logo-mark-dark.png')} alt="" aria-hidden width={32} height={32} className="h-8 w-8 object-contain" />
-          <span className="font-serif text-xl font-medium tracking-tight">Inkyhaus</span>
+          <span className="flex flex-col leading-none">
+            <span className="font-serif text-xl font-medium tracking-tight">Inkyhaus</span>
+            <span className="mt-0.5 text-[7.5px] font-semibold uppercase tracking-[0.24em] text-ink-soft">
+              Custom Personalization
+            </span>
+          </span>
         </Link>
 
         <nav className="hidden lg:flex items-center gap-6 text-sm">

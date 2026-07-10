@@ -440,6 +440,30 @@ export const METHODS: Method[] = [
     bestFor: { de: 'Geschenke, Pokale, Stifte, Flaschen und Schilder.', en: 'Gifts, awards, pens, bottles and signs.' },
     image: c('/img/method-laser-engraving.webp'),
   },
+  {
+    slug: 'htv', accent: 20,
+    name: { de: 'HTV / Flexdruck', en: 'HTV / Flex Printing' },
+    tagline: { de: 'Konturschnitt, satte Deckkraft', en: 'Cut vinyl, bold coverage' },
+    description: { de: 'Heat Transfer Vinyl wird konturgeschnitten und unter der Transferpresse aufgebracht — gestochen scharfe Kanten, kräftige Einzelfarben und sehr langlebig.', en: 'Heat transfer vinyl is contour-cut and applied under the heat press — razor-sharp edges, bold solid colours and very durable.' },
+    bestFor: { de: 'Namen, Nummern und Logos in 1–3 Farben auf Shirts und Teamwear.', en: 'Names, numbers and logos in 1–3 colours on shirts and teamwear.' },
+    image: c('/img/method-htv.webp'),
+  },
+  {
+    slug: 'sticker-vinyl', accent: 230,
+    name: { de: 'Sticker & Vinyl', en: 'Stickers & Vinyl' },
+    tagline: { de: 'Aufkleber, Banner & Beschriftung', en: 'Stickers, banners & lettering' },
+    description: { de: 'Konturgeschnittene Aufkleber, wetterfeste Vinylfolien und Banner — für Verpackung, Laden, Schaufenster und Außeneinsatz.', en: 'Contour-cut stickers, weatherproof vinyl and banners — for packaging, shops, window lettering and outdoor use.' },
+    bestFor: { de: 'Aufkleber, Etiketten, Banner und Schaufensterbeschriftung.', en: 'Stickers, labels, banners and window lettering.' },
+    image: c('/img/method-sticker-vinyl.webp'),
+  },
+  {
+    slug: '3d-printing', accent: 280,
+    name: { de: '3D-Druck', en: '3D Printing' },
+    tagline: { de: 'Individuell & kreativ', en: 'Custom & creative' },
+    description: { de: 'Vom Prototyp bis zum personalisierten Geschenk — wir drucken individuelle 3D-Objekte nach Ihrer Vorlage oder entwickeln das Design gemeinsam mit Ihnen.', en: 'From prototypes to personalised gifts — we print custom 3D objects from your file or develop the design together with you.' },
+    bestFor: { de: 'Prototypen, Namensschilder, Deko und individuelle Einzelstücke.', en: 'Prototypes, name tags, decor and one-off custom pieces.' },
+    image: c('/img/method-3d-printing.webp'),
+  },
 ]
 export function getMethod(slug: string): Method | undefined {
   return METHODS.find((m) => m.slug === slug)

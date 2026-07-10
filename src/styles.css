@@ -1,31 +1,39 @@
 @import 'tailwindcss';
-/* Self-hosted variable font (font-display: swap is set by fontsource). */
+/* Self-hosted fonts (font-display: swap is set by fontsource). */
 @import '@fontsource-variable/inter-tight';
+@import '@fontsource/anton'; /* condensed display caps (brand flyer headline) */
+@import '@fontsource/caveat/600.css'; /* handwritten script accent ("All-in-One") */
 
 /* ── Design tokens (OKLCH) ─────────────────────────────────────────────────
-   Light, minimal, contemporary: white base, near-black type, solid-black CTAs,
-   one restrained warm accent. Sans-serif throughout. Built on semantic tokens
-   so the whole UI follows. */
+   Brand system from the Inkyhaus print flyer (design-src/model.png): warm cream
+   paper, near-black ink, burnt-orange accent, condensed uppercase display type
+   with a handwritten script accent. Values are sampled from the flyer, then
+   darkened where needed to pass WCAG AA on cream (checked: accent 5.1:1,
+   accent-bright 3.4:1 display-only, muted 5.5:1). Built on semantic tokens so
+   the whole UI follows. */
 @theme {
-  --color-ink: oklch(0.22 0.006 265); /* primary text (near-black) */
-  --color-ink-soft: oklch(0.44 0.008 265);
-  --color-paper: oklch(0.992 0.001 95); /* page background (near-white) */
-  --color-surface: oklch(1 0 0); /* cards / panels (white) */
-  --color-surface-2: oklch(0.965 0.003 265);
-  --color-muted: oklch(0.52 0.008 265);
-  --color-line: oklch(0.9 0.004 265); /* light hairline borders */
+  --color-ink: oklch(0.21 0.01 80); /* warm near-black (flyer #151714) */
+  --color-ink-soft: oklch(0.42 0.014 78);
+  --color-paper: oklch(0.93 0.018 85); /* warm cream page background (flyer) */
+  --color-surface: oklch(0.965 0.012 85); /* lighter cream cards / panels */
+  --color-surface-2: oklch(0.895 0.022 85);
+  --color-muted: oklch(0.47 0.016 78);
+  --color-line: oklch(0.845 0.022 85); /* warm hairline borders */
 
-  --color-accent: oklch(0.54 0.15 45); /* warm burnt-orange — AA-contrast on white (5.4:1) */
+  --color-accent: oklch(0.5 0.14 52); /* burnt orange — AA on cream (5.1:1) */
   --color-accent-2: oklch(0.5 0.16 40);
-  --color-accent-strong: oklch(0.47 0.15 45);
-  --color-accent-soft: oklch(0.95 0.03 65); /* light warm tint for soft fills */
+  --color-accent-strong: oklch(0.45 0.14 50);
+  --color-accent-bright: oklch(0.6 0.155 52); /* flyer headline orange — large text only (3.4:1) */
+  --color-accent-soft: oklch(0.92 0.045 70); /* light warm tint for soft fills */
 
   --color-whatsapp: oklch(0.6 0.15 150);
 
-  /* Headings use the same geometric sans; `font-serif` is repointed so existing
-     markup that used it now renders sans without per-component edits. */
+  /* Display = Anton (flyer headline). `font-serif` stays the body sans so the
+     wordmark/labels that use it keep the clean grotesk look of the flyer logo. */
   --font-sans: 'Inter Tight Variable', ui-sans-serif, system-ui, -apple-system, sans-serif;
   --font-serif: 'Inter Tight Variable', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-display: 'Anton', 'Arial Narrow', ui-sans-serif, system-ui, sans-serif;
+  --font-script: 'Caveat', 'Bradley Hand', cursive;
 
   --radius-card: 0.75rem;
 
@@ -61,8 +69,17 @@
     text-rendering: optimizeLegibility;
   }
 
+  /* Flyer typography: page + section titles in condensed uppercase display
+     caps; smaller headings stay in the clean grotesk for readability. */
   h1,
-  h2,
+  h2 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.012em;
+    line-height: 1.04;
+  }
+
   h3,
   h4 {
     font-family: var(--font-sans);
@@ -154,6 +171,21 @@
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+}
+
+/* Flyer display / script type helpers */
+@utility font-display {
+  font-family: var(--font-display);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.012em;
+}
+
+@utility font-script {
+  font-family: var(--font-script);
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: 0;
 }
 
 /* soft neutral lift for cards / feature panels */

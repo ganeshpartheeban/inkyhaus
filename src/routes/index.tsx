@@ -2,6 +2,7 @@ import { createFileRoute, Link } from '@tanstack/react-router'
 import {
   ArrowRight, Check, Clock, Globe, MapPin, PackageCheck, Star, Store,
   BadgeCheck, Zap, Building2, PenTool, Shirt, ListOrdered, Upload, ReceiptText, Factory, Truck,
+  Sparkles, Coffee, Sticker, Box, MessagesSquare,
 } from 'lucide-react'
 import { SITE } from '../lib/site-config'
 import { useI18n, DEFAULT_LOCALE } from '../lib/i18n'
@@ -9,7 +10,6 @@ import { pageHead, buildFaqLD, buildAggregateRatingLD } from '../lib/seo'
 import { HUBS, METHODS, getProduct, productTo, type Product } from '../lib/catalog'
 import { FAQS, TESTIMONIALS, RATING, RATING_IS_REAL, WHY_US, HOW_STEPS } from '../lib/content'
 import { withBase } from '../lib/asset'
-import { PlaceholderArt } from '../components/PlaceholderArt'
 import { Cover } from '../components/Cover'
 import { Reveal } from '../components/Reveal'
 import { Section, SectionHeading } from '../components/ui'
@@ -18,6 +18,16 @@ import { JsonLd } from '../components/JsonLd'
 const FEATURED = ['t-shirts', 'hoodies', 'caps', 'mugs', 'corporate-gift-sets', 'wedding-gifts']
 const WHY_ICONS = [BadgeCheck, Zap, PackageCheck, Building2, MapPin, PenTool]
 const HOW_ICONS = [Shirt, ListOrdered, Upload, ReceiptText, Factory, Truck]
+
+// The five core services from the brand flyer (design-src/model.png), with the
+// flyer's exact labels/sub-lines. `method: null` links to the textile hub.
+const HERO_SERVICES = [
+  { icon: Shirt, method: null, label: { de: 'Textildruck', en: 'Textile Printing' }, sub: { de: 'DTF • HTV', en: 'DTF • HTV' } },
+  { icon: Sparkles, method: 'laser-engraving', label: { de: 'Lasergravur', en: 'Laser Engraving' }, sub: { de: 'Holz • Glas • Metall uvm.', en: 'Wood • glass • metal & more' } },
+  { icon: Coffee, method: 'sublimation', label: { de: 'Sublimation', en: 'Sublimation' }, sub: { de: 'Tassen • Flaschen uvm.', en: 'Mugs • bottles & more' } },
+  { icon: Sticker, method: 'sticker-vinyl', label: { de: 'Sticker & Vinyl', en: 'Stickers & Vinyl' }, sub: { de: 'Aufkleber • Banner uvm.', en: 'Stickers • banners & more' } },
+  { icon: Box, method: '3d-printing', label: { de: '3D-Druck', en: '3D Printing' }, sub: { de: 'Individuell & kreativ', en: 'Custom & creative' } },
+] as const
 
 // Decorative concentric-rings illustration for the hero — a warm accent graphic
 // in the spirit of the reference site's vector shapes. Purely ornamental.
@@ -86,24 +96,60 @@ function Home() {
     return (
       <section className="relative overflow-hidden border-b border-line">
         <div className="pointer-events-none absolute inset-0 -z-10">
-          <PlaceholderArt accent={35} className="absolute inset-0 opacity-[0.06]" />
           <HeroRings />
         </div>
-        <div className="container-edge grid items-center gap-10 py-20 sm:py-28 lg:grid-cols-[1.1fr_0.9fr]">
+        <div className="container-edge grid items-center gap-10 py-16 sm:py-20 lg:grid-cols-[1.05fr_0.95fr] lg:py-24">
           <div>
             <p className="anim-rise inline-flex items-center gap-2 rounded-full border border-line bg-surface px-3 py-1 text-xs font-medium uppercase tracking-wide text-ink-soft">
-              <MapPin size={13} className="text-accent" aria-hidden /> {L('Berlin Friedrichshain', 'Berlin Friedrichshain')}
+              <MapPin size={13} className="text-accent" aria-hidden /> {SITE.city} {SITE.district} · {SITE.street}
             </p>
-            <h1 className="anim-rise mt-5 text-balance text-5xl leading-[1.02] sm:text-6xl" style={{ animationDelay: '90ms' }}>
-              {L('Premium Textildruck & Werbeartikel in Berlin', 'Premium Textile Printing & Promotional Products in Berlin')}
+            <h1 className="anim-rise mt-5 text-6xl leading-[0.98] sm:text-7xl lg:text-[5.2rem]" style={{ animationDelay: '90ms' }}>
+              {L('Deine Idee.', 'Your idea.')}
+              <span className="mt-1 block text-accent-bright">
+                {L('Wir machen’s persönlich.', 'We make it personal.')}
+              </span>
             </h1>
             <p className="anim-rise mt-5 max-w-xl text-pretty text-lg text-muted" style={{ animationDelay: '180ms' }}>
               {L(
-                'Vom einzelnen Stück bis zum großen Firmenauftrag — wir helfen Unternehmen, Events und Privatpersonen, hochwertige individuelle Produkte zu gestalten.',
-                'From single items to bulk corporate orders, we help businesses, events and individuals create high-quality custom products.',
+                'Premium Textildruck & Werbeartikel in Berlin — vom einzelnen Stück bis zum großen Firmenauftrag, für Unternehmen, Events und Privatpersonen.',
+                'Premium textile printing & promotional products in Berlin — from single pieces to bulk corporate orders, for businesses, events and individuals.',
               )}
             </p>
-            <div className="anim-rise mt-8 flex flex-wrap gap-3" style={{ animationDelay: '270ms' }}>
+
+            {/* Flyer services row — the five core techniques */}
+            <ul className="anim-rise mt-8 grid max-w-xl grid-cols-3 gap-x-4 gap-y-6 sm:grid-cols-5" style={{ animationDelay: '240ms' }}>
+              {HERO_SERVICES.map((s) => {
+                const inner = (
+                  <>
+                    <s.icon size={30} strokeWidth={1.5} aria-hidden className="mx-auto text-ink transition-colors group-hover:text-accent" />
+                    <span className="font-display mt-2 block text-[11px] leading-tight tracking-wide">{s.label[l]}</span>
+                    <span className="mt-0.5 block text-[10px] leading-tight text-muted">{s.sub[l]}</span>
+                  </>
+                )
+                return (
+                  <li key={s.label.de}>
+                    {s.method ? (
+                      <Link to="/printing-methods/$slug" params={{ slug: s.method }} className="group block text-center">
+                        {inner}
+                      </Link>
+                    ) : (
+                      <Link to="/textile-printing" className="group block text-center">
+                        {inner}
+                      </Link>
+                    )}
+                  </li>
+                )
+              })}
+            </ul>
+
+            {/* Flyer USP pill */}
+            <div className="anim-rise mt-8 inline-flex max-w-full flex-wrap items-center gap-x-6 gap-y-2 rounded-2xl border border-line bg-surface px-5 py-3.5" style={{ animationDelay: '300ms' }}>
+              <span className="flex items-center gap-2 text-sm"><Clock size={17} className="text-accent" aria-hidden /> {L('Express 24–72h', 'Express 24–72h')}</span>
+              <span className="flex items-center gap-2 text-sm"><BadgeCheck size={17} className="text-accent" aria-hidden /> {L('Premium Qualität', 'Premium quality')}</span>
+              <span className="flex items-center gap-2 text-sm"><MessagesSquare size={17} className="text-accent" aria-hidden /> {L('Persönliche Beratung', 'Personal support')}</span>
+            </div>
+
+            <div className="anim-rise mt-8 flex flex-wrap gap-3" style={{ animationDelay: '360ms' }}>
               <Link
                 to="/contact"
                 hash="booking-enquiry"
@@ -120,16 +166,23 @@ function Home() {
             </div>
           </div>
 
-          <div className="anim-rise relative hidden lg:block" style={{ animationDelay: '240ms' }}>
+          <div className="anim-rise relative" style={{ animationDelay: '240ms' }}>
             <img
               src={withBase('/img/hero.webp')}
-              alt="Individuell bedruckte Werbeartikel von Inkyhaus — Stofftasche, Hoodie und Tassen im warmen Berliner Studio-Licht"
-              width={1200}
-              height={960}
+              alt="Inkyhaus Studio Berlin — bedrucktes T-Shirt, Trinkflasche, Cap, Tasse und Gravur vor der Transferpresse"
+              width={1000}
+              height={1250}
               fetchPriority="high"
               decoding="async"
-              className="aspect-[5/4] w-full rounded-[var(--radius-card)] border border-line object-cover object-center shadow-sm"
+              className="max-h-[30rem] w-full rounded-[var(--radius-card)] border border-line object-cover object-top shadow-sm lg:max-h-none lg:aspect-[4/5]"
             />
+            {/* All-in-One badge, mirroring the flyer's bottom-right box */}
+            <div className="absolute -bottom-3 right-4 rounded-xl bg-ink px-5 py-3 text-right shadow-lg sm:right-6">
+              <span className="font-script block text-2xl leading-none text-accent-soft">{L('All-in-One', 'All-in-One')}</span>
+              <span className="font-display mt-1 block text-xs tracking-wide text-white">
+                {L('Personalisierungs- & Druckstudio', 'Personalization & Print Studio')}
+              </span>
+            </div>
           </div>
         </div>
       </section>
