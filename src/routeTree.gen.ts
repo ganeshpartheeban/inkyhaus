@@ -43,6 +43,9 @@ import { Route as TextilePrintingSlugRouteImport } from './routes/textile-printi
 import { Route as PromotionalProductsSlugRouteImport } from './routes/promotional-products.$slug'
 import { Route as PrintingMethodsSlugRouteImport } from './routes/printing-methods.$slug'
 import { Route as PortfolioSlugRouteImport } from './routes/portfolio.$slug'
+import { Route as EnTermsRouteImport } from './routes/en.terms'
+import { Route as EnPrivacyRouteImport } from './routes/en.privacy'
+import { Route as EnImprintRouteImport } from './routes/en.imprint'
 import { Route as EnGalleryRouteImport } from './routes/en.gallery'
 import { Route as EnFaqRouteImport } from './routes/en.faq'
 import { Route as EnContactRouteImport } from './routes/en.contact'
@@ -226,6 +229,21 @@ const PortfolioSlugRoute = PortfolioSlugRouteImport.update({
   path: '/$slug',
   getParentRoute: () => PortfolioRoute,
 } as any)
+const EnTermsRoute = EnTermsRouteImport.update({
+  id: '/en/terms',
+  path: '/en/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EnPrivacyRoute = EnPrivacyRouteImport.update({
+  id: '/en/privacy',
+  path: '/en/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EnImprintRoute = EnImprintRouteImport.update({
+  id: '/en/imprint',
+  path: '/en/imprint',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const EnGalleryRoute = EnGalleryRouteImport.update({
   id: '/en/gallery',
   path: '/en/gallery',
@@ -316,6 +334,9 @@ export interface FileRoutesByFullPath {
   '/en/contact': typeof EnContactRoute
   '/en/faq': typeof EnFaqRoute
   '/en/gallery': typeof EnGalleryRoute
+  '/en/imprint': typeof EnImprintRoute
+  '/en/privacy': typeof EnPrivacyRoute
+  '/en/terms': typeof EnTermsRoute
   '/portfolio/$slug': typeof PortfolioSlugRoute
   '/printing-methods/$slug': typeof PrintingMethodsSlugRoute
   '/promotional-products/$slug': typeof PromotionalProductsSlugRoute
@@ -363,6 +384,9 @@ export interface FileRoutesByTo {
   '/en/contact': typeof EnContactRoute
   '/en/faq': typeof EnFaqRoute
   '/en/gallery': typeof EnGalleryRoute
+  '/en/imprint': typeof EnImprintRoute
+  '/en/privacy': typeof EnPrivacyRoute
+  '/en/terms': typeof EnTermsRoute
   '/portfolio/$slug': typeof PortfolioSlugRoute
   '/printing-methods/$slug': typeof PrintingMethodsSlugRoute
   '/promotional-products/$slug': typeof PromotionalProductsSlugRoute
@@ -411,6 +435,9 @@ export interface FileRoutesById {
   '/en/contact': typeof EnContactRoute
   '/en/faq': typeof EnFaqRoute
   '/en/gallery': typeof EnGalleryRoute
+  '/en/imprint': typeof EnImprintRoute
+  '/en/privacy': typeof EnPrivacyRoute
+  '/en/terms': typeof EnTermsRoute
   '/portfolio/$slug': typeof PortfolioSlugRoute
   '/printing-methods/$slug': typeof PrintingMethodsSlugRoute
   '/promotional-products/$slug': typeof PromotionalProductsSlugRoute
@@ -460,6 +487,9 @@ export interface FileRouteTypes {
     | '/en/contact'
     | '/en/faq'
     | '/en/gallery'
+    | '/en/imprint'
+    | '/en/privacy'
+    | '/en/terms'
     | '/portfolio/$slug'
     | '/printing-methods/$slug'
     | '/promotional-products/$slug'
@@ -507,6 +537,9 @@ export interface FileRouteTypes {
     | '/en/contact'
     | '/en/faq'
     | '/en/gallery'
+    | '/en/imprint'
+    | '/en/privacy'
+    | '/en/terms'
     | '/portfolio/$slug'
     | '/printing-methods/$slug'
     | '/promotional-products/$slug'
@@ -554,6 +587,9 @@ export interface FileRouteTypes {
     | '/en/contact'
     | '/en/faq'
     | '/en/gallery'
+    | '/en/imprint'
+    | '/en/privacy'
+    | '/en/terms'
     | '/portfolio/$slug'
     | '/printing-methods/$slug'
     | '/promotional-products/$slug'
@@ -602,6 +638,9 @@ export interface RootRouteChildren {
   EnContactRoute: typeof EnContactRoute
   EnFaqRoute: typeof EnFaqRoute
   EnGalleryRoute: typeof EnGalleryRoute
+  EnImprintRoute: typeof EnImprintRoute
+  EnPrivacyRoute: typeof EnPrivacyRoute
+  EnTermsRoute: typeof EnTermsRoute
   PrintingMethodsSlugRoute: typeof PrintingMethodsSlugRoute
   PromotionalProductsSlugRoute: typeof PromotionalProductsSlugRoute
   TextilePrintingSlugRoute: typeof TextilePrintingSlugRoute
@@ -857,6 +896,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PortfolioSlugRouteImport
       parentRoute: typeof PortfolioRoute
     }
+    '/en/terms': {
+      id: '/en/terms'
+      path: '/en/terms'
+      fullPath: '/en/terms'
+      preLoaderRoute: typeof EnTermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/en/privacy': {
+      id: '/en/privacy'
+      path: '/en/privacy'
+      fullPath: '/en/privacy'
+      preLoaderRoute: typeof EnPrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/en/imprint': {
+      id: '/en/imprint'
+      path: '/en/imprint'
+      fullPath: '/en/imprint'
+      preLoaderRoute: typeof EnImprintRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/en/gallery': {
       id: '/en/gallery'
       path: '/en/gallery'
@@ -981,6 +1041,9 @@ const rootRouteChildren: RootRouteChildren = {
   EnContactRoute: EnContactRoute,
   EnFaqRoute: EnFaqRoute,
   EnGalleryRoute: EnGalleryRoute,
+  EnImprintRoute: EnImprintRoute,
+  EnPrivacyRoute: EnPrivacyRoute,
+  EnTermsRoute: EnTermsRoute,
   PrintingMethodsSlugRoute: PrintingMethodsSlugRoute,
   PromotionalProductsSlugRoute: PromotionalProductsSlugRoute,
   TextilePrintingSlugRoute: TextilePrintingSlugRoute,

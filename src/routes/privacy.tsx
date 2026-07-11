@@ -17,7 +17,7 @@ export const Route = createFileRoute('/privacy')({
   component: Privacy,
 })
 
-function Privacy() {
+export function Privacy() {
   const { locale } = useI18n()
   const L = (de: string, en: string) => (locale === 'en' ? en : de)
 

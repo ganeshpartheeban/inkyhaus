@@ -69,7 +69,8 @@ export const Route = createRootRoute({
     }
     if (pref !== 'en' || isEnPath(location.pathname)) return
     const target = enCounterpart(location.pathname)
-    if (target) throw redirect({ to: target })
+    // Carry search + hash across so deep links (#booking-enquiry, ?utm_…) survive.
+    if (target) throw redirect({ to: target, search: location.search, ...(location.hash ? { hash: location.hash } : {}) })
   },
   shellComponent: RootDocument,
   component: RootLayout,
@@ -98,6 +99,10 @@ function RootDocument({ children }: { children: React.ReactNode }) {
 
 function RootLayout() {
   const pathname = useRouterState({ select: (s) => s.location.pathname })
+  // Key <main> by the locale-independent path: real navigations remount (and
+  // play the page transition), but switching DE ↔ EN on the same page keeps the
+  // key stable — the content just re-renders in the other language, in place.
+  const baseKey = pathname === '/en' ? '/' : pathname.startsWith('/en/') ? pathname.slice(3) : pathname
 
   return (
     <I18nProvider>
@@ -111,7 +116,7 @@ function RootLayout() {
       <AnnouncementBar />
       <Header />
       {/* 220ms cross-fade on route change; padding-bottom clears the mobile tab bar */}
-      <main id="main" key={pathname} className="page-transition pb-24 lg:pb-0">
+      <main id="main" key={baseKey} className="page-transition pb-24 lg:pb-0">
         <Outlet />
       </main>
       <Footer />

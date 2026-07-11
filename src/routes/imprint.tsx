@@ -17,7 +17,7 @@ export const Route = createFileRoute('/imprint')({
   component: Imprint,
 })
 
-function Imprint() {
+export function Imprint() {
   const { locale } = useI18n()
   const L = (de: string, en: string) => (locale === 'en' ? en : de)
 

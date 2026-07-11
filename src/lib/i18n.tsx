@@ -48,7 +48,7 @@ export function localePath(locale: Locale, path: string): string {
   return path === '/' ? '/en' : `/en${path}`
 }
 
-/** Path prefixes that have English counterparts (legal pages stay German-only). */
+/** Path prefixes that have English counterparts (all indexable pages + legal). */
 const EN_CAPABLE_PREFIXES = [
   '/textile-printing',
   '/promotional-products',
@@ -58,6 +58,9 @@ const EN_CAPABLE_PREFIXES = [
   '/about',
   '/business',
   '/faq',
+  '/imprint',
+  '/privacy',
+  '/terms',
 ]
 
 /** The /en counterpart for a German path, or null when none exists. */
@@ -274,9 +277,12 @@ const I18nContext = createContext<I18nContextValue | null>(null)
 export function I18nProvider({ children }: { children: React.ReactNode }) {
   // The URL decides the language — identical on server and client, so there is
   // never a hydration flash or a crawler/user mismatch.
-  const pathname = useRouterState({ select: (s) => s.location.pathname })
+  const location = useRouterState({ select: (s) => s.location })
+  const pathname = location.pathname
   const navigate = useNavigate()
   const locale: Locale = isEnPath(pathname) ? 'en' : 'de'
+  // Preserve deep-link state (search params, #anchors) across locale changes.
+  const carry = { search: location.search as never, ...(location.hash ? { hash: location.hash } : {}) }
 
   // Visiting an /en URL is an implicit language choice — remember it so legacy
   // German-path links get client-redirected to their /en counterpart (root
@@ -308,10 +314,12 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
     }
     if (pref !== 'en') return
     const target = enCounterpart(pathname)
-    if (target) navigate({ to: target, replace: true })
-  }, [locale, pathname, navigate])
+    if (target) navigate({ to: target, replace: true, ...carry })
+  }, [locale, pathname, navigate, location])
 
-  // Switching language = navigating to the counterpart URL.
+  // Switching language swaps the page in place: history.replace to the
+  // counterpart URL, no scroll reset — combined with the locale-stable main
+  // key in __root there is no transition, just the text changing language.
   const setLocale = useCallback(
     (l: Locale) => {
       try {
@@ -326,9 +334,9 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
           : pathname === '/en'
             ? '/'
             : pathname.replace(/^\/en\//, '/')
-      navigate({ to: target })
+      navigate({ to: target, replace: true, resetScroll: false, ...carry })
     },
-    [locale, pathname, navigate],
+    [locale, pathname, navigate, location],
   )
 
   const t = useCallback(

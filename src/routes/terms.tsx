@@ -17,7 +17,7 @@ export const Route = createFileRoute('/terms')({
   component: Terms,
 })
 
-function Terms() {
+export function Terms() {
   const { locale } = useI18n()
   const L = (de: string, en: string) => (locale === 'en' ? en : de)
 

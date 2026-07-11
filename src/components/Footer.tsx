@@ -71,9 +71,9 @@ export function Footer() {
           <FooterCol
             title={t('footer.legal')}
             items={[
-              { to: '/imprint', label: t('footer.imprint') },
-              { to: '/privacy', label: t('footer.privacy') },
-              { to: '/terms', label: t('footer.terms') },
+              { to: lp('/imprint'), label: t('footer.imprint') },
+              { to: lp('/privacy'), label: t('footer.privacy') },
+              { to: lp('/terms'), label: t('footer.terms') },
             ]}
           />
         </div>
