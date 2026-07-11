@@ -377,7 +377,7 @@ const PROMO: Product[] = [
     tagline: { de: 'Foto- & Namensgravur', en: 'Photo & name engraving' },
     description: { de: 'Individuell gravierte Geschenke mit Foto, Namen oder Wunschmotiv — auf Holz, Glas, Metall und mehr.', en: 'Individually engraved gifts with a photo, name or custom motif — on wood, glass, metal and more.' },
     highlights: [{ de: 'Foto-Gravur auf vielen Materialien', en: 'Photo engraving on many materials' }],
-    methods: ['laser-engraving'], minOrder: 1, deliveryTime: BULK, faq: PROMO_FAQ, cover: c('/img/wood-emboss-2.webp'),
+    methods: ['laser-engraving'], minOrder: 1, deliveryTime: BULK, faq: PROMO_FAQ, cover: c('/img/personalized-gifts.webp'),
   },
   {
     slug: 'engraved-gifts', hub: 'promotional-products', group: 'wedding', accent: 60,
