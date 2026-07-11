@@ -46,4 +46,45 @@
   <url><loc>https://inkyhaus.de/faq</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://inkyhaus.de/about</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
   <url><loc>https://inkyhaus.de/contact</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+
+  <!-- English variants (/en/*) — reciprocal hreflang lives in each page's head. -->
+  <url><loc>https://inkyhaus.de/en</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://inkyhaus.de/en/textile-printing</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://inkyhaus.de/en/textile-printing/t-shirts</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://inkyhaus.de/en/textile-printing/polo-shirts</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://inkyhaus.de/en/textile-printing/hoodies</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://inkyhaus.de/en/textile-printing/sweatshirts</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://inkyhaus.de/en/textile-printing/jackets</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://inkyhaus.de/en/textile-printing/workwear</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://inkyhaus.de/en/textile-printing/sportswear</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://inkyhaus.de/en/textile-printing/tote-bags</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://inkyhaus.de/en/textile-printing/caps</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://inkyhaus.de/en/promotional-products</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://inkyhaus.de/en/promotional-products/mugs</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://inkyhaus.de/en/promotional-products/water-bottles</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://inkyhaus.de/en/promotional-products/pens</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://inkyhaus.de/en/promotional-products/notebooks</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://inkyhaus.de/en/promotional-products/keychains</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://inkyhaus.de/en/promotional-products/corporate-gift-sets</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://inkyhaus.de/en/promotional-products/wooden-gifts</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://inkyhaus.de/en/promotional-products/awards</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://inkyhaus.de/en/promotional-products/lanyards</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://inkyhaus.de/en/promotional-products/conference-merchandise</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://inkyhaus.de/en/promotional-products/wedding-gifts</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://inkyhaus.de/en/promotional-products/anniversary-gifts</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://inkyhaus.de/en/promotional-products/personalized-gifts</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://inkyhaus.de/en/promotional-products/engraved-gifts</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://inkyhaus.de/en/printing-methods</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://inkyhaus.de/en/printing-methods/dtf</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://inkyhaus.de/en/printing-methods/embroidery</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://inkyhaus.de/en/printing-methods/sublimation</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://inkyhaus.de/en/printing-methods/laser-engraving</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://inkyhaus.de/en/printing-methods/htv</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://inkyhaus.de/en/printing-methods/sticker-vinyl</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://inkyhaus.de/en/printing-methods/3d-printing</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://inkyhaus.de/en/gallery</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://inkyhaus.de/en/business</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://inkyhaus.de/en/faq</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://inkyhaus.de/en/about</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://inkyhaus.de/en/contact</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
 </urlset>

@@ -1,6 +1,7 @@
 // Small shared layout primitives + breadcrumbs.
 import { Link } from '@tanstack/react-router'
 import { ChevronRight } from 'lucide-react'
+import { useLocaleTo } from '../lib/i18n'
 
 export function Section({
   children,
@@ -48,13 +49,14 @@ export function SectionHeading({
 }
 
 export function Breadcrumbs({ items }: { items: Array<{ name: string; to?: string }> }) {
+  const lp = useLocaleTo()
   return (
     <nav aria-label="Breadcrumb" className="container-edge pt-6">
       <ol className="flex flex-wrap items-center gap-1.5 text-xs text-muted">
         {items.map((it, i) => (
           <li key={i} className="flex items-center gap-1.5">
             {it.to ? (
-              <Link to={it.to} className="hover:text-ink">
+              <Link to={lp(it.to) as '/'} className="hover:text-ink">
                 {it.name}
               </Link>
             ) : (

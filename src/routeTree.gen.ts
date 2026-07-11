@@ -38,10 +38,22 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as TextilePrintingIndexRouteImport } from './routes/textile-printing.index'
 import { Route as PromotionalProductsIndexRouteImport } from './routes/promotional-products.index'
 import { Route as PrintingMethodsIndexRouteImport } from './routes/printing-methods.index'
+import { Route as EnIndexRouteImport } from './routes/en.index'
 import { Route as TextilePrintingSlugRouteImport } from './routes/textile-printing.$slug'
 import { Route as PromotionalProductsSlugRouteImport } from './routes/promotional-products.$slug'
 import { Route as PrintingMethodsSlugRouteImport } from './routes/printing-methods.$slug'
 import { Route as PortfolioSlugRouteImport } from './routes/portfolio.$slug'
+import { Route as EnGalleryRouteImport } from './routes/en.gallery'
+import { Route as EnFaqRouteImport } from './routes/en.faq'
+import { Route as EnContactRouteImport } from './routes/en.contact'
+import { Route as EnBusinessRouteImport } from './routes/en.business'
+import { Route as EnAboutRouteImport } from './routes/en.about'
+import { Route as EnTextilePrintingIndexRouteImport } from './routes/en.textile-printing.index'
+import { Route as EnPromotionalProductsIndexRouteImport } from './routes/en.promotional-products.index'
+import { Route as EnPrintingMethodsIndexRouteImport } from './routes/en.printing-methods.index'
+import { Route as EnTextilePrintingSlugRouteImport } from './routes/en.textile-printing.$slug'
+import { Route as EnPromotionalProductsSlugRouteImport } from './routes/en.promotional-products.$slug'
+import { Route as EnPrintingMethodsSlugRouteImport } from './routes/en.printing-methods.$slug'
 
 const WorkwearRoute = WorkwearRouteImport.update({
   id: '/workwear',
@@ -189,6 +201,11 @@ const PrintingMethodsIndexRoute = PrintingMethodsIndexRouteImport.update({
   path: '/printing-methods/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EnIndexRoute = EnIndexRouteImport.update({
+  id: '/en/',
+  path: '/en/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TextilePrintingSlugRoute = TextilePrintingSlugRouteImport.update({
   id: '/textile-printing/$slug',
   path: '/textile-printing/$slug',
@@ -208,6 +225,63 @@ const PortfolioSlugRoute = PortfolioSlugRouteImport.update({
   id: '/$slug',
   path: '/$slug',
   getParentRoute: () => PortfolioRoute,
+} as any)
+const EnGalleryRoute = EnGalleryRouteImport.update({
+  id: '/en/gallery',
+  path: '/en/gallery',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EnFaqRoute = EnFaqRouteImport.update({
+  id: '/en/faq',
+  path: '/en/faq',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EnContactRoute = EnContactRouteImport.update({
+  id: '/en/contact',
+  path: '/en/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EnBusinessRoute = EnBusinessRouteImport.update({
+  id: '/en/business',
+  path: '/en/business',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EnAboutRoute = EnAboutRouteImport.update({
+  id: '/en/about',
+  path: '/en/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EnTextilePrintingIndexRoute = EnTextilePrintingIndexRouteImport.update({
+  id: '/en/textile-printing/',
+  path: '/en/textile-printing/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EnPromotionalProductsIndexRoute =
+  EnPromotionalProductsIndexRouteImport.update({
+    id: '/en/promotional-products/',
+    path: '/en/promotional-products/',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const EnPrintingMethodsIndexRoute = EnPrintingMethodsIndexRouteImport.update({
+  id: '/en/printing-methods/',
+  path: '/en/printing-methods/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EnTextilePrintingSlugRoute = EnTextilePrintingSlugRouteImport.update({
+  id: '/en/textile-printing/$slug',
+  path: '/en/textile-printing/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EnPromotionalProductsSlugRoute =
+  EnPromotionalProductsSlugRouteImport.update({
+    id: '/en/promotional-products/$slug',
+    path: '/en/promotional-products/$slug',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const EnPrintingMethodsSlugRoute = EnPrintingMethodsSlugRouteImport.update({
+  id: '/en/printing-methods/$slug',
+  path: '/en/printing-methods/$slug',
+  getParentRoute: () => rootRouteImport,
 } as any)
 
 export interface FileRoutesByFullPath {
@@ -237,13 +311,25 @@ export interface FileRoutesByFullPath {
   '/werbeartikel': typeof WerbeartikelRoute
   '/werbetechnik': typeof WerbetechnikRoute
   '/workwear': typeof WorkwearRoute
+  '/en/about': typeof EnAboutRoute
+  '/en/business': typeof EnBusinessRoute
+  '/en/contact': typeof EnContactRoute
+  '/en/faq': typeof EnFaqRoute
+  '/en/gallery': typeof EnGalleryRoute
   '/portfolio/$slug': typeof PortfolioSlugRoute
   '/printing-methods/$slug': typeof PrintingMethodsSlugRoute
   '/promotional-products/$slug': typeof PromotionalProductsSlugRoute
   '/textile-printing/$slug': typeof TextilePrintingSlugRoute
+  '/en/': typeof EnIndexRoute
   '/printing-methods/': typeof PrintingMethodsIndexRoute
   '/promotional-products/': typeof PromotionalProductsIndexRoute
   '/textile-printing/': typeof TextilePrintingIndexRoute
+  '/en/printing-methods/$slug': typeof EnPrintingMethodsSlugRoute
+  '/en/promotional-products/$slug': typeof EnPromotionalProductsSlugRoute
+  '/en/textile-printing/$slug': typeof EnTextilePrintingSlugRoute
+  '/en/printing-methods/': typeof EnPrintingMethodsIndexRoute
+  '/en/promotional-products/': typeof EnPromotionalProductsIndexRoute
+  '/en/textile-printing/': typeof EnTextilePrintingIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -272,13 +358,25 @@ export interface FileRoutesByTo {
   '/werbeartikel': typeof WerbeartikelRoute
   '/werbetechnik': typeof WerbetechnikRoute
   '/workwear': typeof WorkwearRoute
+  '/en/about': typeof EnAboutRoute
+  '/en/business': typeof EnBusinessRoute
+  '/en/contact': typeof EnContactRoute
+  '/en/faq': typeof EnFaqRoute
+  '/en/gallery': typeof EnGalleryRoute
   '/portfolio/$slug': typeof PortfolioSlugRoute
   '/printing-methods/$slug': typeof PrintingMethodsSlugRoute
   '/promotional-products/$slug': typeof PromotionalProductsSlugRoute
   '/textile-printing/$slug': typeof TextilePrintingSlugRoute
+  '/en': typeof EnIndexRoute
   '/printing-methods': typeof PrintingMethodsIndexRoute
   '/promotional-products': typeof PromotionalProductsIndexRoute
   '/textile-printing': typeof TextilePrintingIndexRoute
+  '/en/printing-methods/$slug': typeof EnPrintingMethodsSlugRoute
+  '/en/promotional-products/$slug': typeof EnPromotionalProductsSlugRoute
+  '/en/textile-printing/$slug': typeof EnTextilePrintingSlugRoute
+  '/en/printing-methods': typeof EnPrintingMethodsIndexRoute
+  '/en/promotional-products': typeof EnPromotionalProductsIndexRoute
+  '/en/textile-printing': typeof EnTextilePrintingIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -308,13 +406,25 @@ export interface FileRoutesById {
   '/werbeartikel': typeof WerbeartikelRoute
   '/werbetechnik': typeof WerbetechnikRoute
   '/workwear': typeof WorkwearRoute
+  '/en/about': typeof EnAboutRoute
+  '/en/business': typeof EnBusinessRoute
+  '/en/contact': typeof EnContactRoute
+  '/en/faq': typeof EnFaqRoute
+  '/en/gallery': typeof EnGalleryRoute
   '/portfolio/$slug': typeof PortfolioSlugRoute
   '/printing-methods/$slug': typeof PrintingMethodsSlugRoute
   '/promotional-products/$slug': typeof PromotionalProductsSlugRoute
   '/textile-printing/$slug': typeof TextilePrintingSlugRoute
+  '/en/': typeof EnIndexRoute
   '/printing-methods/': typeof PrintingMethodsIndexRoute
   '/promotional-products/': typeof PromotionalProductsIndexRoute
   '/textile-printing/': typeof TextilePrintingIndexRoute
+  '/en/printing-methods/$slug': typeof EnPrintingMethodsSlugRoute
+  '/en/promotional-products/$slug': typeof EnPromotionalProductsSlugRoute
+  '/en/textile-printing/$slug': typeof EnTextilePrintingSlugRoute
+  '/en/printing-methods/': typeof EnPrintingMethodsIndexRoute
+  '/en/promotional-products/': typeof EnPromotionalProductsIndexRoute
+  '/en/textile-printing/': typeof EnTextilePrintingIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -345,13 +455,25 @@ export interface FileRouteTypes {
     | '/werbeartikel'
     | '/werbetechnik'
     | '/workwear'
+    | '/en/about'
+    | '/en/business'
+    | '/en/contact'
+    | '/en/faq'
+    | '/en/gallery'
     | '/portfolio/$slug'
     | '/printing-methods/$slug'
     | '/promotional-products/$slug'
     | '/textile-printing/$slug'
+    | '/en/'
     | '/printing-methods/'
     | '/promotional-products/'
     | '/textile-printing/'
+    | '/en/printing-methods/$slug'
+    | '/en/promotional-products/$slug'
+    | '/en/textile-printing/$slug'
+    | '/en/printing-methods/'
+    | '/en/promotional-products/'
+    | '/en/textile-printing/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -380,13 +502,25 @@ export interface FileRouteTypes {
     | '/werbeartikel'
     | '/werbetechnik'
     | '/workwear'
+    | '/en/about'
+    | '/en/business'
+    | '/en/contact'
+    | '/en/faq'
+    | '/en/gallery'
     | '/portfolio/$slug'
     | '/printing-methods/$slug'
     | '/promotional-products/$slug'
     | '/textile-printing/$slug'
+    | '/en'
     | '/printing-methods'
     | '/promotional-products'
     | '/textile-printing'
+    | '/en/printing-methods/$slug'
+    | '/en/promotional-products/$slug'
+    | '/en/textile-printing/$slug'
+    | '/en/printing-methods'
+    | '/en/promotional-products'
+    | '/en/textile-printing'
   id:
     | '__root__'
     | '/'
@@ -415,13 +549,25 @@ export interface FileRouteTypes {
     | '/werbeartikel'
     | '/werbetechnik'
     | '/workwear'
+    | '/en/about'
+    | '/en/business'
+    | '/en/contact'
+    | '/en/faq'
+    | '/en/gallery'
     | '/portfolio/$slug'
     | '/printing-methods/$slug'
     | '/promotional-products/$slug'
     | '/textile-printing/$slug'
+    | '/en/'
     | '/printing-methods/'
     | '/promotional-products/'
     | '/textile-printing/'
+    | '/en/printing-methods/$slug'
+    | '/en/promotional-products/$slug'
+    | '/en/textile-printing/$slug'
+    | '/en/printing-methods/'
+    | '/en/promotional-products/'
+    | '/en/textile-printing/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -451,12 +597,24 @@ export interface RootRouteChildren {
   WerbeartikelRoute: typeof WerbeartikelRoute
   WerbetechnikRoute: typeof WerbetechnikRoute
   WorkwearRoute: typeof WorkwearRoute
+  EnAboutRoute: typeof EnAboutRoute
+  EnBusinessRoute: typeof EnBusinessRoute
+  EnContactRoute: typeof EnContactRoute
+  EnFaqRoute: typeof EnFaqRoute
+  EnGalleryRoute: typeof EnGalleryRoute
   PrintingMethodsSlugRoute: typeof PrintingMethodsSlugRoute
   PromotionalProductsSlugRoute: typeof PromotionalProductsSlugRoute
   TextilePrintingSlugRoute: typeof TextilePrintingSlugRoute
+  EnIndexRoute: typeof EnIndexRoute
   PrintingMethodsIndexRoute: typeof PrintingMethodsIndexRoute
   PromotionalProductsIndexRoute: typeof PromotionalProductsIndexRoute
   TextilePrintingIndexRoute: typeof TextilePrintingIndexRoute
+  EnPrintingMethodsSlugRoute: typeof EnPrintingMethodsSlugRoute
+  EnPromotionalProductsSlugRoute: typeof EnPromotionalProductsSlugRoute
+  EnTextilePrintingSlugRoute: typeof EnTextilePrintingSlugRoute
+  EnPrintingMethodsIndexRoute: typeof EnPrintingMethodsIndexRoute
+  EnPromotionalProductsIndexRoute: typeof EnPromotionalProductsIndexRoute
+  EnTextilePrintingIndexRoute: typeof EnTextilePrintingIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -664,6 +822,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PrintingMethodsIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/en/': {
+      id: '/en/'
+      path: '/en'
+      fullPath: '/en/'
+      preLoaderRoute: typeof EnIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/textile-printing/$slug': {
       id: '/textile-printing/$slug'
       path: '/textile-printing/$slug'
@@ -691,6 +856,83 @@ declare module '@tanstack/react-router' {
       fullPath: '/portfolio/$slug'
       preLoaderRoute: typeof PortfolioSlugRouteImport
       parentRoute: typeof PortfolioRoute
+    }
+    '/en/gallery': {
+      id: '/en/gallery'
+      path: '/en/gallery'
+      fullPath: '/en/gallery'
+      preLoaderRoute: typeof EnGalleryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/en/faq': {
+      id: '/en/faq'
+      path: '/en/faq'
+      fullPath: '/en/faq'
+      preLoaderRoute: typeof EnFaqRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/en/contact': {
+      id: '/en/contact'
+      path: '/en/contact'
+      fullPath: '/en/contact'
+      preLoaderRoute: typeof EnContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/en/business': {
+      id: '/en/business'
+      path: '/en/business'
+      fullPath: '/en/business'
+      preLoaderRoute: typeof EnBusinessRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/en/about': {
+      id: '/en/about'
+      path: '/en/about'
+      fullPath: '/en/about'
+      preLoaderRoute: typeof EnAboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/en/textile-printing/': {
+      id: '/en/textile-printing/'
+      path: '/en/textile-printing'
+      fullPath: '/en/textile-printing/'
+      preLoaderRoute: typeof EnTextilePrintingIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/en/promotional-products/': {
+      id: '/en/promotional-products/'
+      path: '/en/promotional-products'
+      fullPath: '/en/promotional-products/'
+      preLoaderRoute: typeof EnPromotionalProductsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/en/printing-methods/': {
+      id: '/en/printing-methods/'
+      path: '/en/printing-methods'
+      fullPath: '/en/printing-methods/'
+      preLoaderRoute: typeof EnPrintingMethodsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/en/textile-printing/$slug': {
+      id: '/en/textile-printing/$slug'
+      path: '/en/textile-printing/$slug'
+      fullPath: '/en/textile-printing/$slug'
+      preLoaderRoute: typeof EnTextilePrintingSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/en/promotional-products/$slug': {
+      id: '/en/promotional-products/$slug'
+      path: '/en/promotional-products/$slug'
+      fullPath: '/en/promotional-products/$slug'
+      preLoaderRoute: typeof EnPromotionalProductsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/en/printing-methods/$slug': {
+      id: '/en/printing-methods/$slug'
+      path: '/en/printing-methods/$slug'
+      fullPath: '/en/printing-methods/$slug'
+      preLoaderRoute: typeof EnPrintingMethodsSlugRouteImport
+      parentRoute: typeof rootRouteImport
     }
   }
 }
@@ -734,12 +976,24 @@ const rootRouteChildren: RootRouteChildren = {
   WerbeartikelRoute: WerbeartikelRoute,
   WerbetechnikRoute: WerbetechnikRoute,
   WorkwearRoute: WorkwearRoute,
+  EnAboutRoute: EnAboutRoute,
+  EnBusinessRoute: EnBusinessRoute,
+  EnContactRoute: EnContactRoute,
+  EnFaqRoute: EnFaqRoute,
+  EnGalleryRoute: EnGalleryRoute,
   PrintingMethodsSlugRoute: PrintingMethodsSlugRoute,
   PromotionalProductsSlugRoute: PromotionalProductsSlugRoute,
   TextilePrintingSlugRoute: TextilePrintingSlugRoute,
+  EnIndexRoute: EnIndexRoute,
   PrintingMethodsIndexRoute: PrintingMethodsIndexRoute,
   PromotionalProductsIndexRoute: PromotionalProductsIndexRoute,
   TextilePrintingIndexRoute: TextilePrintingIndexRoute,
+  EnPrintingMethodsSlugRoute: EnPrintingMethodsSlugRoute,
+  EnPromotionalProductsSlugRoute: EnPromotionalProductsSlugRoute,
+  EnTextilePrintingSlugRoute: EnTextilePrintingSlugRoute,
+  EnPrintingMethodsIndexRoute: EnPrintingMethodsIndexRoute,
+  EnPromotionalProductsIndexRoute: EnPromotionalProductsIndexRoute,
+  EnTextilePrintingIndexRoute: EnTextilePrintingIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

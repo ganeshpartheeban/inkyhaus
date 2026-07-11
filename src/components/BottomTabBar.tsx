@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link } from '@tanstack/react-router'
 import { Home, Shirt, Gift, MessageSquareText } from 'lucide-react'
-import { useI18n } from '../lib/i18n'
+import { useI18n, useLocaleTo } from '../lib/i18n'
 import { TAB_NAV } from '../lib/nav'
 
 // Positional — must align with TAB_NAV order (Home, Textile, Promo, Contact).
@@ -11,6 +11,7 @@ const ICONS = [Home, Shirt, Gift, MessageSquareText]
 
 export function BottomTabBar() {
   const { t } = useI18n()
+  const lp = useLocaleTo()
   const [hidden, setHidden] = useState(false)
   const lastY = useRef(0)
 
@@ -46,7 +47,7 @@ export function BottomTabBar() {
           return (
             <li key={item.to}>
               <Link
-                to={item.to}
+                to={lp(item.to) as '/'}
                 className="flex flex-col items-center gap-1 py-2.5 text-[11px] text-muted transition-transform active:scale-[0.96] motion-reduce:transition-none [&.active]:text-accent"
                 activeOptions={{ exact: item.to === '/' }}
               >

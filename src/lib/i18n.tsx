@@ -3,7 +3,8 @@
 // de = primary (fully populated), en = fully populated. fr/es/it are scaffolded:
 // adding a language is purely a strings file — drop a partial/full dict below and
 // it falls back through en -> de for any missing key.
-import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react'
+import { createContext, useCallback, useContext, useEffect, useMemo } from 'react'
+import { useNavigate, useRouterState } from '@tanstack/react-router'
 
 export const LOCALES = ['de', 'en', 'fr', 'es', 'it'] as const
 export type Locale = (typeof LOCALES)[number]
@@ -29,7 +30,43 @@ export const OG_LOCALE: Record<Locale, string> = {
   it: 'it_IT',
 }
 
-const STORAGE_KEY = 'inkyhaus-locale'
+export const STORAGE_KEY = 'inkyhaus-locale'
+
+// ── URL-driven locale ────────────────────────────────────────────────────────
+// German lives at /<path>, English at /en/<path>. The URL is the single source
+// of truth for the rendered language, so SSR, hydration and crawlers always
+// agree. localStorage only remembers the preference for the root client-side
+// redirect (legacy German-path links → /en counterpart).
+
+export function isEnPath(pathname: string): boolean {
+  return pathname === '/en' || pathname.startsWith('/en/')
+}
+
+/** Prefix a route path for a locale: localePath('en', '/gallery') → '/en/gallery'. */
+export function localePath(locale: Locale, path: string): string {
+  if (locale !== 'en') return path
+  return path === '/' ? '/en' : `/en${path}`
+}
+
+/** Path prefixes that have English counterparts (legal pages stay German-only). */
+const EN_CAPABLE_PREFIXES = [
+  '/textile-printing',
+  '/promotional-products',
+  '/printing-methods',
+  '/gallery',
+  '/contact',
+  '/about',
+  '/business',
+  '/faq',
+]
+
+/** The /en counterpart for a German path, or null when none exists. */
+export function enCounterpart(pathname: string): string | null {
+  if (pathname === '/') return '/en'
+  const clean = pathname.replace(/\/$/, '')
+  if (EN_CAPABLE_PREFIXES.some((p) => clean === p || clean.startsWith(`${p}/`))) return `/en${clean}`
+  return null
+}
 
 const de = {
   'nav.home': 'Start',
@@ -226,20 +263,6 @@ const it: Partial<Record<Key, string>> = {}
 
 const DICTS: Record<Locale, Partial<Record<Key, string>>> = { de, en, fr, es, it }
 
-function detectLocale(): Locale {
-  if (typeof window === 'undefined') return DEFAULT_LOCALE
-  try {
-    // Only an explicit user choice switches the language. No navigator.language
-    // auto-detect: Googlebot renders with en-US, and auto-flipping the DOM to EN
-    // under the German canonical URL would make the indexed content mismatch.
-    const stored = window.localStorage.getItem(STORAGE_KEY) as Locale | null
-    if (stored && LOCALES.includes(stored)) return stored
-  } catch {
-    /* storage unavailable */
-  }
-  return DEFAULT_LOCALE
-}
-
 type I18nContextValue = {
   locale: Locale
   setLocale: (l: Locale) => void
@@ -249,27 +272,64 @@ type I18nContextValue = {
 const I18nContext = createContext<I18nContextValue | null>(null)
 
 export function I18nProvider({ children }: { children: React.ReactNode }) {
-  // SSR renders the default locale; client re-detects after mount (no hydration flash for de).
-  const [locale, setLocaleState] = useState<Locale>(DEFAULT_LOCALE)
+  // The URL decides the language — identical on server and client, so there is
+  // never a hydration flash or a crawler/user mismatch.
+  const pathname = useRouterState({ select: (s) => s.location.pathname })
+  const navigate = useNavigate()
+  const locale: Locale = isEnPath(pathname) ? 'en' : 'de'
 
+  // Visiting an /en URL is an implicit language choice — remember it so legacy
+  // German-path links get client-redirected to their /en counterpart (root
+  // beforeLoad). Never downgrade here: German pages without an EN counterpart
+  // (legal) must not silently reset an English preference.
   useEffect(() => {
-    const detected = detectLocale()
-    if (detected !== locale) setLocaleState(detected)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+    if (locale !== 'en') return
+    try {
+      window.localStorage.setItem(STORAGE_KEY, 'en')
+    } catch {
+      /* ignore */
+    }
+  }, [locale])
 
   useEffect(() => {
     if (typeof document !== 'undefined') document.documentElement.lang = locale
   }, [locale])
 
-  const setLocale = useCallback((l: Locale) => {
-    setLocaleState(l)
+  // Hard page loads of legacy German URLs: the root beforeLoad only runs on
+  // client-side navigations (SSR skips it, hydration doesn't re-run it), so
+  // apply the stored English preference here after hydration as well.
+  useEffect(() => {
+    if (locale === 'en') return
+    let pref: string | null = null
     try {
-      window.localStorage.setItem(STORAGE_KEY, l)
+      pref = window.localStorage.getItem(STORAGE_KEY)
     } catch {
-      /* ignore */
+      /* storage unavailable */
     }
-  }, [])
+    if (pref !== 'en') return
+    const target = enCounterpart(pathname)
+    if (target) navigate({ to: target, replace: true })
+  }, [locale, pathname, navigate])
+
+  // Switching language = navigating to the counterpart URL.
+  const setLocale = useCallback(
+    (l: Locale) => {
+      try {
+        window.localStorage.setItem(STORAGE_KEY, l)
+      } catch {
+        /* ignore */
+      }
+      if (l === locale) return
+      const target =
+        l === 'en'
+          ? (enCounterpart(pathname) ?? '/en')
+          : pathname === '/en'
+            ? '/'
+            : pathname.replace(/^\/en\//, '/')
+      navigate({ to: target })
+    },
+    [locale, pathname, navigate],
+  )
 
   const t = useCallback(
     (key: Key) => DICTS[locale][key] ?? en[key] ?? de[key] ?? key,
@@ -284,4 +344,12 @@ export function useI18n(): I18nContextValue {
   const ctx = useContext(I18nContext)
   if (!ctx) throw new Error('useI18n must be used within <I18nProvider>')
   return ctx
+}
+
+/** Returns a mapper that prefixes internal paths with the current locale's URL
+ *  prefix — `lp('/contact')` → '/en/contact' on English pages. Callers cast the
+ *  result back to the typed route literal (both variants exist as routes). */
+export function useLocaleTo(): (path: string) => string {
+  const { locale } = useI18n()
+  return useCallback((path: string) => localePath(locale, path), [locale])
 }

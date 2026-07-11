@@ -17,7 +17,7 @@ export const Route = createFileRoute('/printing-methods/')({
   component: Methods,
 })
 
-function Methods() {
+export function Methods() {
   const { t, locale } = useI18n()
   const l = locale === 'en' ? 'en' : 'de'
   return (

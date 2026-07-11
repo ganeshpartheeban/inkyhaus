@@ -1,7 +1,7 @@
 import { lazy, Suspense } from 'react'
 import { createFileRoute } from '@tanstack/react-router'
 import { MapPin, Clock, Truck, CreditCard, Wifi, Accessibility, Heart, Check, Mail, Phone } from 'lucide-react'
-import { useI18n, DEFAULT_LOCALE } from '../lib/i18n'
+import { useI18n, DEFAULT_LOCALE, localePath } from '../lib/i18n'
 import { pageHead, buildBreadcrumbLD } from '../lib/seo'
 import { SITE, whatsappLink } from '../lib/site-config'
 import { STORE_INFO } from '../lib/content'
@@ -24,12 +24,12 @@ export const Route = createFileRoute('/contact')({
   component: Contact,
 })
 
-function Contact() {
+export function Contact() {
   const { t, locale } = useI18n()
   const l = locale === 'en' ? 'en' : 'de'
   return (
     <>
-      <JsonLd data={buildBreadcrumbLD([{ name: 'Start', path: '/' }, { name: 'Kontakt', path: '/contact' }])} />
+      <JsonLd data={buildBreadcrumbLD([{ name: l === 'en' ? 'Home' : 'Start', path: localePath(l, '/') }, { name: l === 'en' ? 'Contact' : 'Kontakt', path: localePath(l, '/contact') }])} />
       <Breadcrumbs items={[{ name: t('nav.home'), to: '/' }, { name: t('nav.contact') }]} />
       <Section id="booking-enquiry" className="!pt-8 scroll-mt-20">
         <div className="grid gap-10 lg:grid-cols-[1.2fr_1fr]">

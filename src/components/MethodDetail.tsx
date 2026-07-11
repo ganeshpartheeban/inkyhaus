@@ -2,7 +2,7 @@
 // and which products use it.
 import { Link } from '@tanstack/react-router'
 import { ArrowRight } from 'lucide-react'
-import { useI18n } from '../lib/i18n'
+import { useI18n, localePath } from '../lib/i18n'
 import { PRODUCTS, productTo, type Method } from '../lib/catalog'
 import { Breadcrumbs, Section, SectionHeading } from './ui'
 import { Cover } from './Cover'
@@ -14,18 +14,18 @@ export function MethodDetail({ method }: { method: Method }) {
   const { t, locale } = useI18n()
   const l = locale === 'en' ? 'en' : 'de'
   const uses = PRODUCTS.filter((p) => p.methods.includes(method.slug))
-  const path = `/printing-methods/${method.slug}`
+  const path = localePath(l, `/printing-methods/${method.slug}`)
 
   return (
     <>
       <JsonLd
         data={[
           buildBreadcrumbLD([
-            { name: 'Start', path: '/' },
-            { name: 'Druckverfahren', path: '/printing-methods' },
-            { name: method.name.de, path },
+            { name: l === 'en' ? 'Home' : 'Start', path: localePath(l, '/') },
+            { name: l === 'en' ? 'Printing Methods' : 'Druckverfahren', path: localePath(l, '/printing-methods') },
+            { name: method.name[l], path },
           ]),
-          buildOfferedServiceLD({ name: method.name.de, description: method.description.de, path, image: method.image }),
+          buildOfferedServiceLD({ name: method.name[l], description: method.description[l], path, image: method.image }),
         ]}
       />
       <Breadcrumbs

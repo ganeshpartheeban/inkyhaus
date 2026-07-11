@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { createFileRoute } from '@tanstack/react-router'
 import { X } from 'lucide-react'
 import { pageHead, buildBreadcrumbLD, buildImageGalleryLD } from '../lib/seo'
-import { useI18n, DEFAULT_LOCALE } from '../lib/i18n'
+import { useI18n, DEFAULT_LOCALE, localePath } from '../lib/i18n'
 import { GALLERY, GALLERY_FILTERS } from '../lib/catalog'
 import { Breadcrumbs, Section, SectionHeading } from '../components/ui'
 import { Reveal } from '../components/Reveal'
@@ -19,7 +19,7 @@ export const Route = createFileRoute('/gallery')({
   component: Gallery,
 })
 
-function Gallery() {
+export function Gallery() {
   const { t, locale } = useI18n()
   const l = locale === 'en' ? 'en' : 'de'
   const [filter, setFilter] = useState<string>('all')
@@ -48,10 +48,10 @@ function Gallery() {
       <JsonLd
         data={[
           buildBreadcrumbLD([
-            { name: 'Start', path: '/' },
-            { name: 'Galerie', path: '/gallery' },
+            { name: l === 'en' ? 'Home' : 'Start', path: localePath(l, '/') },
+            { name: l === 'en' ? 'Gallery' : 'Galerie', path: localePath(l, '/gallery') },
           ]),
-          buildImageGalleryLD(GALLERY.map((g) => ({ url: g.src, caption: g.alt.de, location: 'Berlin' }))),
+          buildImageGalleryLD(GALLERY.map((g) => ({ url: g.src, caption: g.alt[l], location: 'Berlin' }))),
         ]}
       />
       <Breadcrumbs items={[{ name: t('nav.home'), to: '/' }, { name: t('nav.gallery') }]} />

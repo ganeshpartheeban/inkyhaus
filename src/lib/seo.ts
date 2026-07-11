@@ -10,8 +10,10 @@ export type JsonLd = Record<string, unknown>
 
 /** Single business entity: ProfessionalService (a LocalBusiness subtype) carrying
  *  the org identity + all local-business signals. One node, one @id — product and
- *  method pages reference it via `provider`. Emitted site-wide from __root. */
-export function buildLocalBusinessLD(): JsonLd {
+ *  method pages reference it via `provider`. Emitted site-wide from __root,
+ *  localized to match the page's SSR language. */
+export function buildLocalBusinessLD(locale: Locale = 'de'): JsonLd {
+  const en = locale === 'en'
   const sameAs = [SITE.social.instagram, SITE.social.facebook].filter(Boolean)
   return {
     '@context': 'https://schema.org',
@@ -21,8 +23,9 @@ export function buildLocalBusinessLD(): JsonLd {
     url: SITE.url,
     logo: `${SITE.url}/logo.png`,
     image: `${SITE.url}/og-hero.jpg`,
-    description:
-      'All-in-One Personalisierungs- & Druckstudio in Berlin Friedrichshain: Textildruck (DTF, HTV), Lasergravur, Sublimation, Sticker & Vinyl und 3D-Druck.',
+    description: en
+      ? 'All-in-one personalization & print studio in Berlin Friedrichshain: textile printing (DTF, HTV), laser engraving, sublimation, stickers & vinyl and 3D printing.'
+      : 'All-in-One Personalisierungs- & Druckstudio in Berlin Friedrichshain: Textildruck (DTF, HTV), Lasergravur, Sublimation, Sticker & Vinyl und 3D-Druck.',
     ...(SITE.email ? { email: SITE.email } : {}),
     ...(SITE.phone ? { telephone: SITE.phone } : {}),
     priceRange: '€€',
@@ -52,15 +55,26 @@ export function buildLocalBusinessLD(): JsonLd {
       addressRegion: 'Berlin',
       addressCountry: SITE.country,
     },
-    makesOffer: [
-      'Textildruck (DTF & HTV)',
-      'Lasergravur',
-      'Sublimationsdruck',
-      'Stickerei',
-      'Sticker & Vinyl',
-      '3D-Druck',
-      'Express-Druck',
-    ].map((name) => ({ '@type': 'Offer', itemOffered: { '@type': 'Service', name } })),
+    makesOffer: (en
+      ? [
+          'Textile Printing (DTF & HTV)',
+          'Laser Engraving',
+          'Sublimation Printing',
+          'Embroidery',
+          'Stickers & Vinyl',
+          '3D Printing',
+          'Express Printing',
+        ]
+      : [
+          'Textildruck (DTF & HTV)',
+          'Lasergravur',
+          'Sublimationsdruck',
+          'Stickerei',
+          'Sticker & Vinyl',
+          '3D-Druck',
+          'Express-Druck',
+        ]
+    ).map((name) => ({ '@type': 'Offer', itemOffered: { '@type': 'Service', name } })),
     ...(sameAs.length ? { sameAs } : {}),
   }
 }
@@ -144,15 +158,20 @@ export type PageHeadInput = {
 }
 
 const abs = (p: string) => (p.startsWith('http') ? p : `${SITE.url}${p}`)
+const absPage = (p: string) => abs(p === '/' ? '' : p)
 
 /** Returns { meta, links } ready to spread into a TanStack Route `head()`.
- *  No hreflang: DE and EN share URLs (client-side toggle) and SSR always renders
- *  German, so advertising per-language alternates would be contradictory markup.
- *  Reintroduce hreflang only once locales get distinct crawlable URLs (/en/*). */
+ *  German pages live at /<path>, English at /en/<path> — each variant is SSR'd
+ *  in its own language, so we emit a reciprocal hreflang cluster (de ↔ en,
+ *  x-default → de) with distinct URLs. Noindex pages get canonical only. */
 export function pageHead(input: PageHeadInput) {
   const { title, description, path, locale, ogImage = '/og-hero.jpg', ogImageAlt, noindex } = input
-  const canonical = abs(path === '/' ? '' : path)
+  const canonical = absPage(path)
   const image = abs(ogImage)
+
+  const isEn = path === '/en' || path.startsWith('/en/')
+  const dePath = isEn ? (path === '/en' ? '/' : path.slice(3)) : path
+  const enPath = isEn ? path : path === '/' ? '/en' : `/en${path}`
 
   const meta = [
     { title },
@@ -182,7 +201,17 @@ export function pageHead(input: PageHeadInput) {
     { name: 'twitter:image:alt', content: ogImageAlt ?? title },
   ]
 
-  const links = [{ rel: 'canonical', href: canonical }]
+  const links = [
+    { rel: 'canonical', href: canonical },
+    // Reciprocal hreflang — only for indexable pages (legal pages are DE-only + noindex).
+    ...(noindex
+      ? []
+      : [
+          { rel: 'alternate', hrefLang: 'de', href: absPage(dePath) },
+          { rel: 'alternate', hrefLang: 'en', href: absPage(enPath) },
+          { rel: 'alternate', hrefLang: 'x-default', href: absPage(dePath) },
+        ]),
+  ]
 
   return { meta, links }
 }

@@ -4,7 +4,7 @@
 import { lazy, Suspense } from 'react'
 import { Link } from '@tanstack/react-router'
 import { ArrowRight, Check, Clock, PackageCheck } from 'lucide-react'
-import { useI18n } from '../lib/i18n'
+import { useI18n, localePath } from '../lib/i18n'
 import { HUBS, getMethod, relatedProducts, productTo, type Product } from '../lib/catalog'
 import { Breadcrumbs, Section, SectionHeading } from './ui'
 import { Cover } from './Cover'
@@ -20,18 +20,18 @@ export function ProductDetail({ product }: { product: Product }) {
   const hub = HUBS[product.hub]
   const related = relatedProducts(product)
 
-  const path = `${hub.path}/${product.slug}`
+  const path = localePath(l, `${hub.path}/${product.slug}`)
   return (
     <>
       <JsonLd
         data={[
-          // LD names in German — matches the SSR-rendered (default) locale.
+          // LD names follow the URL locale — matches the SSR-rendered language.
           buildBreadcrumbLD([
-            { name: 'Start', path: '/' },
-            { name: hub.title.de, path: hub.path },
-            { name: product.title.de, path },
+            { name: l === 'en' ? 'Home' : 'Start', path: localePath(l, '/') },
+            { name: hub.title[l], path: localePath(l, hub.path) },
+            { name: product.title[l], path },
           ]),
-          buildOfferedServiceLD({ name: product.title.de, description: product.description.de, path, image: product.cover }),
+          buildOfferedServiceLD({ name: product.title[l], description: product.description[l], path, image: product.cover }),
         ]}
       />
       <Breadcrumbs

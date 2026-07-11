@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
-import { useI18n, DEFAULT_LOCALE } from '../lib/i18n'
+import { useI18n, DEFAULT_LOCALE, localePath } from '../lib/i18n'
 import { pageHead, buildBreadcrumbLD } from '../lib/seo'
 import { TRUST_POINTS } from '../lib/content'
 import { Breadcrumbs, Section } from '../components/ui'
@@ -19,12 +19,12 @@ export const Route = createFileRoute('/about')({
   component: About,
 })
 
-function About() {
+export function About() {
   const { t, locale } = useI18n()
   const l = locale === 'en' ? 'en' : 'de'
   return (
     <>
-      <JsonLd data={buildBreadcrumbLD([{ name: 'Start', path: '/' }, { name: 'Über uns', path: '/about' }])} />
+      <JsonLd data={buildBreadcrumbLD([{ name: l === 'en' ? 'Home' : 'Start', path: localePath(l, '/') }, { name: l === 'en' ? 'About' : 'Über uns', path: localePath(l, '/about') }])} />
       <Breadcrumbs items={[{ name: t('nav.home'), to: '/' }, { name: t('nav.about') }]} />
       <Section className="!pt-8">
         <div className="max-w-3xl">

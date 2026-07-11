@@ -60,7 +60,7 @@ export const Route = createFileRoute('/')({
   component: Home,
 })
 
-function Home() {
+export function Home() {
   const { t, locale } = useI18n()
   const l = locale === 'en' ? 'en' : 'de'
   const L = (de: string, en: string) => (l === 'en' ? en : de)

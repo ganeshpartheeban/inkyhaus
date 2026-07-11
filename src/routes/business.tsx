@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
-import { useI18n, DEFAULT_LOCALE } from '../lib/i18n'
+import { useI18n, DEFAULT_LOCALE, localePath } from '../lib/i18n'
 import { pageHead, buildBreadcrumbLD } from '../lib/seo'
 import { Breadcrumbs, Section, SectionHeading } from '../components/ui'
 import { Reveal } from '../components/Reveal'
@@ -26,12 +26,12 @@ export const Route = createFileRoute('/business')({
   component: Business,
 })
 
-function Business() {
+export function Business() {
   const { t, locale } = useI18n()
   const l = locale === 'en' ? 'en' : 'de'
   return (
     <>
-      <JsonLd data={buildBreadcrumbLD([{ name: 'Start', path: '/' }, { name: 'Firmenkunden', path: '/business' }])} />
+      <JsonLd data={buildBreadcrumbLD([{ name: l === 'en' ? 'Home' : 'Start', path: localePath(l, '/') }, { name: l === 'en' ? 'For Business' : 'Firmenkunden', path: localePath(l, '/business') }])} />
       <Breadcrumbs items={[{ name: t('nav.home'), to: '/' }, { name: t('nav.business') }]} />
       <Section className="!pt-8">
         <SectionHeading as="h1" eyebrow={t('home.business.eyebrow')} title={t('home.business.title')} subtitle={t('home.business.body')} />

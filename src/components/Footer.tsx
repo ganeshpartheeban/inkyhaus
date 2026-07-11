@@ -2,7 +2,7 @@
 import { Link } from '@tanstack/react-router'
 import { Globe, Mail } from 'lucide-react'
 import { WhatsAppIcon } from './WhatsAppIcon'
-import { useI18n } from '../lib/i18n'
+import { useI18n, useLocaleTo } from '../lib/i18n'
 import { COMPANY_NAV } from '../lib/nav'
 import { HUBS, PROMO_GROUPS, productsForHub } from '../lib/catalog'
 import { SITE, whatsappLink } from '../lib/site-config'
@@ -12,12 +12,13 @@ import { OPEN_CONSENT_EVENT } from './CookieNotice'
 export function Footer() {
   const { t, locale } = useI18n()
   const l = locale === 'en' ? 'en' : 'de'
+  const lp = useLocaleTo()
 
   const textile = productsForHub('textile-printing').map((p) => ({
-    to: `${HUBS['textile-printing'].path}/${p.slug}`,
+    to: lp(`${HUBS['textile-printing'].path}/${p.slug}`),
     label: p.title[l],
   }))
-  const promo = PROMO_GROUPS.map((g) => ({ to: HUBS['promotional-products'].path, label: g.label[l] }))
+  const promo = PROMO_GROUPS.map((g) => ({ to: lp(HUBS['promotional-products'].path), label: g.label[l] }))
 
   return (
     <footer className="mt-24 bg-ink text-paper">
@@ -63,7 +64,7 @@ export function Footer() {
 
           <FooterCol title={t('nav.textile')} items={textile} />
           <FooterCol title={t('nav.promo')} items={promo} />
-          <FooterCol title={t('footer.company')} items={COMPANY_NAV.map((i) => ({ to: i.to, label: t(i.key) }))} />
+          <FooterCol title={t('footer.company')} items={COMPANY_NAV.map((i) => ({ to: lp(i.to), label: t(i.key) }))} />
           <FooterCol
             title={t('footer.legal')}
             items={[
@@ -130,7 +131,7 @@ function FooterCol({ title, items }: { title: string; items: Array<{ to: string;
       <ul className="mt-3 space-y-2 text-sm">
         {items.map((i) => (
           <li key={i.label}>
-            <Link to={i.to} className="text-paper/70 transition-colors hover:text-paper">
+            <Link to={i.to as '/'} className="text-paper/70 transition-colors hover:text-paper">
               {i.label}
             </Link>
           </li>

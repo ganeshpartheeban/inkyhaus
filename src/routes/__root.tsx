@@ -4,8 +4,10 @@ import {
   Outlet,
   Scripts,
   createRootRoute,
+  redirect,
   useRouterState,
 } from '@tanstack/react-router'
+import { STORAGE_KEY, enCounterpart, isEnPath } from '../lib/i18n'
 
 import appCss from '../styles.css?url'
 import { I18nProvider } from '../lib/i18n'
@@ -53,6 +55,21 @@ export const Route = createRootRoute({
       { rel: 'manifest', href: withBase('/manifest.json') },
     ],
   }),
+  // Client-only preference redirect: users who chose English (or arrived via an
+  // /en URL) get legacy German-path navigations rerouted to the /en counterpart.
+  // Never runs during SSR, so crawlers always receive the URL they asked for.
+  beforeLoad: ({ location }) => {
+    if (typeof window === 'undefined') return
+    let pref: string | null = null
+    try {
+      pref = window.localStorage.getItem(STORAGE_KEY)
+    } catch {
+      /* storage unavailable */
+    }
+    if (pref !== 'en' || isEnPath(location.pathname)) return
+    const target = enCounterpart(location.pathname)
+    if (target) throw redirect({ to: target })
+  },
   shellComponent: RootDocument,
   component: RootLayout,
 })
@@ -63,8 +80,9 @@ const INTRO_ONCE_SCRIPT =
   "try{if(sessionStorage.getItem('ih-intro'))document.documentElement.setAttribute('data-skip-intro','');else sessionStorage.setItem('ih-intro','1')}catch(e){}"
 
 function RootDocument({ children }: { children: React.ReactNode }) {
+  const pathname = useRouterState({ select: (s) => s.location.pathname })
   return (
-    <html lang="de">
+    <html lang={isEnPath(pathname) ? 'en' : 'de'}>
       <head>
         <script dangerouslySetInnerHTML={{ __html: INTRO_ONCE_SCRIPT }} />
         <HeadContent />
@@ -87,7 +105,7 @@ function RootLayout() {
         href="#main"
         className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[70] focus:rounded-full focus:bg-ink focus:px-4 focus:py-2 focus:text-paper"
       >
-        Zum Inhalt springen
+        {isEnPath(pathname) ? 'Skip to content' : 'Zum Inhalt springen'}
       </a>
       <Header />
       {/* 220ms cross-fade on route change; padding-bottom clears the mobile tab bar */}
@@ -106,7 +124,7 @@ function RootLayout() {
         <EngagementModal />
       </Suspense>
       <TawkChat />
-      <JsonLd data={buildLocalBusinessLD()} />
+      <JsonLd data={buildLocalBusinessLD(isEnPath(pathname) ? 'en' : 'de')} />
     </I18nProvider>
   )
 }
