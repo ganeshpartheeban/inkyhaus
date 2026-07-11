@@ -46,10 +46,10 @@ export const SITE = {
     facebook: '', // TODO
   },
 
-  // ── Founder / Person schema (TODO: confirm real name) ──────────────────────
+  // ── Owner (confirmed — see /imprint) ────────────────────────────────────────
   founder: {
-    name: 'Inkyhaus Studio', // TODO: real founder name
-    jobTitle: 'Founder & Lead Print Producer',
+    name: 'Vankdoth Srinivas Naik',
+    jobTitle: 'Inhaber (Einzelunternehmer)',
   },
 } as const
 

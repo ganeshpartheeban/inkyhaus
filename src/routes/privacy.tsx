@@ -25,7 +25,7 @@ function Privacy() {
     <LegalPage titleKeyDe="Datenschutzerklärung" titleEn="Privacy Policy">
       <H2>{L('1. Verantwortlicher', '1. Controller')}</H2>
       <P>
-        {SITE.name}
+        {SITE.name} — {L('Inhaber', 'Owner')}: {SITE.founder.name}
         <br />
         {SITE.street}, {SITE.postalCode} {SITE.city}, {L('Deutschland', 'Germany')}
         <br />

@@ -26,8 +26,8 @@ function Terms() {
       <H2>{L('§ 1 Geltungsbereich', '§ 1 Scope')}</H2>
       <P>
         {L(
-          `Diese Bedingungen gelten für alle Aufträge zwischen ${SITE.name}, ${SITE.street}, ${SITE.postalCode} ${SITE.city} (nachfolgend „Anbieter“), und ihren Kundinnen und Kunden über Druck-, Veredelungs-, Gravur- und Werbeproduktdienstleistungen.`,
-          `These terms apply to all orders between ${SITE.name}, ${SITE.street}, ${SITE.postalCode} ${SITE.city} (the “Provider”), and its customers for printing, finishing, engraving and promotional-product services.`,
+          `Diese Bedingungen gelten für alle Aufträge zwischen ${SITE.name} (Inhaber: ${SITE.founder.name}), ${SITE.street}, ${SITE.postalCode} ${SITE.city} (nachfolgend „Anbieter“), und ihren Kundinnen und Kunden über Druck-, Veredelungs-, Gravur- und Werbeproduktdienstleistungen.`,
+          `These terms apply to all orders between ${SITE.name} (owner: ${SITE.founder.name}), ${SITE.street}, ${SITE.postalCode} ${SITE.city} (the “Provider”), and its customers for printing, finishing, engraving and promotional-product services.`,
         )}
       </P>
 
