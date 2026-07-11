@@ -12,6 +12,7 @@ import { STORAGE_KEY, enCounterpart, isEnPath } from '../lib/i18n'
 import appCss from '../styles.css?url'
 import { I18nProvider } from '../lib/i18n'
 import { Header } from '../components/Header'
+import { AnnouncementBar } from '../components/AnnouncementBar'
 import { Footer } from '../components/Footer'
 import { BottomTabBar } from '../components/BottomTabBar'
 import { TawkChat } from '../components/TawkChat'
@@ -75,9 +76,9 @@ export const Route = createRootRoute({
 })
 
 // Runs before first paint: skip the intro veil on repeat loads in the same tab
-// session so the brand moment plays once and never taxes LCP again.
+// session, and hide the announcement bar if it was dismissed this session.
 const INTRO_ONCE_SCRIPT =
-  "try{if(sessionStorage.getItem('ih-intro'))document.documentElement.setAttribute('data-skip-intro','');else sessionStorage.setItem('ih-intro','1')}catch(e){}"
+  "try{if(sessionStorage.getItem('ih-intro'))document.documentElement.setAttribute('data-skip-intro','');else sessionStorage.setItem('ih-intro','1');if(sessionStorage.getItem('ih-announce-closed'))document.documentElement.setAttribute('data-announce-closed','')}catch(e){}"
 
 function RootDocument({ children }: { children: React.ReactNode }) {
   const pathname = useRouterState({ select: (s) => s.location.pathname })
@@ -107,6 +108,7 @@ function RootLayout() {
       >
         {isEnPath(pathname) ? 'Skip to content' : 'Zum Inhalt springen'}
       </a>
+      <AnnouncementBar />
       <Header />
       {/* 220ms cross-fade on route change; padding-bottom clears the mobile tab bar */}
       <main id="main" key={pathname} className="page-transition pb-24 lg:pb-0">

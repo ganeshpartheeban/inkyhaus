@@ -132,6 +132,18 @@
   }
 }
 
+/* ── Announcement bar marquee ──────────────────────────────────────────────*/
+.announce-track {
+  animation: marquee 28s linear infinite;
+}
+.announce-track:hover {
+  animation-play-state: paused;
+}
+/* Dismissed this session (set pre-paint by the inline head script). */
+html[data-announce-closed] .announce-bar {
+  display: none;
+}
+
 /* ── Utilities ─────────────────────────────────────────────────────────────*/
 @utility page-transition {
   animation: var(--animate-page);
@@ -308,6 +320,7 @@ html[data-skip-intro] .intro-loader {
   .anim-rise,
   .anim-float,
   .anim-spin-slow,
+  .announce-track,
   .intro-loader .intro-mark,
   .intro-loader .intro-bar {
     animation: none !important;

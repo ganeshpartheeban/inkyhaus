@@ -114,7 +114,7 @@ export function Footer() {
             {t('footer.consent')}
           </button>
           <span>
-            {l === 'en' ? 'Designed & developed with ' : 'Designed & entwickelt mit '}
+            {l === 'en' ? 'Designed & Developed with ' : 'Designed & Entwickelt mit '}
             <span aria-hidden className="text-accent-bright">♥</span>
             {l === 'en' ? ' by ' : ' von '}
             <a
