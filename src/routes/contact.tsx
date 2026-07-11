@@ -94,6 +94,16 @@ export function Contact() {
               </span>
             </a>
             <a
+              href={`tel:${SITE.phone2.replace(/\s/g, '')}`}
+              className="flex items-center gap-3 rounded-2xl border border-line bg-surface p-5 transition-colors hover:border-accent"
+            >
+              <Phone className="text-accent" aria-hidden />
+              <span>
+                <span className="block font-medium">{l === 'en' ? 'Call us (alternative)' : 'Anrufen (alternativ)'}</span>
+                <span className="block text-sm text-muted">{SITE.phone2}</span>
+              </span>
+            </a>
+            <a
               href={SITE.mapsUrl}
               target="_blank"
               rel="noopener noreferrer"

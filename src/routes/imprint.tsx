@@ -37,6 +37,8 @@ function Imprint() {
       <H2>{L('Kontakt', 'Contact')}</H2>
       <P>
         {L('Telefon', 'Phone')}: <A href={`tel:${SITE.phone.replace(/\s/g, '')}`}>{SITE.phone}</A>
+        {' · '}
+        <A href={`tel:${SITE.phone2.replace(/\s/g, '')}`}>{SITE.phone2}</A>
         <br />
         {L('E-Mail', 'Email')}: <A href={`mailto:${SITE.email}`}>{SITE.email}</A>
         {' · '}

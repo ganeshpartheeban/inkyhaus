@@ -31,7 +31,11 @@ function Privacy() {
         <br />
         {L('E-Mail', 'Email')}: <A href={`mailto:${SITE.email}`}>{SITE.email}</A>
         {' · '}
+        <A href={`mailto:${SITE.emailAlt}`}>{SITE.emailAlt}</A>
+        {' · '}
         {L('Telefon', 'Phone')}: <A href={`tel:${SITE.phone.replace(/\s/g, '')}`}>{SITE.phone}</A>
+        {' · '}
+        <A href={`tel:${SITE.phone2.replace(/\s/g, '')}`}>{SITE.phone2}</A>
       </P>
 
       <H2>{L('2. Ihre Rechte', '2. Your rights')}</H2>

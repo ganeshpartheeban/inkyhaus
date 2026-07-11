@@ -1,6 +1,6 @@
 // Dark flyer-style footer (brand flyer: black bar, light text, orange accents).
 import { Link } from '@tanstack/react-router'
-import { Globe, Mail } from 'lucide-react'
+import { Globe, Mail, Phone } from 'lucide-react'
 import { WhatsAppIcon } from './WhatsAppIcon'
 import { useI18n, useLocaleTo } from '../lib/i18n'
 import { COMPANY_NAV } from '../lib/nav'
@@ -54,6 +54,9 @@ export function Footer() {
             <a href={`tel:${SITE.phone.replace(/\s/g, '')}`} className="mt-2 block text-sm text-paper/60 transition-colors hover:text-paper">
               {t('footer.call')}: {SITE.phone}
             </a>
+            <a href={`tel:${SITE.phone2.replace(/\s/g, '')}`} className="mt-1 block text-sm text-paper/60 transition-colors hover:text-paper">
+              {t('footer.call')}: {SITE.phone2}
+            </a>
             <a href={`mailto:${SITE.email}`} className="mt-2 block text-sm text-paper/60 transition-colors hover:text-paper">
               {SITE.email}
             </a>
@@ -88,8 +91,14 @@ export function Footer() {
           >
             <WhatsAppIcon size={16} className="text-whatsapp" /> {SITE.phone}
           </a>
+          <a href={`tel:${SITE.phone2.replace(/\s/g, '')}`} className="flex items-center gap-2 text-paper/80 transition-colors hover:text-paper">
+            <Phone size={16} className="text-accent-bright" aria-hidden /> {SITE.phone2}
+          </a>
           <a href={`mailto:${SITE.email}`} className="flex items-center gap-2 text-paper/80 transition-colors hover:text-paper">
             <Mail size={16} className="text-accent-bright" aria-hidden /> {SITE.email}
+          </a>
+          <a href={`mailto:${SITE.emailAlt}`} className="flex items-center gap-2 text-paper/80 transition-colors hover:text-paper">
+            <Mail size={16} className="text-accent-bright" aria-hidden /> {SITE.emailAlt}
           </a>
         </div>
 

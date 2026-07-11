@@ -20,6 +20,8 @@ export const SITE = {
   emailAlt: 'inkyhaus.de@gmail.com',
   /** Public phone — same line as WhatsApp, so customers can call or chat it. */
   phone: '+49 176 63648012',
+  /** Additional public phone line (call only). */
+  phone2: '+49 176 30502944',
   /** Confirmed studio address. */
   street: 'Palisadenstraße 42',
   postalCode: '10243',

@@ -96,7 +96,9 @@ function Terms() {
       </P>
       <P>
         {L('Kontakt: ', 'Contact: ')}
-        <A href={`mailto:${SITE.email}`}>{SITE.email}</A> · <A href={`tel:${SITE.phone.replace(/\s/g, '')}`}>{SITE.phone}</A>
+        <A href={`mailto:${SITE.email}`}>{SITE.email}</A> · <A href={`mailto:${SITE.emailAlt}`}>{SITE.emailAlt}</A> ·{' '}
+        <A href={`tel:${SITE.phone.replace(/\s/g, '')}`}>{SITE.phone}</A> ·{' '}
+        <A href={`tel:${SITE.phone2.replace(/\s/g, '')}`}>{SITE.phone2}</A>
       </P>
     </LegalPage>
   )

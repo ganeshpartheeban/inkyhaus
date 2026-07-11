@@ -26,8 +26,8 @@ export function buildLocalBusinessLD(locale: Locale = 'de'): JsonLd {
     description: en
       ? 'All-in-one personalization & print studio in Berlin Friedrichshain: textile printing (DTF, HTV), laser engraving, sublimation, stickers & vinyl and 3D printing.'
       : 'All-in-One Personalisierungs- & Druckstudio in Berlin Friedrichshain: Textildruck (DTF, HTV), Lasergravur, Sublimation, Sticker & Vinyl und 3D-Druck.',
-    ...(SITE.email ? { email: SITE.email } : {}),
-    ...(SITE.phone ? { telephone: SITE.phone } : {}),
+    ...(SITE.email ? { email: [SITE.email, SITE.emailAlt].filter(Boolean) } : {}),
+    ...(SITE.phone ? { telephone: [SITE.phone, SITE.phone2].filter(Boolean) } : {}),
     priceRange: '€€',
     areaServed: { '@type': 'City', name: 'Berlin' },
     paymentAccepted: 'NFC mobile payments',
