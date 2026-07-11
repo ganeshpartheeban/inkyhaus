@@ -99,7 +99,7 @@ export function Home() {
             <p className="anim-rise inline-flex items-center gap-2 rounded-full border border-line bg-surface px-3 py-1 text-xs font-medium uppercase tracking-wide text-ink-soft">
               <MapPin size={13} className="text-accent" aria-hidden /> {SITE.city} {SITE.district} · {SITE.street}
             </p>
-            <h1 className="anim-rise mt-5 text-6xl leading-[0.98] sm:text-7xl lg:text-[5.2rem]" style={{ animationDelay: '90ms' }}>
+            <h1 className="anim-rise mt-5 text-6xl leading-[1.1] sm:text-7xl lg:text-[5.2rem]" style={{ animationDelay: '90ms' }}>
               {L('Deine Idee.', 'Your idea.')}
               <span className="mt-1 block text-accent-bright">
                 {L('Wir machen’s persönlich.', 'We make it personal.')}

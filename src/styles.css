@@ -77,7 +77,9 @@
     font-weight: 400;
     text-transform: uppercase;
     letter-spacing: 0.012em;
-    line-height: 1.04;
+    /* Anton's uppercase umlauts (Ä/Ö/Ü) reach above cap height — keep enough
+       leading that wrapped lines never collide with the diacritics. */
+    line-height: 1.12;
   }
 
   h3,
